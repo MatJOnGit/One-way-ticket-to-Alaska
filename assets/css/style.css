@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    
+    background-image: url("../img/alaska_landscape.jpg");
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 4.2em;
+    font-family: 'Lobster', cursive;
+    color: white;
+}
+
+h2 {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 5%;
+}
+
+article {
+    padding: 30px 30% 30px 10%;
+    background-color: black;
+    color: white;
+}
+
+article a {
+    color: white;
+    text-decoration: none;
+}
+
+aside {
+    padding: 30px 10% 30px 30%;
+    background-color: white;
+    color: black;
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+    padding: 10px 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+footer li {
+    margin-left: 10px;
+    float: left;
+}
+
+footer p {
+    margin: 0 0 0 30px;
+}
