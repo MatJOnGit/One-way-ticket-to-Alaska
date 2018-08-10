@@ -10,7 +10,7 @@
             </article>
         
             <aside>
-                <p>Diplômé d'état en alpinisme, puis en climatologie, Jean Forteroche est un écrivain et chercheur français. Son premier roman, "<em>Les neiges d'été</em>" (Editions Pocket), s'est vendu à plus d'un demi million d'exemplaires dans le monde et a été traduit en plus de 20 langues. Depuis, il a écrit "<em>Le paradis du Nord</em>" (2010), "<em>L'appel de la montagne</em>" (2012) et "<em>L'étranger d'ici</em>" (2014), qui ont tous publiés dans le monde entier. "<em>Billet simple pour l'Alaska</em>" est, pour lui, un hommage rendu au peuple autochtones qu'il a pu rencontrer au cours de ses nombreuses excursions dans les terres du soleil de minuit.</p>
+                <p>Grand adepte d'alpinisme, Jean Forteroche est aussi un acteur et écrivain français. Son premier roman, "<em>Les neiges d'été</em>" (Editions Pocket), s'est vendu à plus d'un trois cent mille exemplaires dans le monde et a été traduit en plus de 15 langues. Depuis, il a écrit "<em>Le paradis du Nord</em>" (2010), "<em>L'appel de la montagne</em>" (2012) et "<em>L'étranger d'ici</em>" (2014), qui ont tous publiés dans le monde entier. "<em>Billet simple pour l'Alaska</em>" est, pour lui, un hommage rendu aux peuples autochtones qu'il a pu rencontrer au cours de ses nombreuses excursions dans les terres du Soleil de Minuit.</p>
                 <img src="assets/img/jforteroche.jpg" alt="Jean Forteroche" />
             </aside>
         </section>
