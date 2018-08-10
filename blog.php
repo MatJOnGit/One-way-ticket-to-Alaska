@@ -10,13 +10,13 @@ try
     {
         if ($_GET['action'] == 'getChaptersList') 
         {
-            listChapters();
+            getChaptersList();
         }
-        elseif ($_GET['action'] == 'post')
+        elseif ($_GET['action'] == 'getChapter')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                post();
+                getChapterContent();
             }
             else 
             {

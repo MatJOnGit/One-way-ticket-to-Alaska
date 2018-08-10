@@ -11,4 +11,13 @@ class ChapterManager extends Manager {
 
         return $chapters;
     }
+    
+    public function getChapter($chapterId) {
+        $db = $this->dbConnect();
+        $chapterContent = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');
+        $chapterContent->execute(array($chapterId));
+        $chapter = $chapterContent->fetch();
+        
+        return $chapter;
+    }
 }
