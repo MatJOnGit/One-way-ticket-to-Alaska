@@ -8,6 +8,40 @@ body {
     flex-direction: column;
 }
 
+button,
+input {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: block;
+}
+
+label {
+    font-size: 0.9em;
+}
+
+input {
+    color: #0984e3;
+}
+
+.blue-button {
+    background-color: #0984e3;
+    border: 1px white solid;
+}
+
+.blue-button a {
+    color: white;
+}
+
+.white-button {
+    background-color: white;
+    border: 1px #0984e3 solid;
+}
+
+.white-button a {
+    color: #0984e3;
+}
+
 a {
     text-decoration: none;
 }
@@ -35,9 +69,10 @@ header {
 }
 
 h1 {
-    font-size: 4.2em;
+    font-size: 4em;
     font-family: 'Lobster', cursive;
     color: white;
+    text-align: center;
 }
 
 h2 {
@@ -45,16 +80,28 @@ h2 {
     position: absolute;
     bottom: 20px;
     right: 5%;
+    text-align: right;
 }
 
 article {
-    padding: 30px 30% 30px 10%;
-    background-color: black;
+    background-color: #2d3436;
     color: white;
+    position: relative;
+}
+
+article p {
+    padding: 30px 10% 70px 10%;
+    margin: 0;
+}
+
+article button {
+    position: absolute;
+    right: 10%;
+    bottom: 30px;
 }
 
 article a {
-    color: white;
+    display: block;
 }
 
 aside {
@@ -62,38 +109,127 @@ aside {
     background-color: white;
     color: black;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 aside img {
     width: 100px;
     height: 100px;
     border: 1px black solid;
+    align-self: center;
+    margin-bottom: 10px;
 }
 
 aside p {
     margin: 0;
-    width: 60%;
 }
 
 footer {
     width: 100%;
-    height: 50px;
-    background-color: black;
+    background-color: #2d3436;
     color: white;
-    padding: 10px 10%;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer ul {
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 footer li {
     margin-left: 10px;
-    float: left;
+}
+
+footer img {
+    width: 20px;
+    height: 20px;
 }
 
 footer p {
-    margin: 0 0 0 30px;
+    margin: 3px 0 0 0;
+}
+
+.user-session-bar {
+    width: 100%;
+    background-color: #2b3234;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.user-session-bar p {
+    margin: 0;
+    padding: 10px 40px 5px;
+    text-align: center;
+}
+
+.user-session-bar div {
+    padding: 5px 20px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.user-session-bar div button:nth-child(2) {
+    margin-left: 10px;
+}
+
+.content-wrapper {
+    margin-top: 105px;
+}
+
+.white-button span {
+    margin-right: 10px;
+}
+
+.blog-container,
+.comments-container {
+    margin: 0px 20px 20px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+.chapter-nav-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+i {
+    color: #0984e3;
+}
+
+.chapter-nav-buttons i:nth-child(2) {
+    margin-left: 20px;
+}
+
+.user-info {
+    font-size: 0.8em;
+    margin: 15px 0 3px;
+}
+
+.user-comment {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.comments-container p strong {
+    color: #0984e3;
+}
+
+form textarea {
+    border: none;
+    border-bottom: 1px grey solid;
+    width: 80%;
+    margin: 0 0 10px;
 }
