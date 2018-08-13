@@ -20,3 +20,11 @@ function getChapterContent() {
 
     require('view/frontend/chapterContent.php');
 }
+
+function register() {
+    require('view/frontend/register.php');
+}
+
+function signin() {
+    require('view/frontend/signin.php');
+}

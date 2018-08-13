@@ -14,12 +14,8 @@
     
     <div class="comments-container">
         <form action="index.php?action=addComment&amp;id=<?= $chapter['id'] ?>" method="post">
-            <div>
-                <textarea id="comment" name="comment" placeholder="Ajouter un commentaire"></textarea>
-            </div>
-            <div>
-                <input type="submit" class="white-button"/>
-            </div>
+            <textarea id="comment" name="comment" placeholder="Ajouter un commentaire" row="4" cols="10" required=""></textarea>
+            <button class="blue-button form-button" type="submit">Valider</button>
         </form>
         <?php
         while ($comment = $comments->fetch())

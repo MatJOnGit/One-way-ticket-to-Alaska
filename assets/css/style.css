@@ -8,20 +8,11 @@ body {
     flex-direction: column;
 }
 
-button,
-input {
+button {
     padding: 3px 8px;
     border-radius: 6px;
     font-weight: 600;
     display: block;
-}
-
-label {
-    font-size: 0.9em;
-}
-
-input {
-    color: #0984e3;
 }
 
 .blue-button {
@@ -29,7 +20,8 @@ input {
     border: 1px white solid;
 }
 
-.blue-button a {
+.blue-button a,
+form button{
     color: white;
 }
 
@@ -194,8 +186,14 @@ footer p {
     margin: 0px 20px 20px;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 h3 {
-    text-align: center;
     font-size: 1.5em;
     text-decoration: underline;
 }
@@ -227,9 +225,79 @@ i {
     color: #0984e3;
 }
 
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+form input,
 form textarea {
     border: none;
-    border-bottom: 1px grey solid;
-    width: 80%;
+    width: 100%;
     margin: 0 0 10px;
+    text-align: center;
+}
+
+form button {
+    align-self: center;
+    margin-top: 10px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+button {
+    font-family: 'roboto', sans-serif;
+    -webkit-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+}
+
+input,
+textarea {
+    margin: 40px 25px;
+    display: block;
+    width: 60%;
+    border: none;
+    padding: 15px 0 5px;
+    border-bottom: solid 1px #0984e3;
+    -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+          transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: -webkit-linear-gradient(top, rgba(9, 132, 277, 0) 96%, #0984e3 4%);
+    background: linear-gradient(to bottom, rgba(9, 132, 277, 0) 96%, #0984e3 4%);
+    background-position: -200px 0;
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    color: #005ca8;
+}
+
+input:focus,
+input:valid,
+textarea:focus,
+textare:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+}
+
+input:focus::-webkit-input-placeholder,
+input:valid::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder,
+textarea:valid::-webkit-input-placeholder{
+    color: #0984e3;
+    font-size: 11px;
+    -webkit-transform: translateY(-20px);
+          transform: translateY(-15px);
+    visibility: visible !important;
+}
+
+button:hover {
+    -webkit-transform: translateY(-3px);
+      -ms-transform: translateY(-3px);
+          transform: translateY(-3px);
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+label {
+    font-size: 0.9em;
 }
