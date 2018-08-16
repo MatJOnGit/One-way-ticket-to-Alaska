@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="blog-container">
         
-        <button class="white-button"><a href="blog.php?action=getChaptersList"><span>&#10094;&#10094;</span>Retour au menu des chapitres</a></button>
+        <button class="white-button"><a href="index.php?action=getChaptersList"><span>&#10094;&#10094;</span>Retour au menu des chapitres</a></button>
     
         <div class="form-container">
             <h3>Connexion</h3>

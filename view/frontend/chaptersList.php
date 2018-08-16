@@ -6,7 +6,7 @@
             while ($data = $chapters->fetch()) {
             ?>
                 <li>
-                    <a href="blog.php?action=getChapter&amp;id=<?= $data['id'] ?>">Chapitre <?= $data['id'] ?> : <?= htmlspecialchars($data['title']) ?></a>
+                    <a href="index.php?action=getChapter&amp;id=<?= $data['id'] ?>">Chapitre <?= $data['id'] ?> : <?= htmlspecialchars($data['title']) ?></a>
                 </li>
             <?php
             }

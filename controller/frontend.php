@@ -3,6 +3,7 @@
 // Chargement des classes
 require_once('model/ChapterManager.php');
 require_once('model/CommentManager.php');
+require_once('model/UserManager.php');
 
 function getChapterslist() {
     $chapterManager = new \owtta\Blog\Model\ChapterManager();
@@ -25,6 +26,13 @@ function register() {
     require('view/frontend/register.php');
 }
 
-function signin() {
-    require('view/frontend/signin.php');
+function signIn() {
+    require('view/frontend/signIn.php');
+}
+
+function getMemberPanel() {
+    $userManager = new \owtta\Blog\Model\UserManager();
+    $userInfo = $userManager->getUserInfo($_GET['id']);
+    
+    require('view/frontend/userInfo.php');
 }
