@@ -1,6 +1,6 @@
 <?php
 
-try 
+try
 {
     if (!isset($_GET['action']))
     {
@@ -13,15 +13,17 @@ try
         require 'controller/frontend.php';
         require 'view/frontend/header.php';
         require 'view/frontend/memberBar.php';
+        
+        $frontend_controller = new Frontend_Controller;
         if ($_GET['action'] == 'getChaptersList') 
         {
-            getChaptersList();
+            $frontend_controller->getChaptersList();
         }
         elseif ($_GET['action'] == 'getChapter')
         {            
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                getChapterContent();
+                $frontend_controller->getChapterContent();
             }
             else 
             {
@@ -30,21 +32,21 @@ try
         }
         elseif ($_GET['action'] == 'register') 
         {
-            register();
+            $frontend_controller->register();
         }
         elseif ($_GET['action'] == 'signIn')
         {
-            signIn();
+            $frontend_controller->signIn();
         }
         elseif ($_GET['action'] == 'signOut')
         {
-            signOut();
+            $frontend_controller->signOut();
         }
         elseif ($_GET['action'] == 'getMemberPanel')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                getMemberPanel();
+                $frontend_controller->getMemberPanel();
             }
             else
             {
