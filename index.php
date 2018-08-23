@@ -15,6 +15,7 @@ try
         require 'view/frontend/memberBar.php';
         
         $frontend_controller = new Frontend_Controller;
+        
         if ($_GET['action'] == 'getChaptersList') 
         {
             $frontend_controller->getChaptersList();
