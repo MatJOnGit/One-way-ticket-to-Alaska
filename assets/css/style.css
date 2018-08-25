@@ -235,8 +235,8 @@ form {
 form input,
 form textarea {
     border: none;
-    width: 100%;
-    margin: 0 0 10px;
+    width: 120px;
+    margin: 0 auto 10px;
     text-align: center;
 }
 
