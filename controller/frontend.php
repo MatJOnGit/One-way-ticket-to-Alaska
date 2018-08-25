@@ -1,38 +1,52 @@
 <?php
 
-// Chargement des classes
-require_once('model/ChapterManager.php');
-require_once('model/CommentManager.php');
-require_once('model/UserManager.php');
-
-function getChapterslist() {
-    $chapterManager = new \owtta\Blog\Model\ChapterManager();
-    $chapters = $chapterManager->getChapters();
-
-    require('view/frontend/chaptersList.php');
+interface iController 
+{
+    public function loadManagers();
 }
 
-function getChapterContent() {
-    $chapterManager = new \owtta\Blog\Model\ChapterManager();
-    $commentManager = new \owtta\Blog\Model\CommentManager();
-    
-    $chapter = $chapterManager->getChapter($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+class Frontend_Controller implements iController
+{
+    public function loadManagers() {
+        require_once('model/ChapterManager.php');
+        require_once('model/CommentManager.php');
+        require_once('model/UserManager.php');
+    }
 
-    require('view/frontend/chapterContent.php');
-}
+    public function getChapterslist() {
+        $this->loadManagers();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapters = $chapterManager->getChapters();
 
-function register() {
-    require('view/frontend/register.php');
-}
+        require('view/frontend/chaptersList.php');
+    }
 
-function signIn() {
-    require('view/frontend/signIn.php');
-}
+    public function getChapterContent() {
+        $this->loadManagers();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $commentManager = new \owtta\Blog\Model\CommentManager();
 
-function getMemberPanel() {
-    $userManager = new \owtta\Blog\Model\UserManager();
-    $userInfo = $userManager->getUserInfo($_GET['id']);
-    
-    require('view/frontend/userInfo.php');
+        $chapter = $chapterManager->getChapter($_GET['id']);
+        $comments = $commentManager->getComments($_GET['id']);
+
+        require('view/frontend/chapterContent.php');
+    }
+
+    public function register() {
+        $this->loadManagers();
+        require('view/frontend/register.php');
+    }
+
+    public function signIn() {
+        $this->loadManagers();
+        require('view/frontend/signIn.php');
+    }
+
+    public function getMemberPanel() {
+        $this->loadManagers();
+        $userManager = new \owtta\Blog\Model\UserManager();
+        $userInfo = $userManager->getUserInfo($_GET['id']);
+
+        require('view/frontend/userInfo.php');
+    }
 }

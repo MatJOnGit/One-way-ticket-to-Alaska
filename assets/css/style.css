@@ -211,7 +211,7 @@ i {
     margin-left: 20px;
 }
 
-.user-info {
+.comment-info {
     font-size: 0.8em;
     margin: 15px 0 3px;
 }
@@ -300,4 +300,41 @@ button:hover {
 
 label {
     font-size: 0.9em;
+}
+
+.user-info-bloc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info {
+    width: 80%;
+    margin: 0 0 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+h4 {
+    margin: 0;
+}
+
+.user-info div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.user-info img {
+    width: 100px;
+}
+
+.user-info button {
+    margin-top: 5px;
+}
+
+.user-info p {
+    margin: 0;
 }
