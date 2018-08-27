@@ -12,7 +12,7 @@ try
         else
     {
         require 'view/frontend/header.php';
-//        require 'view/frontend/memberBar.php';
+        require 'view/frontend/memberBar.php';
         
         $frontoffice_controller = new Frontoffice_controller;
         

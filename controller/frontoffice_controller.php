@@ -1,5 +1,7 @@
 <?php
 
+//use \owtta\model\ChapterManager;
+
 interface iController 
 {
     public function loadManagers();
@@ -17,7 +19,7 @@ class Frontoffice_controller implements iController
     public function getChapterslist()
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterManager = new \owtta\model\ChapterManager();
         $chapters = $chapterManager->getChapters();
 
         require('view/frontend/chaptersList.php');
@@ -26,8 +28,8 @@ class Frontoffice_controller implements iController
     public function getChapterContent()
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
-        $commentManager = new \owtta\Blog\Model\CommentManager();
+        $chapterManager = new \owtta\model\ChapterManager();
+        $commentManager = new \owtta\model\CommentManager();
 
         $chapter = $chapterManager->getChapter($_GET['id']);
         $comments = $commentManager->getComments($_GET['id']);
@@ -50,7 +52,7 @@ class Frontoffice_controller implements iController
     public function getMemberPanel()
     {
         $this->loadManagers();
-        $userManager = new \owtta\Blog\Model\UserManager();
+        $userManager = new \owtta\model\UserManager();
         $userInfo = $userManager->getUserInfo($_GET['id']);
 
         require('view/frontend/userInfo.php');

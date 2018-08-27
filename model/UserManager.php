@@ -1,6 +1,6 @@
 <?php
 
-namespace owtta\Blog\Model;
+namespace owtta\model;
 
 require_once("model/Manager.php");
 
