@@ -1,6 +1,6 @@
 <?php
 
-namespace owtta\Blog\Model;
+namespace owtta\Model\Manager;
 
 class Manager
 {
