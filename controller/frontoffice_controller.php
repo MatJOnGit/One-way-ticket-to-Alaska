@@ -1,5 +1,7 @@
 <?php
 
+namespace owtta\controller;
+
 //use \owtta\model\ChapterManager;
 
 interface iController 

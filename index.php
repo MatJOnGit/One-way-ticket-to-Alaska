@@ -14,7 +14,7 @@ try
         require 'view/frontend/header.php';
         require 'view/frontend/memberBar.php';
         
-        $frontoffice_controller = new Frontoffice_controller;
+        $frontoffice_controller = new \owtta\controller\Frontoffice_controller();
         
         if ($_GET['action'] == 'getChaptersList') 
         {
