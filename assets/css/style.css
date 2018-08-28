@@ -15,23 +15,55 @@ button {
     display: block;
 }
 
-.blue-button {
-    background-color: #0984e3;
+/* Fonts and border */
+
+.white-border {
     border: 1px white solid;
 }
 
-.blue-button a,
-form button{
+.white-border a,
+form button {
     color: white;
 }
 
-.white-button {
-    background-color: white;
+.light-blue-button {
+    background-color: #0984e3;
+}
+
+.light-blue-border {
     border: 1px #0984e3 solid;
+}
+
+.light-blue-border a {
+    color: #0984e3;
+}
+
+.dark-blue-border {
+    border: 1px #30336b solid;
+}
+
+.dark-blue-border {
+    color: #30336b;
 }
 
 .white-button a {
     color: #0984e3;
+}
+
+.orange-button {
+    background-color: #e17055;
+}
+
+.white-button {
+    background-color: white;
+}
+
+.dark-blue-button {
+    background-color: #30336b;
+}
+
+.dark-blue-border {
+    border: #30336b;
 }
 
 a {
@@ -145,9 +177,11 @@ footer p {
     margin: 3px 0 0 0;
 }
 
-.user-session-bar {
+/* nav bars */
+
+.user-session-bar,
+.admin-session-bar {
     width: 100%;
-    background-color: #2b3234;
     color: white;
     display: flex;
     flex-direction: column;
@@ -156,25 +190,38 @@ footer p {
     top: 0;
 }
 
-.user-session-bar p {
+.user-session-bar {
+    background-color: #2b3234;
+}
+
+.admin-session-bar {
+    background-color: #686de0;
+}
+
+.user-session-bar p,
+.admin-session-bar p {
     margin: 0;
     padding: 10px 40px 5px;
     text-align: center;
 }
 
-.user-session-bar div {
+.user-session-bar nav,
+.admin-session-bar nav {
     padding: 5px 20px 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.user-session-bar div button:nth-child(2) {
+.user-session-bar nav button:nth-child(2),
+.user-session-bar nav button:nth-child(3),
+.admin-session-bar nav button:nth-child(2),
+.admin-session-bar nav button:nth-child(3) {
     margin-left: 10px;
 }
 
 .content-wrapper {
-    margin-top: 105px;
+    margin-top: 125px;
 }
 
 .white-button span {
@@ -338,3 +385,28 @@ h4 {
 .user-info p {
     margin: 0;
 }
+
+/* Admin pages */
+
+.admin-content-wrapper {
+    margin-top: 105px;
+}
+
+.admin-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-content h3 {
+    margin: 0;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
