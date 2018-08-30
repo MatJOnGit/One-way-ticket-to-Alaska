@@ -1,6 +1,6 @@
-<div class="admin-content-wrapper">
+<div class="admin-wrapper">
     <div class="admin-session-bar">
-        <p>Bienvenue sur votre tableau de bord !</p>
+        <p>Bienvenue sur le tableau de bord !</p>
         <nav>
             <button class="dark-blue-button white-border"><a href="index.php?action=getAdminPanel">Tableau de bord</a></button>
             <button class="white-button dark-blue-border"><a href="index.php">Voir mon site</a></button>
