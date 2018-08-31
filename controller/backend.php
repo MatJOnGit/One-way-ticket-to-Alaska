@@ -40,4 +40,13 @@ class Backend_Controller implements iBEController
         $this->loadManagers();        
         require('view/backend/dashboard.php');
     }
+    
+    public function editChapterContent()
+    {
+        $this->loadManagers();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapter = $chapterManager->getChapter($_GET['id']);
+        
+        require('view/backend/chapterEditing.php');
+    }
 }

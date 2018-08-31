@@ -64,6 +64,20 @@ try
             $backend_controller = new Backend_Controller;
             $backend_controller->getAdminPanel();
         }
+        elseif ($_GET['action'] == 'editChapter')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                require 'controller/backend.php';
+//                require 'view/frontend/adminBar.php';
+                $backend_controller = new Backend_Controller;
+                $backend_controller->editChapterContent();
+            }
+            else 
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
     }
 }
 catch(Exception $e)
