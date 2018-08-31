@@ -41,16 +41,16 @@
         <div class="admin-content">
             <h3>Edition du roman</h3>
             <div class="chapter-options">
-                <a>Chapitre 1 :<br/> Au coeur de l'Alaska</a>
+                <a href="index.php?action=getChapter&amp;id=1">Chapitre 1 :<br/> Au coeur de l'Alaska</a>
                 <div>
-                    <a><i class="fas fa-edit"></i></a>
+                    <a href="index.php?action=editChapter&amp;id=1"><i class="fas fa-edit"></i></a>
                     <a><i class="fas fa-trash-alt"></i></a>
                 </div>
             </div>
             <div class="chapter-options">
-                <a>Chapitre 2 :<br/> La piste Stampede</a>
+                <a href="index.php?action=getChapter&amp;id=2">Chapitre 2 :<br/> La piste Stampede</a>
                 <div>
-                    <a><i class="fas fa-edit"></i></a>
+                    <a href="index.php?action=editChapter&amp;id=2"><i class="fas fa-edit"></i></a>
                     <a><i class="fas fa-trash-alt"></i></a>
                 </div>
             </div>
