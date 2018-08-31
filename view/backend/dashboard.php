@@ -54,7 +54,7 @@
                     <a><i class="fas fa-trash-alt"></i></a>
                 </div>
             </div>
-            <button class="white-button light-blue-border"><i class="fas fa-plus"></i></button>
+            <button class="white-button purple-border"><i class="fas fa-plus"></i></button>
         </div>
     </div>
 </div>

@@ -388,6 +388,11 @@ h4 {
 
 /* dashboard */
 
+.purple-border {
+    border: 1px #4834d4 solid;
+    color: #4834d4;
+}
+
 .admin-wrapper {
     margin-top: 105px;
     display: flex;
@@ -439,12 +444,11 @@ h4 {
 .grey-box span {
     font-size: 2.1em;
     font-weight: bold;
-    color: #0984e3;
+    color: #4834d4;
 }
 
 .grey-box i {
     font-size: 2.8em;
-    color: #0984e3;
     margin-right: 20px;
 }
 
@@ -462,6 +466,12 @@ h4 {
 
 .chapter-options i {
     font-size: 1.2em;
+    color: #30336b;
+}
+
+.admin-content i,
+.admin-content span {
+    color: #4834d4;
 }
 
 .admin-content:nth-child(2) {
