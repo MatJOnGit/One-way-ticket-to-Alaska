@@ -195,7 +195,7 @@ footer p {
 }
 
 .admin-session-bar {
-    background-color: #686de0;
+    background-color: #4a69bd;
 }
 
 .user-session-bar p,
@@ -386,7 +386,7 @@ h4 {
     margin: 0;
 }
 
-/* Admin pages */
+/* dashboard */
 
 .admin-wrapper {
     margin-top: 105px;
@@ -396,24 +396,89 @@ h4 {
 }
 
 .admin-content-wrapper {
+    width: 87%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .admin-content {
-    width: 90%;
+    width: 100%;
+    padding: 10px 10px 5px;
+    border: 2px black solid;
+}
+
+.admin-content:nth-child(2) {
+    margin: 10px 0;
 }
 
 .admin-content h3 {
-    margin: 0;
+    margin: 0 auto 5px;
     text-align: center;
+    text-decoration: none;
 }
 
+.grey-box {
+    width: 100%;
+    height: 80px;
+    background-color: #bdc3c7;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #bebebe;
+}
 
+.grey-box p {
+    margin: 0 0 0 20px;
+    font-size: 0.9em;
+}
 
+.grey-box span {
+    font-size: 2.1em;
+    font-weight: bold;
+    color: #0984e3;
+}
 
+.grey-box i {
+    font-size: 2.8em;
+    color: #0984e3;
+    margin-right: 20px;
+}
 
+.chapter-options {
+    padding: 6px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 
+.chapter-options a {
+    margin: 0 10px 0 0;
+}
 
+.chapter-options i {
+    font-size: 1.2em;
+}
 
+.admin-content:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-content:nth-child(2) button {
+    width: 35px;
+    height: 35px;
+    margin: 10px 20px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-content:nth-child(2) button i {
+    font-size: 1.5em;
+}

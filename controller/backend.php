@@ -37,7 +37,7 @@ class Backend_Controller implements iBEController
 
     public function getAdminPanel()
     {
-        $this->loadManagers();
+        $this->loadManagers();        
         require('view/backend/dashboard.php');
     }
 }

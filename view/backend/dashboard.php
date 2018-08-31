@@ -11,19 +11,50 @@
     <div class="admin-content-wrapper">
         <div class="admin-content">
             <h3>Vue d'ensemble</h3>
-            <div>
-                <div>Votre site compte actuellement x membres.</div>
-                <div>Votre roman contient actuellement x chapitres.</div>
-                <div>Il y a actuellement x commentaires sur l'ensemble du blog, donc x commentaires signalés qui requièrent votre attention.</div>
+            <div class="grey-box">
+                <div>
+                    <p><span>X</span></p>
+                    <p>membres</p>
+                </div>
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="grey-box">
+                <div>
+                    <p><span>X</span></p>
+                    <p>chapitres</p>
+                </div>
+                <i class="fas fa-book-open"></i>                
+            </div>
+            <div class="grey-box">
+                <div>
+                    <div>
+                        <p><span>X</span> commentaires</p>
+                    </div>
+                    <div>
+                        <p><span>Y</span> commentaires signalés</p>
+                    </div>
+                </div>
+                <i class="fas fa-exclamation-triangle"></i>               
             </div>
         </div>
     
         <div class="admin-content">
             <h3>Edition du roman</h3>
-            <a>Chapitre 1 : Nom du chapitre 1</a><button>Editer</button><button>Supprimer</button>
-            <a>Chapitre 2 : Nom du chapitre 2</a><button>Editer</button><button>Supprimer</button>
-            <a>Chapitre 3 : Nom du chapitre 3</a><button>Editer</button><button>Supprimer</button>
+            <div class="chapter-options">
+                <a>Chapitre 1 :<br/> Au coeur de l'Alaska</a>
+                <div>
+                    <a><i class="fas fa-edit"></i></a>
+                    <a><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+            <div class="chapter-options">
+                <a>Chapitre 2 :<br/> La piste Stampede</a>
+                <div>
+                    <a><i class="fas fa-edit"></i></a>
+                    <a><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+            <button class="white-button light-blue-border"><i class="fas fa-plus"></i></button>
         </div>
-    
     </div>
 </div>
