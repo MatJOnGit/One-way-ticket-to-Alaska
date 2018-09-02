@@ -1,11 +1,8 @@
 <?php
 
-interface iBEController
-{
-    public function loadManagers();
-}
+require_once 'interfaces/ControllerInterface.php';
 
-class Backend_Controller implements iBEController
+class Backend_Controller implements iController
 {
     public function loadManagers()
     {

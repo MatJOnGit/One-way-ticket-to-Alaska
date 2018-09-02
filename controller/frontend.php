@@ -1,9 +1,6 @@
 <?php
 
-interface iController 
-{
-    public function loadManagers();
-}
+require_once 'interfaces/ControllerInterface.php';
 
 class Frontend_Controller implements iController
 {
