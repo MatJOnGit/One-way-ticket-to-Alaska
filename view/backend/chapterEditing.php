@@ -14,8 +14,11 @@
             <div class="chapter-wrapper">
                 <h4>Chapitre <?= $chapter['id'] ?> : <?= $chapter['title'] ?></h4>
                 <div>[Séries de boutons de TinyMCE]</div>
+                <p><?= $chapter['content'] ?></p>
                 <form>
-                    <input type="text" name="chapter-content" value="<?= nl2br(htmlspecialchars($chapter['content'])) ?>" />
+                    <textarea type="text" name="chapter-content" rows="30" cols="50">
+                        <?= $chapter['content'] ?>
+                    </textarea>
                 </form>
             </div>
         </div>        

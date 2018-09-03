@@ -188,6 +188,7 @@ footer p {
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 999;
 }
 
 .user-session-bar {
@@ -220,8 +221,18 @@ footer p {
     margin-left: 10px;
 }
 
+.content-wrapper,
+.admin-wrapper {
+    margin: 110px 0 0;
+    padding: 20px 5%;
+}
+
 .content-wrapper {
-    margin-top: 125px;
+    width: 90%;
+    height: 80vh;
+    background-image: url(../img/snowy-landscape.jpg);
+    background-size: cover;
+    background-position: bottom center;
 }
 
 .white-button span {
@@ -230,7 +241,17 @@ footer p {
 
 .blog-container,
 .comments-container {
-    margin: 0px 20px 20px;
+    height: 100%;
+    margin: 0;
+    background-color: white;
+    border: grey;
+    box-shadow: 5px 5px 3px;
+    opacity: 0.8;
+}
+
+.blog-container h3 {
+    text-align: center;
+    text-decoration: none;
 }
 
 .form-container {
@@ -243,6 +264,7 @@ footer p {
 h3 {
     font-size: 1.5em;
     text-decoration: underline;
+    margin-top: 0;
 }
 
 .chapter-nav-buttons {
@@ -394,7 +416,6 @@ h4 {
 }
 
 .admin-wrapper {
-    margin-top: 105px;
     display: flex;
     flex-direction: column;
     align-items: center;

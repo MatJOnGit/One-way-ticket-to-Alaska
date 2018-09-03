@@ -11,7 +11,7 @@
                 <input type="text" name="user-name" id="usr-email" placeholder="Adresse mail" required=""/>
                 <input type="text" name="user-password" id="usr-pwd" placeholder="Mot de passe" required=""/>
                 <input type="text" name="user-copied-password" id="usr-usr-copied-pwd" placeholder="Mot de passe (confirmation)" required=""/>
-                <button class="blue-button form-button" type="submit">Créer mon compte</button>
+                <button class="light-blue-button white-border" type="submit">Créer mon compte</button>
             </form>
         </div>
     </div>
