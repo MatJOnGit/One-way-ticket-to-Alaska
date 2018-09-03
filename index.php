@@ -1,6 +1,8 @@
 <?php
 
+require_once "autoloader.php";
 require 'controller/frontoffice_controller.php';
+use owtta\controller\iController;
 
 try
 {
@@ -12,11 +14,11 @@ try
         else
     {
         require 'view/frontend/header.php';
-        require 'view/frontend/memberBar.php';
+//        require 'view/frontend/memberBar.php';
         
         $frontoffice_controller = new \owtta\controller\Frontoffice_controller();
         
-        if ($_GET['action'] == 'getChaptersList') 
+        if ($_GET['action'] == 'getChaptersList')
         {
             $frontoffice_controller->getChaptersList();
         }
