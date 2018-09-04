@@ -11,7 +11,9 @@
             <i class="fas fa-chevron-circle-right fa-2x"></i>
         </div>
     </div>
+</div>
     
+<div>
     <div class="comments-container">
         <form action="index.php?action=addComment&amp;id=<?= $chapter['id'] ?>" method="post">
             <textarea class="dynamic-form comment-form" id="comment" name="comment" placeholder="Ajouter un commentaire" row="4" cols="10" required=""></textarea>

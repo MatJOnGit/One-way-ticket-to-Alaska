@@ -22,7 +22,8 @@ button {
 }
 
 .white-border a,
-form button {
+form button,
+.white-item {
     color: white;
 }
 
@@ -151,6 +152,7 @@ aside p {
 
 footer {
     width: 100%;
+    height: 5vh;
     background-color: #2d3436;
     color: white;
     padding: 10px 0;
@@ -193,6 +195,7 @@ footer p {
 
 .user-session-bar {
     background-color: #2b3234;
+    height: 13vh;
 }
 
 .admin-session-bar {
@@ -223,13 +226,13 @@ footer p {
 
 .content-wrapper,
 .admin-wrapper {
-    margin: 110px 0 0;
-    padding: 20px 5%;
+    margin: 13vh 0 0;
+    padding: 2vh 5%;
 }
 
 .content-wrapper {
     width: 90%;
-    height: 80vh;
+    height: 76vh;
     background-image: url(../img/snowy-landscape.jpg);
     background-size: cover;
     background-position: bottom center;
@@ -241,12 +244,12 @@ footer p {
 
 .blog-container,
 .comments-container {
-    height: 100%;
+    height: 96%;
     margin: 0;
+    padding: 1.5vh 15px;
     background-color: white;
-    border: grey;
     box-shadow: 5px 5px 3px;
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
 .blog-container h3 {
@@ -264,7 +267,7 @@ footer p {
 h3 {
     font-size: 1.5em;
     text-decoration: underline;
-    margin-top: 0;
+    margin-top: 10px;
 }
 
 .chapter-nav-buttons {
