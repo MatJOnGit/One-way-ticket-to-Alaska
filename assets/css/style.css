@@ -179,6 +179,10 @@ footer p {
     margin: 3px 0 0 0;
 }
 
+.white-button span {
+    margin-right: 10px;
+}
+
 /* nav bars */
 
 .user-session-bar,
@@ -224,37 +228,61 @@ footer p {
     margin-left: 10px;
 }
 
-.content-wrapper,
+.book-wrapper,
 .admin-wrapper {
     margin: 13vh 0 0;
     padding: 2vh 5%;
 }
 
-.content-wrapper {
+h3 {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+/* Frontoffice */
+
+.book-wrapper {
     width: 90%;
     height: 76vh;
     background-image: url(../img/snowy-landscape.jpg);
     background-size: cover;
     background-position: bottom center;
+    position: relative;
 }
 
-.white-button span {
-    margin-right: 10px;
+.book-wrapper:before,
+.book-container {
+    position: absolute;
+    width: 90%;
+    height: 76vh;
 }
 
-.blog-container,
-.comments-container {
-    height: 96%;
-    margin: 0;
-    padding: 1.5vh 15px;
+.book-wrapper:before {
+    content: "";
     background-color: white;
-    box-shadow: 5px 5px 3px;
     opacity: 0.75;
+    box-shadow: 5px 5px 3px;
+    z-index: 1;
 }
 
-.blog-container h3 {
+.book-container {
+    z-index: 2;
+}
+
+.book-content {
+    margin: 20px;
+}
+
+.book-content h3 {
+    margin-top: 0;
     text-align: center;
     text-decoration: none;
+}
+
+/* getChapter Page specifics */
+
+.book-content>button {
+    margin-bottom: 10px;
 }
 
 .form-container {
@@ -262,12 +290,6 @@ footer p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-h3 {
-    font-size: 1.5em;
-    text-decoration: underline;
-    margin-top: 10px;
 }
 
 .chapter-nav-buttons {
@@ -293,6 +315,16 @@ i {
     margin: 0;
 }
 
+.comments-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.comments-container {
+    margin: 20px 0;
+    width: 90%;
+}
+
 .comments-container p strong {
     color: #0984e3;
 }
@@ -303,6 +335,10 @@ form {
     flex-direction: column;
 }
 
+.comment-form {
+    width: 200px;
+    border-bottom: 1px solid #bdc3c7;
+}
 
 form input,
 form textarea {
@@ -374,6 +410,8 @@ label {
     font-size: 0.9em;
 }
 
+/* getMemberPanel Page specifics */
+
 .user-info-bloc {
     display: flex;
     flex-direction: column;
@@ -381,7 +419,7 @@ label {
 }
 
 .user-info {
-    width: 80%;
+    width: 100%;
     margin: 0 0 30px;
     display: flex;
     flex-direction: row;
@@ -405,6 +443,22 @@ h4 {
 
 .user-info button {
     margin-top: 5px;
+}
+
+#avatar-container {
+    position: relative;
+}
+
+#avatar-container button {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+}
+
+.info-edit-button {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
 }
 
 .user-info p {
