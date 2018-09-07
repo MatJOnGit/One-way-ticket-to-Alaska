@@ -2,7 +2,7 @@
     <div class="admin-session-bar">
         <p>Bienvenue sur le tableau de bord !</p>
         <nav>
-            <button class="dark-blue-button white-border"><a href="index.php?action=getAdminPanel">Tableau de bord</a></button>
+            <button class="light-blue-button white-border"><a href="index.php?action=getAdminPanel">Tableau de bord</a></button>
             <button class="white-button dark-blue-border"><a href="index.php">Voir mon site</a></button>
             <button class="orange-button white-border"><a href="index.php">Déconnexion</a></button>
         </nav>
@@ -23,4 +23,3 @@
             </div>
         </div>        
     </div>
-</div>
