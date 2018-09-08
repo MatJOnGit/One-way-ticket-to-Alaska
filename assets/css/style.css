@@ -189,6 +189,7 @@
         left: 0;
         top: 0;
         z-index: 999;
+        font-size: 0.9em;
     }
 
     .user-session-bar,
@@ -340,17 +341,26 @@
         flex-direction: column;
     }
 
-    .comment-form {
-        width: 200px;
-        border-bottom: 1px solid #bdc3c7;
+    textarea {
+        border: none;
     }
 
-    form input,
-    form textarea {
+    .dynamic-form {
+        width: 200px;
+        border-bottom: 1px solid #bdc3c7;
         border: none;
-        width: 120px;
         margin: 0 auto 10px;
+        padding: 15px 0 5px;
         text-align: center;
+        color: #005ca8;
+        display: block;
+        -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+              transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+        background: -webkit-linear-gradient(top, rgba(9, 132, 277, 0) 96%, #0984e3 4%);
+        background: linear-gradient(to bottom, rgba(9, 132, 277, 0) 96%, #0984e3 4%);
+        background-position: -200px 0;
+        background-size: 200px 100%;
+        background-repeat: no-repeat;
     }
 
     form button {
@@ -364,24 +374,6 @@
         font-family: 'roboto', sans-serif;
         -webkit-transition: all 0.3s ease-in-out;
               transition: all 0.3s ease-in-out;
-    }
-
-    input,
-    textarea {
-        margin: 40px 25px;
-        display: block;
-        width: 60%;
-        border: none;
-        padding: 15px 0 5px;
-        border-bottom: solid 1px #0984e3;
-        -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-              transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-        background: -webkit-linear-gradient(top, rgba(9, 132, 277, 0) 96%, #0984e3 4%);
-        background: linear-gradient(to bottom, rgba(9, 132, 277, 0) 96%, #0984e3 4%);
-        background-position: -200px 0;
-        background-size: 200px 100%;
-        background-repeat: no-repeat;
-        color: #005ca8;
     }
 
     input:focus,
@@ -475,9 +467,9 @@
     .admin-panel-wrapper {
         width: 90%;
         height: 76vh;
-        background-image: url(../img/glacier-bay.jpg);
+        background-image: url(../img/aurora-borealis.jpg);
         background-size: cover;
-        background-position: bottom center;
+        background-position: top center;
         position: relative;
     }
 
@@ -550,7 +542,6 @@
     .grey-box p {
         margin: 0 0 0 30px;
         font-size: 0.9em;
-        color: white;
     }
 
     .grey-box span {
@@ -578,6 +569,11 @@
         align-items: flex-end;
     }
 
+    .chapter-options a {
+        color: black;
+        font-size: 0.9em;
+    }
+
     .chapter-options i {
         font-size: 1.2em;
         margin: 0 0 0 10px;
@@ -591,3 +587,15 @@
     .admin-content:nth-child(2)>button i {
         color: white;
     }
+
+    .chapter-wrapper h4,
+    .chapter-wrapper>div,
+    .chapter-wrapper form{
+        margin-bottom: 10px;
+    }
+
+    .chapter-wrapper textarea {
+        padding: 10px;
+    }
+
+/* Burger menu */
