@@ -1,9 +1,24 @@
 <div class="admin-session-bar">
+    <div>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+        </label>
+
+        <div id="sidebarMenu">
+            <ul class="sidebarMenuInner">
+                <li>
+                    <button class="white-button dark-blue-border"><a href="index.php">Voir mon site</a></button>
+                </li>
+                <li>
+                    <button class="orange-button white-border"><a href="index.php">Déconnexion</a></button>
+                </li>
+            </ul>
+        </div>
+    </div>
     <p>Bienvenue sur le tableau de bord !</p>
-    <nav>
-        <button class="white-button dark-blue-border"><a href="index.php">Voir mon site</a></button>
-        <button class="orange-button white-border"><a href="index.php">Déconnexion</a></button>
-    </nav>
 </div>
 
 <div class="admin-panel-wrapper">
@@ -15,14 +30,18 @@
                     <p><span>X</span></p>
                     <p>membres</p>
                 </div>
-                <i class="fas fa-users"></i>
+                <div class="admin-panel-icons">
+                    <i class="fas fa-users white-item"></i>
+                </div>
             </div>
             <div class="grey-box">
                 <div>
                     <p><span>X</span></p>
                     <p>chapitres</p>
                 </div>
-                <i class="fas fa-book-open"></i>                
+                <div class="admin-panel-icons">
+                    <i class="fas fa-book-open white-item"></i>
+                </div>
             </div>
             <div class="grey-box">
                 <div>
@@ -33,7 +52,9 @@
                         <p><span>Y</span> commentaires signalés</p>
                     </div>
                 </div>
-                <i class="fas fa-exclamation-triangle"></i>               
+                <div class="admin-panel-icons">
+                    <i class="fas fa-exclamation-triangle white-item"></i>
+                </div>
             </div>
         </div>
         
@@ -44,7 +65,8 @@
                         <a href="index.php?action=getChapter&amp;id=1">Chapitre 1 :<br/> Au coeur de l'Alaska</a>
                         <div>
                             <a href="index.php?action=editChapter&amp;id=1"><i class="fas fa-edit"></i></a>
-                            <a><i class="fas fa-trash-alt"></i></a>
+                            <a>
+                                <i class="fas fa-trash-alt"></i></a>
                         </div>
                     </div>
                     <div class="chapter-options">

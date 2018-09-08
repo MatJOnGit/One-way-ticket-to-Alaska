@@ -189,7 +189,7 @@
         left: 0;
         top: 0;
         z-index: 999;
-        font-size: 0.9em;
+        font-size: 1.1em;
     }
 
     .user-session-bar,
@@ -202,14 +202,13 @@
     }
 
     .admin-session-bar{
-        height: 9vh;
+        height: 7vh;
     }
 
     .user-session-bar p,
     .admin-session-bar p {
         margin: 0;
-        padding: 10px 40px 5px;
-        text-align: center;
+        padding: 2.2vh 40px;
     }
 
     .user-session-bar nav,
@@ -237,7 +236,7 @@
     }
 
     .admin-panel-wrapper {
-        margin: 9vh 0 0;
+        margin: 7vh 0 0;
     }
 
     h3 {
@@ -540,7 +539,7 @@
     }
 
     .grey-box p {
-        margin: 0 0 0 30px;
+        margin: 0 0 0 20px;
         font-size: 0.9em;
     }
 
@@ -550,12 +549,22 @@
         color: #4834d4;
     }
 
-    .grey-box i {
-        font-size: 2.8em;
-        margin-right: 30px;
+    .admin-panel-icons {
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+        background-color: #0984e3;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .admin-content-container i,
+    .grey-box i {
+        font-size: 1.7em;
+    }
+
+    .admin-content-container a i,
     .admin-content-container span {
         color: #0984e3;
     }
@@ -599,3 +608,130 @@
     }
 
 /* Burger menu */
+
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+
+.mainInner {
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.mainInner div {
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+}
+
+#sidebarMenu {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    margin-top: 7vh;
+    transform: translateX(-100%);
+    transition: transform 250ms ease-in-out;
+    background: #2b3234;
+}
+
+.sidebarMenuInner {
+    width: 100%;
+    box-shadow: 0 10px 6px -6px #777;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebarMenuInner li {
+    padding: 10px;
+}
+
+.sidebarMenuInner li span {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    right: 15px;
+    height: 22px;
+    width: 22px;
+}
+
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
