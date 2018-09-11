@@ -13,4 +13,11 @@ class UserManager extends Manager {
         
         return $info;
     }
+    
+    public function getUserCount() {
+        $db = $this->dbConnect();
+        $userCount = $db->query('SELECT COUNT(*) FROM users');
+        $userNumber = $userCount->fetch();
+        return $userNumber;
+    }
 }

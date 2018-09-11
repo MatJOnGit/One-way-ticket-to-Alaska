@@ -34,7 +34,16 @@ class Backend_Controller implements iController
 
     public function getAdminPanel()
     {
-        $this->loadManagers();        
+        $this->loadManagers();
+        $userManager = new \owtta\Blog\Model\UserManager();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $commentManager = new \owtta\Blog\Model\CommentManager();
+        
+        $userCount = $userManager->getUserCount();
+        $chapterCount = $chapterManager->getChapterCount();
+        $commentCount = $commentManager->getCommentCount();
+        $reportedCommentCount = $commentManager->getReportedCommentCount();
+
         require('view/backend/dashboard.php');
     }
     

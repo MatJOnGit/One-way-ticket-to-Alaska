@@ -27,8 +27,8 @@
             <h3>Vue d'ensemble</h3>
             <div class="grey-box">
                 <div>
-                    <p><span>X</span></p>
-                    <p>membres</p>
+                    <p><span><?= $userCount[0] ?></span></p>
+                    <p>membre(s)</p>
                 </div>
                 <div class="admin-panel-icons">
                     <i class="fas fa-users white-item"></i>
@@ -36,8 +36,8 @@
             </div>
             <div class="grey-box">
                 <div>
-                    <p><span>X</span></p>
-                    <p>chapitres</p>
+                    <p><span><?= $chapterCount[0] ?></span></p>
+                    <p>chapitre(s)</p>
                 </div>
                 <div class="admin-panel-icons">
                     <i class="fas fa-book-open white-item"></i>
@@ -46,10 +46,10 @@
             <div class="grey-box">
                 <div>
                     <div>
-                        <p><span>X</span> commentaires</p>
+                        <p><span><?= $commentCount[0] ?></span> commentaire(s)</p>
                     </div>
                     <div>
-                        <p><span>Y</span> commentaires signalés</p>
+                        <p><span><?= $reportedCommentCount[0] ?></span> commentaire(s) signalé(s)</p>
                     </div>
                 </div>
                 <div class="admin-panel-icons">

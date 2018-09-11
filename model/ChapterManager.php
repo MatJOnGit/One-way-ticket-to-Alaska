@@ -20,4 +20,11 @@ class ChapterManager extends Manager {
         
         return $chapter;
     }
+    
+    public function getChapterCount() {
+        $db = $this->dbConnect();
+        $chapterCount = $db->query('SELECT COUNT(*) FROM chapters');
+        $chapterNumber = $chapterCount->fetch();
+        return $chapterNumber;
+    }
 }

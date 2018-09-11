@@ -32,7 +32,7 @@
                 <h4>Chapitre <?= $chapter['id'] ?> : <?= $chapter['title'] ?></h4>
                 <div>[Séries de boutons de TinyMCE]</div>
                 <form>
-                    <textarea type="text" name="chapter-content" rows="28">
+                    <textarea type="text" name="chapter-content">
                         <?= $chapter['content'] ?>
                     </textarea>
                 </form>

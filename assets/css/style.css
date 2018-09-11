@@ -284,6 +284,10 @@
         text-decoration: none;
     }
 
+    .book-content li button {
+        margin-bottom: 8px;
+    }
+
 /* getChapter Page specifics */
 
     .book-content>button {
@@ -609,129 +613,129 @@
 
 /* Burger menu */
 
-.main {
-    margin: 0 auto;
-    display: block;
-    height: 100%;
-    margin-top: 60px;
-}
+    .main {
+        margin: 0 auto;
+        display: block;
+        height: 100%;
+        margin-top: 60px;
+    }
 
-.mainInner {
-    display: table;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-}
+    .mainInner {
+        display: table;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
 
-.mainInner div {
-    display:table-cell;
-    vertical-align: middle;
-    font-size: 3em;
-    font-weight: bold;
-    letter-spacing: 1.25px;
-}
+    .mainInner div {
+        display:table-cell;
+        vertical-align: middle;
+        font-size: 3em;
+        font-weight: bold;
+        letter-spacing: 1.25px;
+    }
 
-#sidebarMenu {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    margin-top: 7vh;
-    transform: translateX(-100%);
-    transition: transform 250ms ease-in-out;
-    background: #2b3234;
-}
+    #sidebarMenu {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        margin-top: 7vh;
+        transform: translateX(-100%);
+        transition: transform 250ms ease-in-out;
+        background: #2b3234;
+    }
 
-.sidebarMenuInner {
-    width: 100%;
-    box-shadow: 0 10px 6px -6px #777;
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .sidebarMenuInner {
+        width: 100%;
+        box-shadow: 0 10px 6px -6px #777;
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.sidebarMenuInner li {
-    padding: 10px;
-}
+    .sidebarMenuInner li {
+        padding: 10px;
+    }
 
-.sidebarMenuInner li span {
-    display: block;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.50);
-}
+    .sidebarMenuInner li span {
+        display: block;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.50);
+    }
 
-input[type="checkbox"]:checked ~ #sidebarMenu {
-    transform: translateX(0);
-}
+    input[type="checkbox"]:checked ~ #sidebarMenu {
+        transform: translateX(0);
+    }
 
-input[type=checkbox] {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    display: none;
-}
+    input[type=checkbox] {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        display: none;
+    }
 
-.sidebarIconToggle {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    cursor: pointer;
-    position: absolute;
-    z-index: 99;
-    height: 100%;
-    width: 100%;
-    top: 22px;
-    right: 15px;
-    height: 22px;
-    width: 22px;
-}
+    .sidebarIconToggle {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        cursor: pointer;
+        position: absolute;
+        z-index: 99;
+        height: 100%;
+        width: 100%;
+        top: 22px;
+        right: 15px;
+        height: 22px;
+        width: 22px;
+    }
 
-.spinner {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background-color: #fff;
-}
+    .spinner {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background-color: #fff;
+    }
 
-.horizontal {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
-}
+    .horizontal {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        margin-top: 3px;
+    }
 
-.diagonal.part-1 {
-    position: relative;
-    transition: all 0.3s;
-    box-sizing: border-box;
-    float: left;
-}
+    .diagonal.part-1 {
+        position: relative;
+        transition: all 0.3s;
+        box-sizing: border-box;
+        float: left;
+    }
 
-.diagonal.part-2 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
-}
+    .diagonal.part-2 {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        margin-top: 3px;
+    }
 
-input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    opacity: 0;
-}
+    input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        opacity: 0;
+    }
 
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    transform: rotate(135deg);
-    margin-top: 8px;
-}
+    input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        transform: rotate(135deg);
+        margin-top: 8px;
+    }
 
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    transform: rotate(-135deg);
-    margin-top: -9px;
-}
+    input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        transform: rotate(-135deg);
+        margin-top: -9px;
+    }

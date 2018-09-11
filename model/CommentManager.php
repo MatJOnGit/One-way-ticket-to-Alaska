@@ -12,4 +12,18 @@ class CommentManager extends Manager {
 
         return $comments;
     }
+    
+    public function getCommentCount() {
+        $db = $this->dbConnect();
+        $commentCount = $db->query('SELECT COUNT(*) FROM commentaires');
+        $commentNumber = $commentCount->fetch();
+        return $commentNumber;
+    }
+    
+    public function getReportedCommentCount() {
+        $db = $this->dbConnect();
+        $commentCount = $db->query('SELECT COUNT(*) FROM commentaires WHERE status = "reported"');
+        $commentNumber = $commentCount->fetch();
+        return $commentNumber;
+    }
 }
