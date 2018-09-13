@@ -69,13 +69,33 @@ try
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
                 require 'controller/backend.php';
-//                require 'view/frontend/adminBar.php';
                 $backend_controller = new Backend_Controller;
                 $backend_controller->editChapterContent();
             }
             else 
             {
                 throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'updateChapterContent')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                if (!empty($_POST['chapterContent']))
+                {
+                    require 'controller/backend.php';
+                    $backend_controller = new Backend_Controller;
+                    $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent']);
+                    $backend_controller->editChapterContent();
+                }
+                else
+                {
+                    throw new Exception('Le formulaire n\'a pas été rempli');
+                }
+            }
+            else
+            {
+                throw new Exception('Numéro de commentaire incorrect ou non renseigné');
             }
         }
     }

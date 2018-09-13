@@ -1,16 +1,10 @@
 <?php
 
 require_once 'interfaces/ControllerInterface.php';
+require_once 'Controller.php';
 
-class Backend_Controller implements iController
+class Backend_Controller extends Controller
 {
-    public function loadManagers()
-    {
-        require_once('model/ChapterManager.php');
-        require_once('model/CommentManager.php');
-        require_once('model/UserManager.php');
-    }
-
     public function getChapterslist()
     {
         $this->loadManagers();
@@ -54,5 +48,17 @@ class Backend_Controller implements iController
         $chapter = $chapterManager->getChapter($_GET['id']);
         
         require('view/backend/chapterEditing.php');
+    }
+    
+    public function updateChapter($chapterId, $chapterContent)
+    {
+        $this->loadManagers();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $updatedChapter = $chapterManager->updateChapter($chapterId, $chapterContent);
+        
+        if ($updatedChapter === true)
+        {
+            header('Location: index.php?action=editChapter&id=' . $chapterId);
+        }
     }
 }

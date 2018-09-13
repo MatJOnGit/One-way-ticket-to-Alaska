@@ -6,7 +6,7 @@
             </button>
 
             <h3>Chapitre <?= $chapter['id'] ?><br/><?= $chapter['title'] ?></h3>
-            <p><?= nl2br(htmlspecialchars($chapter['content'])) ?></p>
+            <div class="chapter-content"><?= $chapter['content'] ?></div>
 
             <div class="chapter-nav-buttons">
                 <i class="fas fa-chevron-circle-left fa-2x"></i>

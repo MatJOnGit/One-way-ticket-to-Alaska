@@ -284,6 +284,12 @@
         text-decoration: none;
     }
 
+.chapter-content {
+    max-height: 410px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
     .book-content li button {
         margin-bottom: 8px;
     }
@@ -369,6 +375,7 @@
     form button {
         align-self: center;
         margin-top: 10px;
+        cursor: pointer;
     }
 
     input::-webkit-input-placeholder,
@@ -584,7 +591,7 @@
 
     .chapter-options a {
         color: black;
-        font-size: 0.9em;
+        font-size: 0.95em;
     }
 
     .chapter-options i {
@@ -602,13 +609,19 @@
     }
 
     .chapter-wrapper h4,
-    .chapter-wrapper>div,
-    .chapter-wrapper form{
+    .chapter-wrapper>div {
         margin-bottom: 10px;
     }
 
     .chapter-wrapper textarea {
+        height: 100%;
         padding: 10px;
+    }
+
+    /* EditChapter Page specifics */
+
+    .chapter-editing-form {
+        height: 495px;
     }
 
 /* Burger menu */

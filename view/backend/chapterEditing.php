@@ -30,11 +30,11 @@
             <h3>Edition de chapitre</h3>
             <div class="chapter-wrapper">
                 <h4>Chapitre <?= $chapter['id'] ?> : <?= $chapter['title'] ?></h4>
-                <div>[Séries de boutons de TinyMCE]</div>
-                <form>
-                    <textarea type="text" name="chapter-content">
+                <form class="chapter-editing-form" action="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>" method="post">
+                    <textarea id="chapterContent" type="text" name="chapterContent">
                         <?= $chapter['content'] ?>
                     </textarea>
+                    <button class="light-blue-button white-border" type="submit">Valider</button>
                 </form>
             </div>
         </div>
