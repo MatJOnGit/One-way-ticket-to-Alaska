@@ -8,7 +8,7 @@ class Backend_Controller extends Controller
     public function getChapterslist()
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\model\ChapterManager();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $chapters = $chapterManager->getChapters();
 
         require('view/frontend/chaptersList.php');
@@ -17,8 +17,8 @@ class Backend_Controller extends Controller
     public function getChapterContent()
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\model\ChapterManager();
-        $commentManager = new \owtta\model\CommentManager();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $commentManager = new \owtta\Blog\Model\CommentManager();
 
         $chapter = $chapterManager->getChapter($_GET['id']);
         $comments = $commentManager->getComments($_GET['id']);
@@ -36,6 +36,7 @@ class Backend_Controller extends Controller
         $userCount = $userManager->getUserCount();
         $chapterCount = $chapterManager->getChapterCount();
         $commentCount = $commentManager->getCommentCount();
+        $chapters = $chapterManager->getChapters();
         $reportedCommentCount = $commentManager->getReportedCommentCount();
 
         require('view/backend/dashboard.php');

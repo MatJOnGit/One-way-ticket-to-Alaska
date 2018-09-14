@@ -61,28 +61,25 @@
         <div class="admin-content">
             <h3>Edition du roman</h3>
                 <div class="grey-box">
-                    <div class="chapter-options">
-                        <a href="index.php?action=getChapter&amp;id=1">Chapitre 1 :<br/> Au coeur de l'Alaska</a>
-                        <div>
-                            <a href="index.php?action=editChapter&amp;id=1">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a>
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
+                    <?php
+                    while ($data = $chapters->fetch())
+                    {
+                    ?>
+                        <div class="chapter-options">
+                            <a href="index.php?action=getChapter&amp;id=<?= $data['id'] ?>">Chapitre <?= $data['id'] ?> :<br/> <?= htmlspecialchars($data['title']) ?></a>
+                            <div>
+                                <a href="index.php?action=editChapter&amp;id=<?= $data['id'] ?>">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a>
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="chapter-options">
-                        <a href="index.php?action=getChapter&amp;id=2">Chapitre 2 :<br/> La piste Stampede</a>
-                        <div>
-                            <a href="index.php?action=editChapter&amp;id=2">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a>
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    $chapters->closeCursor();
+                    ?>
                 </div>
             <button class="light-blue-button white-border">
                 <a href="index.php?action=addChapter">
