@@ -26,10 +26,10 @@ class ChapterManager extends Manager {
         return $chapterNumber;
     }
     
-    public function updateChapter($chapterId, $chapterContent) {
+    public function updateChapter($chapterId, $chapterContent, $chapterStatus) {
         $db = $this->dbConnect();
-        $chapterUpdate = $db->prepare('UPDATE `chapters` SET `content`=? WHERE id=?');
-        $chapterUpdate = $chapterUpdate->execute(array($chapterContent, $chapterId));
+        $chapterUpdate = $db->prepare('UPDATE `chapters` SET `content`=?, `status`=? WHERE id=?');
+        $chapterUpdate = $chapterUpdate->execute(array($chapterContent, $chapterStatus, $chapterId));
         return $chapterUpdate;
     }
 }

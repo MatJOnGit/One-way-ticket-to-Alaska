@@ -50,11 +50,11 @@ class Backend_Controller extends Controller
         require('view/backend/chapterEditing.php');
     }
     
-    public function updateChapter($chapterId, $chapterContent)
+    public function updateChapter($chapterId, $chapterContent, $chapterStatus)
     {
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
-        $updatedChapter = $chapterManager->updateChapter($chapterId, $chapterContent);
+        $updatedChapter = $chapterManager->updateChapter($chapterId, $chapterContent, $chapterStatus);
         
         if ($updatedChapter === true)
         {

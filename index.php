@@ -79,14 +79,21 @@ try
         }
         elseif ($_GET['action'] == 'updateChapterContent')
         {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
+            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['status']))
             {
                 if (!empty($_POST['chapterContent']))
                 {
                     require 'controller/backend.php';
                     $backend_controller = new Backend_Controller;
-                    $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent']);
-                    $backend_controller->editChapterContent();
+                    
+                    if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
+                    {
+                        $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
+                    }
+                    else
+                    {
+                        throw new Exception('L\'action demandée sur le chapitre n\'est pas possible');
+                    }
                 }
                 else
                 {

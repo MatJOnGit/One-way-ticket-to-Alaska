@@ -30,11 +30,18 @@
             <h3>Edition de chapitre</h3>
             <div class="chapter-wrapper">
                 <h4>Chapitre <?= $chapter['id'] ?> : <?= $chapter['title'] ?></h4>
-                <form class="chapter-editing-form" action="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>" method="post">
+                <form class="chapter-editing-form" action="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>&amp;status=saved" method="post">
                     <textarea id="chapterContent" type="text" name="chapterContent">
                         <?= $chapter['content'] ?>
                     </textarea>
-                    <button class="light-blue-button white-border" type="submit">Valider</button>
+                    <div class="submit-buttons-block">
+                        <button class="light-blue-button white-border" type="submit">
+                            <i class="fas fa-save white-item"></i>Enregistrer
+                        </button>
+                        <button class="light-blue-button white-border " type="submit" formaction="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>&amp;status=published">
+                            <i class="fas fa-globe-americas white-item"></i>Publier
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

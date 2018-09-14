@@ -265,7 +265,7 @@
     .book-wrapper:before {
         content: "";
         background-color: white;
-        opacity: 0.75;
+        opacity: 0.85;
         box-shadow: 5px 5px 3px;
         z-index: 1;
     }
@@ -374,7 +374,6 @@
 
     form button {
         align-self: center;
-        margin-top: 10px;
         cursor: pointer;
     }
 
@@ -618,10 +617,21 @@
         padding: 10px;
     }
 
-    /* EditChapter Page specifics */
+/* EditChapter Page specifics */
 
     .chapter-editing-form {
         height: 495px;
+    }
+
+    .submit-buttons-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
+    .submit-buttons-block button i {
+        margin-right: 5px;
     }
 
 /* Burger menu */
