@@ -60,32 +60,49 @@
         
         <div class="admin-content">
             <h3>Edition du roman</h3>
-                <div class="grey-box">
-                    <?php
-                    while ($data = $chapters->fetch())
-                    {
-                    ?>
+                <?php
+                while ($data = $chapters->fetch())
+                {
+                ?>
+                    <div class="grey-box">
                         <div class="chapter-options">
                             <a href="index.php?action=getChapter&amp;id=<?= $data['id'] ?>">Chapitre <?= $data['id'] ?> :<br/> <?= htmlspecialchars($data['title']) ?></a>
                             <div>
                                 <a href="index.php?action=editChapter&amp;id=<?= $data['id'] ?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a>
+                                <a href="index.php?action=deleteChapter&amp;id=<?= $data['id'] ?>">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </div>
                         </div>
-                    <?php
-                    }
-                    $chapters->closeCursor();
-                    ?>
-                </div>
+                    </div>
+                <?php
+                }
+                $chapters->closeCursor();
+                ?>
             <button class="light-blue-button white-border">
                 <a href="index.php?action=addChapter">
                     <i class="fas fa-plus"></i>
                 </a>
             </button>
+        </div>
+        
+        <div class="admin-content">
+            <h3>Gestion d'utilisateurs</h3>
+            <div class="grey-box">
+                <div class="chapter-options">
+                    <form action="http://localhost/One-way-ticket-to-alaska/index.php?action=getMemberPanel&id=1" method="post">
+                        <label for="username">Recherche un membre :</label>
+                        <div class="research-form">
+                            <input type="text" name="username" id="username" required />
+                            <button class="light-blue-button white-border" type="submit">
+                                <i class="fas fa-search white-item"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -515,6 +515,7 @@
 
     .admin-content-container {
         z-index: 2;
+        overflow-y: scroll;
     }
 
     .admin-content-container:nth-child(2) {
@@ -617,9 +618,24 @@
         padding: 10px;
     }
 
+    .research-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .research-form input {
+        width: 80%;
+    }
+
+    .research-form button i {
+        margin: 0;
+    }
+
 /* EditChapter Page specifics */
 
-    .chapter-editing-form {
+    .editing-form {
         height: 535px;
     }
 
@@ -636,12 +652,12 @@
 
 /* CreateNewChapter Page specifics */
 
-    .chapter-editing-form label,
+    .editing-form label,
     #chapterTitle {
         margin-bottom: 10px;
     }
 
-    .chapter-editing-form label {
+    .editing-form label {
         font-size: 1em;
         font-weight: bold;
     }

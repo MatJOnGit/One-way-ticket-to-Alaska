@@ -53,4 +53,12 @@ class ChapterManager extends Manager
         $chapterUpload = $chapterUpload->execute(array($chapterTitle, $chapterContent, $chapterStatus));
         return $chapterUpload;
     }
+    
+    public function deleteChapter($chapterId)
+    {
+        $db = $this->dbConnect();
+        $chapterDeletion = $db->prepare('DELETE FROM `chapters` WHERE id=?');
+        $chapterDeletion = $chapterDeletion->execute(array($chapterId));
+        return $chapterDeletion;
+    }
 }

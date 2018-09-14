@@ -91,4 +91,16 @@ class Backend_Controller extends Controller
             header('Location: index.php?action=getAdminPanel');
         }
     }
+    
+    public function deleteChapter($chapterId)
+    {
+        $this->loadManagers();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $deletedChapter = $chapterManager->deleteChapter($chapterId);
+        
+        if ($deletedChapter === true)
+        {
+            header('Location: index.php?action=getAdminPanel');
+        }
+    }
 }

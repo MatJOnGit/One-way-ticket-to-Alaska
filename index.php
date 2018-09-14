@@ -134,6 +134,19 @@ try
                 }
             }
         }
+        elseif ($_GET['action'] === 'deleteChapter')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                require 'controller/backend.php';
+                $backend_controller = new Backend_Controller;
+                $backend_controller->deleteChapter($_GET['id']);
+            }
+            else
+            {
+                throw new Exception('Identifiant de chapitre incorrect');
+            }
+        }
     }
 }
 catch(Exception $e)

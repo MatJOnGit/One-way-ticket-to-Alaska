@@ -30,7 +30,7 @@
             <h3>Edition de chapitre</h3>
             <div class="chapter-wrapper">
                 <h4>Chapitre <?= $chapter['id'] ?> : <?= $chapter['title'] ?></h4>
-                <form class="chapter-editing-form" action="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>&amp;status=saved" method="post">
+                <form class="editing-form" action="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>&amp;status=saved" method="post">
                     <textarea id="chapterContent" type="text" name="chapterContent">
                         <?= $chapter['content'] ?>
                     </textarea>
