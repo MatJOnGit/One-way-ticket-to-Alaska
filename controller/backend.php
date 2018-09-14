@@ -61,4 +61,33 @@ class Backend_Controller extends Controller
             header('Location: index.php?action=editChapter&id=' . $chapterId);
         }
     }
+    
+    public function addChapter()
+    {
+        $this->loadManagers();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $newChapterId = $chapterManager->getNewChapterId();
+        
+        if ($newChapterId[0] >= 1)
+        {
+            header('Location: index.php?action=createNewChapter&id=' . $newChapterId[0]);
+        }
+    }
+    
+    public function createNewChapter()
+    {
+        require('view/backend/chapterAdding.php');
+    }
+    
+    public function uploadNewChapter($chapterContent, $chapterStatus, $chapterTitle)
+    {
+        $this->loadManagers();
+        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $uploadedChapter = $chapterManager->uploadNewChapter($chapterContent, $chapterStatus, $chapterTitle);
+        
+        if ($uploadedChapter === true)
+        {
+            header('Location: index.php?action=getAdminPanel');
+        }
+    }
 }

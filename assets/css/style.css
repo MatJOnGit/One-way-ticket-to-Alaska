@@ -620,18 +620,30 @@
 /* EditChapter Page specifics */
 
     .chapter-editing-form {
-        height: 495px;
+        height: 535px;
     }
 
     .submit-buttons-block {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        margin-top: 10px;
+        margin-top: 15px;
     }
 
     .submit-buttons-block button i {
         margin-right: 5px;
+    }
+
+/* CreateNewChapter Page specifics */
+
+    .chapter-editing-form label,
+    #chapterTitle {
+        margin-bottom: 10px;
+    }
+
+    .chapter-editing-form label {
+        font-size: 1em;
+        font-weight: bold;
     }
 
 /* Burger menu */

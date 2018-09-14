@@ -64,21 +64,28 @@
                     <div class="chapter-options">
                         <a href="index.php?action=getChapter&amp;id=1">Chapitre 1 :<br/> Au coeur de l'Alaska</a>
                         <div>
-                            <a href="index.php?action=editChapter&amp;id=1"><i class="fas fa-edit"></i></a>
+                            <a href="index.php?action=editChapter&amp;id=1">
+                                <i class="fas fa-edit"></i>
+                            </a>
                             <a>
-                                <i class="fas fa-trash-alt"></i></a>
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="chapter-options">
                         <a href="index.php?action=getChapter&amp;id=2">Chapitre 2 :<br/> La piste Stampede</a>
                         <div>
-                            <a href="index.php?action=editChapter&amp;id=2"><i class="fas fa-edit"></i></a>
-                            <a><i class="fas fa-trash-alt"></i></a>
+                            <a href="index.php?action=editChapter&amp;id=2">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a>
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             <button class="light-blue-button white-border">
-                <a href="">
+                <a href="index.php?action=addChapter">
                     <i class="fas fa-plus"></i>
                 </a>
             </button>

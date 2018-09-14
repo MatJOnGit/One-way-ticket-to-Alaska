@@ -81,28 +81,57 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['status']))
             {
-                if (!empty($_POST['chapterContent']))
+                require 'controller/backend.php';
+                $backend_controller = new Backend_Controller;
+
+                if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
                 {
-                    require 'controller/backend.php';
-                    $backend_controller = new Backend_Controller;
-                    
-                    if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
-                    {
-                        $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
-                    }
-                    else
-                    {
-                        throw new Exception('L\'action demandée sur le chapitre n\'est pas possible');
-                    }
+                    $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
                 }
                 else
                 {
-                    throw new Exception('Le formulaire n\'a pas été rempli');
+                    throw new Exception('L\'action demandée sur le chapitre ' . $_GET['id'] . 'n\'est pas possible');
                 }
             }
             else
             {
                 throw new Exception('Numéro de commentaire incorrect ou non renseigné');
+            }
+        }
+        elseif ($_GET['action'] === 'addChapter')
+        {
+            require 'controller/backend.php';
+            $backend_controller = new Backend_Controller;
+            $backend_controller->addChapter();
+        }
+        elseif ($_GET['action'] === 'createNewChapter')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                require 'controller/backend.php';
+                $backend_controller = new Backend_Controller;
+                $backend_controller->createNewChapter($_GET['id']);
+            }
+            else
+            {
+                throw new Exception('Identifiant de chapitre incorrect');
+            }
+        }
+        elseif ($_GET['action'] === 'uploadNewChapterContent')
+        {
+            if (isset($_GET['status']))
+            {
+                require 'controller/backend.php';
+                $backend_controller = new Backend_Controller;
+                
+                if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
+                {
+                    $backend_controller->uploadNewChapter($_POST['chapterContent'], $_GET['status'], $_POST['chapterTitle']);
+                }
+                else
+                {
+                    throw new Exception('L\'action demandée sur le chapitre ' . $_GET['id'] . 'n\'est pas possible');
+                }
             }
         }
     }
