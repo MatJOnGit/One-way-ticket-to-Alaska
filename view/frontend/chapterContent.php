@@ -7,11 +7,6 @@
 
             <h3>Chapitre <?= $chapter['id'] ?><br/><?= $chapter['title'] ?></h3>
             <div class="chapter-content"><?= $chapter['content'] ?></div>
-
-            <div class="chapter-nav-buttons">
-                <i class="fas fa-chevron-circle-left fa-2x"></i>
-                <i class="fas fa-chevron-circle-right fa-2x"></i>
-            </div>
         </div>
     </div>
 </div>
@@ -23,11 +18,20 @@
             <button class="light-blue-button white-border" type="submit">Valider</button>
         </form>
         <?php
-        while ($comment = $comments->fetch())
+        if ($comments->fetch())
+        {
+            while ($comment = $comments->fetch())
+            {
+            ?>
+                <p class="comment-info"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> (<a href="index.php?action=editComment&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $comment['post_id'] ?>">éditer</a>)</p>
+                <p class="user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <?php
+            }
+        }
+        else
         {
         ?>
-            <p class="comment-info"><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> (<a href="index.php?action=editComment&amp;commentId=<?= $comment['id'] ?>&amp;postId=<?= $comment['post_id'] ?>">éditer</a>)</p>
-            <p class="user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <p>Soyez le premier à commenter ce chapitre !</p>
         <?php
         }
         ?>

@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="admin-panel-icons">
-                    <i class="fas fa-exclamation-triangle white-item"></i>
+                    <i class="fas fa-comments white-item"></i>
                 </div>
             </div>
         </div>
@@ -66,7 +66,10 @@
                 ?>
                     <div class="grey-box">
                         <div class="chapter-options">
-                            <a href="index.php?action=getChapter&amp;id=<?= $data['id'] ?>">Chapitre <?= $data['id'] ?> :<br/> <?= htmlspecialchars($data['title']) ?></a>
+                            <div>
+                                <i class="fas fa-broadcast-tower <?php if ($data['status'] === 'published') { ?> green<?php } else { ?> red<?php } ?>-item"></i>
+                                <a href="index.php?action=getChapter&amp;id=<?= $data['id'] ?>">Chapitre <?= $data['id'] ?> :<br/> <?= htmlspecialchars($data['title']) ?></a>
+                            </div>
                             <div>
                                 <a href="index.php?action=editChapter&amp;id=<?= $data['id'] ?>">
                                     <i class="fas fa-edit"></i>
@@ -91,7 +94,7 @@
         <div class="admin-content">
             <h3>Gestion d'utilisateurs</h3>
             <div class="grey-box">
-                <div class="chapter-options">
+                <div class="users-options">
                     <form action="http://localhost/One-way-ticket-to-alaska/index.php?action=getMemberPanel&id=1" method="post">
                         <label for="username">Recherche un membre :</label>
                         <div class="research-form">

@@ -11,7 +11,6 @@ try
         else
     {
         require 'controller/frontend.php';
-        
         $frontend_controller = new Frontend_Controller;
         
         if ($_GET['action'] == 'getChaptersList') 

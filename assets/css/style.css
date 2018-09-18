@@ -248,7 +248,7 @@
 
     .book-wrapper {
         width: 90%;
-        height: 76vh;
+        height: 88vh;
         background-image: url(../img/snowy-landscape.jpg);
         background-size: cover;
         background-position: bottom center;
@@ -259,7 +259,7 @@
     .book-container {
         position: absolute;
         width: 90%;
-        height: 76vh;
+        height: 88vh;
     }
 
     .book-wrapper:before {
@@ -272,6 +272,7 @@
 
     .book-container {
         z-index: 2;
+        overflow-y: scroll;
     }
 
     .book-content {
@@ -284,11 +285,11 @@
         text-decoration: none;
     }
 
-.chapter-content {
-    max-height: 410px;
-    overflow-y: scroll;
-    margin-bottom: 20px;
-}
+    .chapter-content {
+        max-height: 65vh;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+    }
 
     .book-content li button {
         margin-bottom: 8px;
@@ -307,17 +308,8 @@
         align-items: center;
     }
 
-    .chapter-nav-buttons {
-        display: flex;
-        justify-content: center;
-    }
-
     i {
         color: #0984e3;
-    }
-
-    .chapter-nav-buttons i:nth-child(2) {
-        margin-left: 20px;
     }
 
     .comment-info {
@@ -475,7 +467,7 @@
 
     .admin-panel-wrapper {
         width: 90%;
-        height: 76vh;
+        height: 88vh;
         background-image: url(../img/aurora-borealis.jpg);
         background-size: cover;
         background-position: top center;
@@ -486,7 +478,7 @@
     .admin-content-container {
         position: absolute;
         width: 90%;
-        height: 76vh;
+        height: 88vh;
     }
 
     .admin-panel-wrapper:before {
@@ -580,7 +572,16 @@
         color: #0984e3;
     }
 
-    .chapter-options {
+    .red-item {
+        color: red;
+    }
+
+    .green-item {
+        color: forestgreen;
+    }
+
+    .chapter-options,
+    .users-options {
         width: 90%;
         padding: 6px 10px;
         display: flex;
@@ -594,7 +595,19 @@
         font-size: 0.95em;
     }
 
+    .chapter-options>div {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
     .chapter-options i {
+        font-size: 1.2em;
+        margin: 0 10px 0 0;
+    }
+
+    .chapter-options a i,
+    .users-options i {
         font-size: 1.2em;
         margin: 0 0 0 10px;
     }
@@ -636,7 +649,7 @@
 /* EditChapter Page specifics */
 
     .editing-form {
-        height: 535px;
+        height: 600px;
     }
 
     .submit-buttons-block {

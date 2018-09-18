@@ -10,7 +10,7 @@ class Backend_Controller extends Controller
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $chapters = $chapterManager->getChapters();
-
+            
         require('view/frontend/chaptersList.php');
     }
 
@@ -36,8 +36,8 @@ class Backend_Controller extends Controller
         $userCount = $userManager->getUserCount();
         $chapterCount = $chapterManager->getChapterCount();
         $commentCount = $commentManager->getCommentCount();
-        $chapters = $chapterManager->getChapters();
         $reportedCommentCount = $commentManager->getReportedCommentCount();
+        $chapters = $chapterManager->getChapters();
 
         require('view/backend/dashboard.php');
     }
