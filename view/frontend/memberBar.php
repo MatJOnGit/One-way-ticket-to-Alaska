@@ -18,5 +18,5 @@
             </ul>
         </div>
     </div>
-    <p>Bonne lecture<?php if (isset($_SESSION['name'])) { echo ', ' . $_SESSION['name']; } ?></p>
+    <p>Bienvenue<?php if (isset($_SESSION['pseudo'])) { echo ' ' . $_SESSION['pseudo']; }  ?></p>
 </div>

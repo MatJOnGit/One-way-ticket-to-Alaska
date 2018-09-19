@@ -31,11 +31,60 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         require('view/frontend/register.php');
     }
+    
+    public function createAccount()
+    {
+        $this->loadManagers();
+        $userManager = new \owtta\Blog\Model\UserManager();
+        $isPseudoExisting = $userManager->isPseudoExisting($_POST['user-name']);
+        if (is_null($isPseudoExisting))
+        {
+            // "Non-existing pseudo in BDD" case
+            $createdAccount = $userManager->createAccount($_POST['user-name'], $_POST['user-email'], $_POST['user-password']);
+            if ($createdAccount === true)
+            {
+                $_SESSION['pseudo'] = $_POST['user-name'];
+                $_SESSION['role'] = 'member';
+                header('Location: index.php?action=getChaptersList');
+            }
+            elseif ($createdAccount === false)
+            {
+                header('Location: index.php?action=register');
+            }
+        }
+        elseif ($isPseudoExisting > 0)
+        {
+            // "Existing pseudo in BDD" case
+            header('Location: index.php?action=register');
+        }
+    }
 
     public function signIn()
     {
         $this->loadManagers();
         require('view/frontend/signIn.php');
+    }
+    
+    public function logAccount()
+    {
+        $this->loadManagers();
+        $userManager = new \owtta\Blog\Model\UserManager();
+        $statusMatching = $userManager->isIdCorrect($_POST['user-name'], $_POST['user-password']);
+        if (is_string($statusMatching))
+        {
+            // Corresponding case between inputs in form and db
+            $_SESSION['pseudo'] = $_POST['user-name'];
+            $_SESSION['role'] = $statusMatching;
+            header('Location: index.php?action=getChaptersList');
+        }
+        elseif (is_null($statusMatching))
+        {
+            header('Location: index.php?action=signIn');
+        }
+        else
+        {
+            header('Location: index.php');
+        }
     }
 
     public function getMemberPanel()

@@ -8,20 +8,28 @@ try
     {
         require 'view/frontend/welcome.php';
     }
-        else
+    else
     {
         require 'controller/frontend.php';
         $frontend_controller = new Frontend_Controller;
         
-        if ($_GET['action'] == 'getChaptersList') 
+        if ($_GET['action'] == 'getChaptersList')
         {
             if (isset($_SESSION['role']))
             {
-                if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
-                else { require 'view/frontend/memberBar.php'; }
+                if ($_SESSION['role'] == 'admin')
+                {
+                    require 'view/frontend/adminBar.php';
+                }
+                elseif ($_SESSION['role'] == 'member')
+                {
+                    require 'view/frontend/memberBar.php';
+                }
             }
-            else { require 'view/frontend/logBar.php'; }
-            
+            else
+            {
+                require 'view/frontend/logBar.php';
+            }
             $frontend_controller->getChaptersList();
         }
         elseif ($_GET['action'] == 'getChapter')
@@ -30,10 +38,19 @@ try
             {
                 if (isset($_SESSION['role']))
                 {
-                    if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
-                    else { require 'view/frontend/memberBar.php'; }
+                    if ($_SESSION['role'] == 'admin')
+                    {
+                        require 'view/frontend/adminBar.php';
+                    }
+                    elseif ($_SESSION['role'] == 'member')
+                    {
+                        require 'view/frontend/memberBar.php';
+                    }
                 }
-                else { require 'view/frontend/logBar.php'; }
+                else
+                {
+                    require 'view/frontend/logBar.php';
+                }
                 $frontend_controller->getChapterContent();
             }
             else 
@@ -41,36 +58,79 @@ try
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        elseif ($_GET['action'] == 'register') 
+        // Account creation access section
+        elseif ($_GET['action'] == 'register')
         {
             if (isset($_SESSION['role']))
             {
-                if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
-                else { require 'view/frontend/memberBar.php'; }
+                if ($_SESSION['role'] == 'admin')
+                {
+                    require 'view/frontend/adminBar.php';
+                }
+                elseif ($_SESSION['role'] == 'member')
+                {
+                    require 'view/frontend/memberBar.php';
+                }
             }
-            else { require 'view/frontend/logBar.php'; }
+            else
+            {
+                require 'view/frontend/logBar.php';
+            }
             $frontend_controller->register();
         }
+        elseif ($_GET['action'] === 'createAccount') {
+            $frontend_controller->createAccount();
+        }
+        // Account loggin access section
         elseif ($_GET['action'] == 'signIn')
         {
             if (isset($_SESSION['role']))
             {
-                if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
-                else { require 'view/frontend/memberBar.php'; }
+                if ($_SESSION['role'] == 'admin')
+                {
+                    require 'view/frontend/adminBar.php';
+                }
+                elseif ($_SESSION['role'] == 'member')
+                {
+                    require 'view/frontend/memberBar.php';
+                }
             }
-            else { require 'view/frontend/logBar.php'; }
+            else
+            {
+                require 'view/frontend/logBar.php';
+            }
             $frontend_controller->signIn();
         }
+        elseif ($_GET['action'] === 'logAccount')
+        {
+            $frontend_controller->logAccount();
+        }
+        // Account sign out access section
         elseif ($_GET['action'] == 'signOut')
         {
             require 'view/frontend/adminBar.php';
             $frontend_controller->signOut();
         }
+        // Member space access section
         elseif ($_GET['action'] == 'getMemberPanel')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                require 'view/frontend/adminBar.php';
+                if (isset($_SESSION['role']))
+                {
+                    if ($_SESSION['role'] == 'admin')
+                    {
+                        require 'view/frontend/adminBar.php';
+                    }
+                    elseif ($_SESSION['role'] == 'member')
+                    {
+                        require 'view/frontend/memberBar.php';
+                    }
+                }
+                else
+                {
+                    require 'view/frontend/logBar.php';
+                }
                 $frontend_controller->getMemberPanel();
             }
             else

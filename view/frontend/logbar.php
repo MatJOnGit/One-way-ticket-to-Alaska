@@ -18,5 +18,5 @@
             </ul>
         </div>
     </div>
-    <p>Bienvenue !</p>
+    <p>Bienvenue. Merci de vous logger !</p>
 </div>
