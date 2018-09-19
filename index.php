@@ -15,14 +15,25 @@ try
         
         if ($_GET['action'] == 'getChaptersList') 
         {
-            require 'view/frontend/adminBar.php';
+            if (isset($_SESSION['role']))
+            {
+                if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
+                else { require 'view/frontend/memberBar.php'; }
+            }
+            else { require 'view/frontend/logBar.php'; }
+            
             $frontend_controller->getChaptersList();
         }
         elseif ($_GET['action'] == 'getChapter')
         {            
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                require 'view/frontend/adminBar.php';
+                if (isset($_SESSION['role']))
+                {
+                    if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
+                    else { require 'view/frontend/memberBar.php'; }
+                }
+                else { require 'view/frontend/logBar.php'; }
                 $frontend_controller->getChapterContent();
             }
             else 
@@ -32,12 +43,22 @@ try
         }
         elseif ($_GET['action'] == 'register') 
         {
-            require 'view/frontend/adminBar.php';
+            if (isset($_SESSION['role']))
+            {
+                if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
+                else { require 'view/frontend/memberBar.php'; }
+            }
+            else { require 'view/frontend/logBar.php'; }
             $frontend_controller->register();
         }
         elseif ($_GET['action'] == 'signIn')
         {
-            require 'view/frontend/adminBar.php';
+            if (isset($_SESSION['role']))
+            {
+                if ($_SESSION['role'] == 'admin') { require 'view/frontend/adminBar.php'; }
+                else { require 'view/frontend/memberBar.php'; }
+            }
+            else { require 'view/frontend/logBar.php'; }
             $frontend_controller->signIn();
         }
         elseif ($_GET['action'] == 'signOut')
