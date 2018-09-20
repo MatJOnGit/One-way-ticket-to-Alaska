@@ -95,4 +95,12 @@ class Frontend_Controller extends Controller
 
         require('view/frontend/userInfo.php');
     }
+    
+    public function signOut()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        session_destroy();
+        header('Location: index.php');
+    }
 }

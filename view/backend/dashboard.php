@@ -13,7 +13,7 @@
                     <button class="white-button dark-blue-border"><a href="index.php">Voir mon site</a></button>
                 </li>
                 <li>
-                    <button class="orange-button white-border"><a href="index.php">Déconnexion</a></button>
+                    <button class="orange-button white-border"><a href="index.php?action=signOut">Déconnexion</a></button>
                 </li>
             </ul>
         </div>
