@@ -44,7 +44,7 @@ class Frontend_Controller extends Controller
             if ($createdAccount === true)
             {
                 $_SESSION['pseudo'] = $_POST['user-name'];
-                $_SESSION['role'] = 'member';
+                $_SESSION['status'] = 'member';
                 header('Location: index.php?action=getChaptersList');
             }
             elseif ($createdAccount === false)
@@ -54,6 +54,7 @@ class Frontend_Controller extends Controller
         }
         elseif ($isPseudoExisting > 0)
         {
+            echo 'isPseudoExisting > 0';
             // "Existing pseudo in BDD" case
             header('Location: index.php?action=register');
         }
@@ -74,7 +75,7 @@ class Frontend_Controller extends Controller
         {
             // Corresponding case between inputs in form and db
             $_SESSION['pseudo'] = $_POST['user-name'];
-            $_SESSION['role'] = $statusMatching;
+            $_SESSION['status'] = $statusMatching;
             header('Location: index.php?action=getChaptersList');
         }
         elseif (is_null($statusMatching))

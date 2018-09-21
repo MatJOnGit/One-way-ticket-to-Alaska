@@ -35,7 +35,7 @@ class UserManager extends Manager
     public function createAccount($pseudo, $email, $password)
     {
         $db = $this->dbConnect();
-        $accountCreation = $db->prepare('INSERT INTO users (pseudo, role, email, password, registration_date) VALUES (?, "member", ?, ?, NOW())');
+        $accountCreation = $db->prepare('INSERT INTO users (pseudo, status, email, password, registration_date) VALUES (?, "member", ?, ?, NOW())');
         $isAccountCreated = $accountCreation->execute(array($pseudo, $email, $password));
         return $isAccountCreated;
     }

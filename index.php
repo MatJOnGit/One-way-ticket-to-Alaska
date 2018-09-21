@@ -15,13 +15,13 @@ try
         
         if ($_GET['action'] == 'getChaptersList')
         {
-            if (isset($_SESSION['role']))
+            if (isset($_SESSION['status']))
             {
-                if ($_SESSION['role'] == 'admin')
+                if ($_SESSION['status'] == 'admin')
                 {
                     require 'view/frontend/adminBar.php';
                 }
-                elseif ($_SESSION['role'] == 'member')
+                elseif ($_SESSION['status'] == 'member')
                 {
                     require 'view/frontend/memberBar.php';
                 }
@@ -36,13 +36,13 @@ try
         {            
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                if (isset($_SESSION['role']))
+                if (isset($_SESSION['status']))
                 {
-                    if ($_SESSION['role'] == 'admin')
+                    if ($_SESSION['status'] == 'admin')
                     {
                         require 'view/frontend/adminBar.php';
                     }
-                    elseif ($_SESSION['role'] == 'member')
+                    elseif ($_SESSION['status'] == 'member')
                     {
                         require 'view/frontend/memberBar.php';
                     }
@@ -61,13 +61,13 @@ try
         // Account creation access section
         elseif ($_GET['action'] == 'register')
         {
-            if (isset($_SESSION['role']))
+            if (isset($_SESSION['status']))
             {
-                if ($_SESSION['role'] == 'admin')
+                if ($_SESSION['status'] == 'admin')
                 {
                     require 'view/frontend/adminBar.php';
                 }
-                elseif ($_SESSION['role'] == 'member')
+                elseif ($_SESSION['status'] == 'member')
                 {
                     require 'view/frontend/memberBar.php';
                 }
@@ -84,13 +84,13 @@ try
         // Account loggin access section
         elseif ($_GET['action'] == 'signIn')
         {
-            if (isset($_SESSION['role']))
+            if (isset($_SESSION['status']))
             {
-                if ($_SESSION['role'] == 'admin')
+                if ($_SESSION['status'] == 'admin')
                 {
                     require 'view/frontend/adminBar.php';
                 }
-                elseif ($_SESSION['role'] == 'member')
+                elseif ($_SESSION['status'] == 'member')
                 {
                     require 'view/frontend/memberBar.php';
                 }
@@ -116,13 +116,13 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                if (isset($_SESSION['role']))
+                if (isset($_SESSION['status']))
                 {
-                    if ($_SESSION['role'] == 'admin')
+                    if ($_SESSION['status'] == 'admin')
                     {
                         require 'view/frontend/adminBar.php';
                     }
-                    elseif ($_SESSION['role'] == 'member')
+                    elseif ($_SESSION['status'] == 'member')
                     {
                         require 'view/frontend/memberBar.php';
                     }
