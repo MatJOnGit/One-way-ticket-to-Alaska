@@ -315,11 +315,32 @@
     .comment-info {
         font-size: 0.8em;
         margin: 15px 0 3px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .comment-info p {
+        margin: 0;
+    }
+
+    .comments-commands {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .comments-commands i {
+        font-size: 1.2em;
+        margin: 0 10px 0 0;
     }
 
     .user-comment {
         font-size: 0.9em;
         margin: 0;
+    }
+
+    .deleted-comment {
+        font-style: italic;
     }
 
     .comments-wrapper {

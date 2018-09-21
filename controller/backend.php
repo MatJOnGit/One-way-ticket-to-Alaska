@@ -59,7 +59,14 @@ class Backend_Controller extends Controller
         
         if ($updatedChapter === true)
         {
-            header('Location: index.php?action=editChapter&id=' . $chapterId);
+            if ($chapterStatus === 'saved')
+            {
+                header('Location: index.php?action=editChapter&id=' . $chapterId);
+            }
+            elseif ($chapterStatus === 'published')
+            {
+                header('Location: index.php?action=getAdminPanel');
+            }
         }
     }
     
@@ -69,7 +76,7 @@ class Backend_Controller extends Controller
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $newChapterId = $chapterManager->getNewChapterId();
         
-        if ($newChapterId[0] >= 1)
+        if ($newChapterId[0] > 0)
         {
             header('Location: index.php?action=createNewChapter&id=' . $newChapterId[0]);
         }

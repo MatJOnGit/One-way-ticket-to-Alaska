@@ -8,7 +8,7 @@ class CommentManager extends Manager
 {
     public function getComments($chapterId) {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+        $comments = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr, status FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
         $comments->execute(array($chapterId));
 
         return $comments;
@@ -16,14 +16,14 @@ class CommentManager extends Manager
     
     public function getCommentCount() {
         $db = $this->dbConnect();
-        $commentCount = $db->query('SELECT COUNT(*) FROM commentaires');
+        $commentCount = $db->query('SELECT COUNT(*) FROM comments');
         $commentNumber = $commentCount->fetch();
         return $commentNumber;
     }
     
     public function getReportedCommentCount() {
         $db = $this->dbConnect();
-        $commentCount = $db->query('SELECT COUNT(*) FROM commentaires WHERE status = "reported"');
+        $commentCount = $db->query('SELECT COUNT(*) FROM comments WHERE status = "reported"');
         $commentNumber = $commentCount->fetch();
         return $commentNumber;
     }
