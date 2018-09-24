@@ -21,8 +21,9 @@ class Frontend_Controller extends Controller
         $commentManager = new \owtta\Blog\Model\CommentManager();
 
         $chapter = $chapterManager->getChapter($_GET['id']);
+        $commentsCount = $commentManager->getCommentsCountByChapter($_GET['id']);
         $comments = $commentManager->getComments($_GET['id']);
-
+        
         require('view/frontend/chapterContent.php');
     }
 

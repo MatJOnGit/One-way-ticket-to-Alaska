@@ -6,25 +6,36 @@ require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
-    public function getComments($chapterId) {
+    public function getCommentsCountByChapter($chapterId)
+    {
+        $db = $this->dbConnect();
+        $commentsCount = $db->prepare('SELECT COUNT(*) FROM comments WHERE post_id= ?');
+        $commentsCount->execute(array($chapterId));
+        $commentsNumber = $commentsCount->fetch();
+        return $commentsNumber;
+    }
+    
+    public function getComments($chapterId)
+    {
         $db = $this->dbConnect();
         $comments = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr, status FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
         $comments->execute(array($chapterId));
-
         return $comments;
     }
     
-    public function getCommentCount() {
+    public function getCommentsCount()
+    {
         $db = $this->dbConnect();
-        $commentCount = $db->query('SELECT COUNT(*) FROM comments');
-        $commentNumber = $commentCount->fetch();
-        return $commentNumber;
+        $commentsCount = $db->query('SELECT COUNT(*) FROM comments');
+        $commentsNumber = $commentsCount->fetch();
+        return $commentsNumber;
     }
     
-    public function getReportedCommentCount() {
+    public function getReportedCommentsCount()
+    {
         $db = $this->dbConnect();
-        $commentCount = $db->query('SELECT COUNT(*) FROM comments WHERE status = "reported"');
-        $commentNumber = $commentCount->fetch();
-        return $commentNumber;
+        $commentsCount = $db->query('SELECT COUNT(*) FROM comments WHERE status = "reported"');
+        $commentsNumber = $commentsCount->fetch();
+        return $commentsNumber;
     }
 }
