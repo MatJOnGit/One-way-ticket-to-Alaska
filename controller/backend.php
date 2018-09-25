@@ -35,8 +35,8 @@ class Backend_Controller extends Controller
         
         $userCount = $userManager->getUserCount();
         $chapterCount = $chapterManager->getChapterCount();
-        $commentCount = $commentManager->getCommentCount();
-        $reportedCommentCount = $commentManager->getReportedCommentCount();
+        $commentCount = $commentManager->getCommentsCount();
+        $reportedCommentCount = $commentManager->getReportedCommentsCount();
         $chapters = $chapterManager->getChapters();
 
         require('view/backend/dashboard.php');

@@ -58,6 +58,20 @@ try
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] === 'addComment')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                if (isset($_SESSION['status']))
+                {
+                    $frontend_controller->addComment();
+                }
+            }
+            else
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
         // Account creation access section
         elseif ($_GET['action'] == 'register')
         {

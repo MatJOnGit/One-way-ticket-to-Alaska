@@ -26,6 +26,15 @@ class Frontend_Controller extends Controller
         
         require('view/frontend/chapterContent.php');
     }
+    
+    public function addComment()
+    {
+        $this->loadManagers();
+        var_dump($_POST['comment']);
+        $commentManager = new owtta\Blog\Model\CommentManager();
+        $addedComment = $commentManager->addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+        header('Location: index.php?action=getChapter&id=' . $_GET['id']);
+    }
 
     public function register()
     {

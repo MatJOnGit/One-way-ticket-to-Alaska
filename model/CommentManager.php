@@ -38,4 +38,13 @@ class CommentManager extends Manager
         $commentsNumber = $commentsCount->fetch();
         return $commentsNumber;
     }
+    
+    public function addComment($chapterId, $pseudo, $comment)
+    {
+        $db = $this->dbConnect();
+        $addComment = $db->prepare('INSERT INTO `comments`(`post_id`, `author`, `comment`, `comment_date`) VALUES (?, ?, ?, NOW())');
+        $addComment->execute(array($chapterId, $pseudo, $comment));
+        $addedComment = $addComment->fetch();
+        return $addedComment;
+    }
 }
