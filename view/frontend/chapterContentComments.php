@@ -6,7 +6,7 @@ while ($comment = $comments->fetch())
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?>
 
         <?php
-        if ($comment['status'] === 'reported')
+        if (($comment['status'] === 'reported') && (isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin'))
         {
             ?>
             <i class="fas fa-exclamation-triangle red-item"></i>
@@ -16,24 +16,42 @@ while ($comment = $comments->fetch())
         </p>
         <div class="comments-commands">
             <?php
-            if (($comment['status'] === 'deleted'))
+            if (isset($_SESSION['pseudo']) && ($_SESSION['status'] === 'admin')) 
             {
-                ?>
-                <a href=""><i class="fas fa-eye"></i></a>
-                <?php
+                if (($comment['status'] === 'deleted'))
+                {
+                    ?>
+                    <a href=""><i class="fas fa-eye"></i></a>
+                    <?php
+                }
+                elseif (($comment['status'] === 'reported'))
+                {
+                    ?>
+                    <a href=""><i class="fas fa-edit"></i></a>
+                    <a href=""><i class="fas fa-eye-slash"></i></a>
+                    <?php
+                }
+                else
+                {
+                    ?>
+                    <a href=""><i class="fas fa-edit"></i></a>
+                    <?php
+                }
             }
-            elseif (($comment['status'] === 'reported'))
+            elseif (isset($_SESSION['pseudo']) && ($_SESSION['status'] === 'member'))
             {
-                ?>
-                <a href=""><i class="fas fa-edit"></i></a>
-                <a href=""><i class="fas fa-eye-slash"></i></a>
-                <?php
-            }
-            else
-            {
-                ?>
-                <a href=""><i class="fas fa-edit"></i></a>
-                <?php
+                if (($comment['status'] === 'reported'))
+                {
+                    ?>
+                    <a href=""><i class="fas fa-flag"></i></a>
+                    <?php
+                }
+                elseif (is_null($comment['status']))
+                {
+                    ?>
+                    <a href=""><i class="fas fa-flag-checkered"></i></a>
+                    <?php
+                }
             }
             ?>
         </div>
