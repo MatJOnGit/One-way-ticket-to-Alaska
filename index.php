@@ -13,15 +13,15 @@ try
         require 'controller/frontend.php';
         $frontend_controller = new Frontend_Controller;
         
-        if ($_GET['action'] == 'getChaptersList')
+        if ($_GET['action'] === 'getChaptersList')
         {
             if (isset($_SESSION['status']))
             {
-                if ($_SESSION['status'] == 'admin')
+                if ($_SESSION['status'] === 'admin')
                 {
                     require 'view/frontend/adminBar.php';
                 }
-                elseif ($_SESSION['status'] == 'member')
+                elseif ($_SESSION['status'] === 'member')
                 {
                     require 'view/frontend/memberBar.php';
                 }
@@ -32,17 +32,17 @@ try
             }
             $frontend_controller->getChaptersList();
         }
-        elseif ($_GET['action'] == 'getChapter')
+        elseif ($_GET['action'] === 'getChapter')
         {            
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
                 if (isset($_SESSION['status']))
                 {
-                    if ($_SESSION['status'] == 'admin')
+                    if ($_SESSION['status'] === 'admin')
                     {
                         require 'view/frontend/adminBar.php';
                     }
-                    elseif ($_SESSION['status'] == 'member')
+                    elseif ($_SESSION['status'] === 'member')
                     {
                         require 'view/frontend/memberBar.php';
                     }
@@ -58,6 +58,8 @@ try
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        
+        // Comments Management section
         elseif ($_GET['action'] === 'addComment')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -72,16 +74,17 @@ try
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        
         // Account creation access section
-        elseif ($_GET['action'] == 'register')
+        elseif ($_GET['action'] === 'register')
         {
             if (isset($_SESSION['status']))
             {
-                if ($_SESSION['status'] == 'admin')
+                if ($_SESSION['status'] === 'admin')
                 {
                     require 'view/frontend/adminBar.php';
                 }
-                elseif ($_SESSION['status'] == 'member')
+                elseif ($_SESSION['status'] === 'member')
                 {
                     require 'view/frontend/memberBar.php';
                 }
@@ -95,16 +98,17 @@ try
         elseif ($_GET['action'] === 'createAccount') {
             $frontend_controller->createAccount();
         }
+        
         // Account loggin access section
-        elseif ($_GET['action'] == 'signIn')
+        elseif ($_GET['action'] === 'signIn')
         {
             if (isset($_SESSION['status']))
             {
-                if ($_SESSION['status'] == 'admin')
+                if ($_SESSION['status'] === 'admin')
                 {
                     require 'view/frontend/adminBar.php';
                 }
-                elseif ($_SESSION['status'] == 'member')
+                elseif ($_SESSION['status'] === 'member')
                 {
                     require 'view/frontend/memberBar.php';
                 }
@@ -119,24 +123,26 @@ try
         {
             $frontend_controller->logAccount();
         }
+        
         // Account sign out access section
-        elseif ($_GET['action'] == 'signOut')
+        elseif ($_GET['action'] === 'signOut')
         {
             require 'view/frontend/adminBar.php';
             $frontend_controller->signOut();
         }
+        
         // Member space access section
-        elseif ($_GET['action'] == 'getMemberPanel')
+        elseif ($_GET['action'] === 'getMemberPanel')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
                 if (isset($_SESSION['status']))
                 {
-                    if ($_SESSION['status'] == 'admin')
+                    if ($_SESSION['status'] === 'admin')
                     {
                         require 'view/frontend/adminBar.php';
                     }
-                    elseif ($_SESSION['status'] == 'member')
+                    elseif ($_SESSION['status'] === 'member')
                     {
                         require 'view/frontend/memberBar.php';
                     }
@@ -152,13 +158,15 @@ try
                 throw new Exception('Aucun membre enregistré reconnu');
             }
         }
-        elseif ($_GET['action'] == 'getAdminPanel')
+        
+        elseif ($_GET['action'] === 'getAdminPanel')
         {
             require 'controller/backend.php';
             $backend_controller = new Backend_Controller;
             $backend_controller->getAdminPanel();
         }
-        elseif ($_GET['action'] == 'editChapter')
+        
+        elseif ($_GET['action'] === 'editChapter')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
@@ -171,7 +179,8 @@ try
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        elseif ($_GET['action'] == 'updateChapterContent')
+        
+        elseif ($_GET['action'] === 'updateChapterContent')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['status']))
             {
@@ -192,6 +201,7 @@ try
                 throw new Exception('Numéro de commentaire incorrect ou non renseigné');
             }
         }
+        
         elseif ($_GET['action'] === 'addChapter')
         {
             require 'controller/backend.php';
@@ -211,6 +221,7 @@ try
                 throw new Exception('Identifiant de chapitre incorrect');
             }
         }
+        
         elseif ($_GET['action'] === 'uploadNewChapterContent')
         {
             if (isset($_GET['status']))
@@ -228,6 +239,7 @@ try
                 }
             }
         }
+        
         elseif ($_GET['action'] === 'deleteChapter')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -241,8 +253,35 @@ try
                 throw new Exception('Identifiant de chapitre incorrect');
             }
         }
+        
+        /* Comment management from getChapter page */
+        elseif ($_GET['action'] === 'editCommentStatus')
+        {
+            if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['newStatus']) && (($_GET['newStatus'] === 'hidden') || ($_GET['newStatus'] === 'unhidden')))
+            {
+                require 'controller/backend.php';
+                $backend_controller = new Backend_Controller;
+                if ($_GET['newStatus'] === 'hidden')
+                {
+                    $backend_controller->hideComment();
+                }
+                else
+                {
+                    $backend_controller->unhideComment();
+                }
+            }
+            elseif (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['newStatus']))
+            {
+                throw new Exception('Nouveau status non reconnu');
+            }
+            else
+            {
+                throw new Exception('Erreur d\'identifiant de billet envoyé');
+            }
+        }
     }
 }
+
 catch(Exception $e)
 {
     echo 'Erreur : ' . $e->getMessage();

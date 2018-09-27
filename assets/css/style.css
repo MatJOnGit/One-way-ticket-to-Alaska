@@ -57,6 +57,10 @@
         background-color: #e17055;
     }
 
+    .grey-button {
+        background-color: #B0B0B0;
+    }
+
     .white-button {
         background-color: white;
     }
@@ -291,11 +295,21 @@
         margin-bottom: 20px;
     }
 
-    .book-content li button {
+/* getChapterList page specifics */
+
+    .book-content>ul>li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         margin-bottom: 8px;
     }
 
-/* getChapter Page specifics */
+    .chapterInfo {
+        font-size: 1.2em;
+        margin-left: 5px;
+    }
+
+/* getChapter page specifics */
 
     .book-content>button {
         margin-bottom: 10px;
@@ -322,6 +336,10 @@
 
     .comment-info p {
         margin: 0;
+    }
+
+    .comment-info p i {
+        margin-left: 5px;
     }
 
     .comments-commands {

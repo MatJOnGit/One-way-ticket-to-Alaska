@@ -21,20 +21,15 @@ while ($comment = $comments->fetch())
                 if (($comment['status'] === 'deleted'))
                 {
                     ?>
-                    <a href=""><i class="fas fa-eye"></i></a>
-                    <?php
-                }
-                elseif (($comment['status'] === 'reported'))
-                {
-                    ?>
-                    <a href=""><i class="fas fa-edit"></i></a>
-                    <a href=""><i class="fas fa-eye-slash"></i></a>
+                    <a href="index.php?action=editCommentStatus&amp;chapterId=<?= $_GET['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;newStatus=unhidden"><i class="fas fa-eye"></i></a>
                     <?php
                 }
                 else
                 {
+                    // the editCommentContent feature will be edited later to display a form in javascript
                     ?>
-                    <a href=""><i class="fas fa-edit"></i></a>
+                    <a href="index.php?action=editCommentContent&amp;commentId=<?= $comment['id'] ?>"><i class="fas fa-edit"></i></a>
+                    <a href="index.php?action=editCommentStatus&amp;chapterId=<?= $_GET['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;newStatus=hidden"><i class="fas fa-eye-slash"></i></a>
                     <?php
                 }
             }

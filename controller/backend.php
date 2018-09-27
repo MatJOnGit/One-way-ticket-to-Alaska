@@ -5,6 +5,22 @@ require_once 'Controller.php';
 
 class Backend_Controller extends Controller
 {
+    public function hideComment()
+    {
+        $this->loadManagers();
+        $commentManager = new \owtta\Blog\Model\CommentManager();
+        $statusUpdating = $commentManager->hideComment($_GET['commentId']);
+        header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
+    }
+    
+    public function unhideComment()
+    {
+        $this->loadManagers();
+        $commentManager = new \owtta\Blog\Model\CommentManager();
+        $statusDeleting = $commentManager->unhideComment($_GET['commentId']);
+        header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
+    }
+    
     public function getChapterslist()
     {
         $this->loadManagers();

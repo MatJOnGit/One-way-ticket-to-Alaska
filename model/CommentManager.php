@@ -42,9 +42,27 @@ class CommentManager extends Manager
     public function addComment($chapterId, $pseudo, $comment)
     {
         $db = $this->dbConnect();
-        $addComment = $db->prepare('INSERT INTO `comments`(`post_id`, `author`, `comment`, `comment_date`) VALUES (?, ?, ?, NOW())');
+        $addComment = $db->prepare('INSERT INTO comments (post_id, author, comment, comment_date) VALUES (?, ?, ?, NOW())');
         $addComment->execute(array($chapterId, $pseudo, $comment));
         $addedComment = $addComment->fetch();
         return $addedComment;
+    }
+    
+    public function hideComment($commentId)
+    {
+        $db = $this->dbConnect();
+        $editComment = $db->prepare('UPDATE comments SET status = "deleted" WHERE id = ?');
+        $editComment->execute(array($commentId));
+        $editedComment = $editComment->fetch();
+        return $editedComment;
+    }
+    
+    public function unhideComment($commentId)
+    {
+        $db = $this->dbConnect();
+        $editComment = $db->prepare('UPDATE comments SET status = NULL WHERE id = ?');
+        $editComment->execute(array($commentId));
+        $editedComment = $editComment->fetch();
+        return $editedComment;
     }
 }

@@ -61,20 +61,20 @@
         <div class="admin-content">
             <h3>Edition du roman</h3>
                 <?php
-                while ($data = $chapters->fetch())
+                while ($chapter = $chapters->fetch())
                 {
                 ?>
                     <div class="grey-box">
                         <div class="chapter-options">
                             <div>
-                                <i class="fas fa-broadcast-tower <?php if ($data['status'] === 'published') { ?> green<?php } else { ?> red<?php } ?>-item"></i>
-                                <a href="index.php?action=getChapter&amp;id=<?= $data['id'] ?>">Chapitre <?= $data['id'] ?> :<br/> <?= htmlspecialchars($data['title']) ?></a>
+                                <i class="fas fa-broadcast-tower <?php if ($chapter['status'] === 'published') { ?> green<?php } else { ?> red<?php } ?>-item"></i>
+                                <a href="index.php?action=getChapter&amp;id=<?= $chapter['id'] ?>">Chapitre <?= $chapter['id'] ?> :<br/> <?= htmlspecialchars($chapter['title']) ?></a>
                             </div>
                             <div>
-                                <a href="index.php?action=editChapter&amp;id=<?= $data['id'] ?>">
+                                <a href="index.php?action=editChapter&amp;id=<?= $chapter['id'] ?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a href="index.php?action=deleteChapter&amp;id=<?= $data['id'] ?>">
+                                <a href="index.php?action=deleteChapter&amp;id=<?= $chapter['id'] ?>">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </div>
