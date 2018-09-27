@@ -8,11 +8,16 @@ try
     {
         require 'view/frontend/welcome.php';
     }
+    
+// Frontoffice access & features
+    
     else
     {
+        // Init Frontoffice tools
         require 'controller/frontend.php';
         $frontend_controller = new Frontend_Controller;
         
+        // Frontoffice features
         if ($_GET['action'] === 'getChaptersList')
         {
             if (isset($_SESSION['status']))
@@ -32,8 +37,9 @@ try
             }
             $frontend_controller->getChaptersList();
         }
+        
         elseif ($_GET['action'] === 'getChapter')
-        {            
+        {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
                 if (isset($_SESSION['status']))
@@ -59,7 +65,6 @@ try
             }
         }
         
-        // Comments Management section
         elseif ($_GET['action'] === 'addComment')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -75,7 +80,6 @@ try
             }
         }
         
-        // Account creation access section
         elseif ($_GET['action'] === 'register')
         {
             if (isset($_SESSION['status']))
@@ -95,11 +99,12 @@ try
             }
             $frontend_controller->register();
         }
-        elseif ($_GET['action'] === 'createAccount') {
+        
+        elseif ($_GET['action'] === 'createAccount')
+        {
             $frontend_controller->createAccount();
         }
-        
-        // Account loggin access section
+
         elseif ($_GET['action'] === 'signIn')
         {
             if (isset($_SESSION['status']))
@@ -119,19 +124,18 @@ try
             }
             $frontend_controller->signIn();
         }
+        
         elseif ($_GET['action'] === 'logAccount')
         {
             $frontend_controller->logAccount();
         }
         
-        // Account sign out access section
         elseif ($_GET['action'] === 'signOut')
         {
             require 'view/frontend/adminBar.php';
             $frontend_controller->signOut();
         }
         
-        // Member space access section
         elseif ($_GET['action'] === 'getMemberPanel')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -159,10 +163,30 @@ try
             }
         }
         
-        elseif ($_GET['action'] === 'getAdminPanel')
+        elseif ($_GET['action'] === 'reportComment')
         {
-            require 'controller/backend.php';
-            $backend_controller = new Backend_Controller;
+            if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0)
+            {
+                $frontend_controller->reportComment();
+            }
+            else
+            {
+                throw new Exception('Il y a des paramètres manquants à l\'exécution de la fonctionnalité');
+            }
+        }
+    }
+
+// Backoffice access & features
+    
+    if (isset($_SESSION['status']) && $_SESSION['status'] === 'admin')
+    {
+        // Init backoffice tools
+        require 'controller/backend.php';
+        $backend_controller = new Backend_Controller;
+        
+        // Backoffice features
+        if ($_GET['action'] === 'getAdminPanel')
+        {
             $backend_controller->getAdminPanel();
         }
         
@@ -170,8 +194,6 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                require 'controller/backend.php';
-                $backend_controller = new Backend_Controller;
                 $backend_controller->editChapterContent();
             }
             else 
@@ -184,9 +206,6 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['status']))
             {
-                require 'controller/backend.php';
-                $backend_controller = new Backend_Controller;
-
                 if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
                 {
                     $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
@@ -204,16 +223,12 @@ try
         
         elseif ($_GET['action'] === 'addChapter')
         {
-            require 'controller/backend.php';
-            $backend_controller = new Backend_Controller;
             $backend_controller->addChapter();
         }
         elseif ($_GET['action'] === 'createNewChapter')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                require 'controller/backend.php';
-                $backend_controller = new Backend_Controller;
                 $backend_controller->createNewChapter($_GET['id']);
             }
             else
@@ -226,9 +241,6 @@ try
         {
             if (isset($_GET['status']))
             {
-                require 'controller/backend.php';
-                $backend_controller = new Backend_Controller;
-                
                 if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
                 {
                     $backend_controller->uploadNewChapter($_POST['chapterContent'], $_GET['status'], $_POST['chapterTitle']);
@@ -244,8 +256,6 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                require 'controller/backend.php';
-                $backend_controller = new Backend_Controller;
                 $backend_controller->deleteChapter($_GET['id']);
             }
             else
@@ -254,13 +264,10 @@ try
             }
         }
         
-        /* Comment management from getChapter page */
         elseif ($_GET['action'] === 'editCommentStatus')
         {
             if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['newStatus']) && (($_GET['newStatus'] === 'hidden') || ($_GET['newStatus'] === 'unhidden')))
             {
-                require 'controller/backend.php';
-                $backend_controller = new Backend_Controller;
                 if ($_GET['newStatus'] === 'hidden')
                 {
                     $backend_controller->hideComment();

@@ -103,7 +103,6 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
         $userInfo = $userManager->getUserInfo($_GET['id']);
-
         require('view/frontend/userInfo.php');
     }
     
@@ -113,5 +112,13 @@ class Frontend_Controller extends Controller
         $userManager = new owtta\Blog\Model\UserManager();
         session_destroy();
         header('Location: index.php');
+    }
+    
+    public function reportComment()
+    {
+        $this->loadManagers();
+        $commentManager = new owtta\Blog\Model\CommentManager();
+        $commentReporting = $commentManager->reportComment($_GET['commentId']);
+        header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
     }
 }

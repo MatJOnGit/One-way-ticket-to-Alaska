@@ -65,4 +65,13 @@ class CommentManager extends Manager
         $editedComment = $editComment->fetch();
         return $editedComment;
     }
+    
+    public function reportComment($commentId)
+    {       
+        $db = $this->dbConnect();
+        $reportComment = $db->prepare('UPDATE comments SET status = "reported" WHERE id = ?');
+        $reportComment->execute(array($commentId));
+        $reportedComment = $reportComment->fetch();
+        return $reportedComment;
+    }
 }

@@ -44,7 +44,7 @@ while ($comment = $comments->fetch())
                 elseif (is_null($comment['status']))
                 {
                     ?>
-                    <a href=""><i class="fas fa-flag-checkered"></i></a>
+                    <a href="index.php?action=reportComment&amp;chapterId=<?= $_GET['id'] ?>&commentId=<?= $comment['id'] ?>"><i class="fas fa-flag-checkered"></i></a>
                     <?php
                 }
             }
