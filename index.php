@@ -4,37 +4,35 @@ require 'view/frontend/header.php';
 
 try
 {
-    if (!isset($_GET['action']))
-    {
-        require 'view/frontend/welcome.php';
-    }
     
-// Frontoffice access & features
+// Access & frontoffice features
     
-    else
+    if (isset($_GET['action']))
     {
         // Init Frontoffice tools
         require 'controller/frontend.php';
         $frontend_controller = new Frontend_Controller;
         
+        // Access
+        if (isset($_SESSION['status']))
+        {
+            if ($_SESSION['status'] === 'admin')
+            {
+                require 'view/frontend/adminBar.php';
+            }
+            elseif ($_SESSION['status'] === 'member')
+            {
+                require 'view/frontend/memberBar.php';
+            }
+        }
+        else
+        {
+            require 'view/frontend/logBar.php';
+        }
+        
         // Frontoffice features
         if ($_GET['action'] === 'getChaptersList')
         {
-            if (isset($_SESSION['status']))
-            {
-                if ($_SESSION['status'] === 'admin')
-                {
-                    require 'view/frontend/adminBar.php';
-                }
-                elseif ($_SESSION['status'] === 'member')
-                {
-                    require 'view/frontend/memberBar.php';
-                }
-            }
-            else
-            {
-                require 'view/frontend/logBar.php';
-            }
             $frontend_controller->getChaptersList();
         }
         
@@ -42,21 +40,6 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                if (isset($_SESSION['status']))
-                {
-                    if ($_SESSION['status'] === 'admin')
-                    {
-                        require 'view/frontend/adminBar.php';
-                    }
-                    elseif ($_SESSION['status'] === 'member')
-                    {
-                        require 'view/frontend/memberBar.php';
-                    }
-                }
-                else
-                {
-                    require 'view/frontend/logBar.php';
-                }
                 $frontend_controller->getChapterContent();
             }
             else 
@@ -82,21 +65,6 @@ try
         
         elseif ($_GET['action'] === 'register')
         {
-            if (isset($_SESSION['status']))
-            {
-                if ($_SESSION['status'] === 'admin')
-                {
-                    require 'view/frontend/adminBar.php';
-                }
-                elseif ($_SESSION['status'] === 'member')
-                {
-                    require 'view/frontend/memberBar.php';
-                }
-            }
-            else
-            {
-                require 'view/frontend/logBar.php';
-            }
             $frontend_controller->register();
         }
         
@@ -107,21 +75,6 @@ try
 
         elseif ($_GET['action'] === 'signIn')
         {
-            if (isset($_SESSION['status']))
-            {
-                if ($_SESSION['status'] === 'admin')
-                {
-                    require 'view/frontend/adminBar.php';
-                }
-                elseif ($_SESSION['status'] === 'member')
-                {
-                    require 'view/frontend/memberBar.php';
-                }
-            }
-            else
-            {
-                require 'view/frontend/logBar.php';
-            }
             $frontend_controller->signIn();
         }
         
@@ -132,7 +85,6 @@ try
         
         elseif ($_GET['action'] === 'signOut')
         {
-            require 'view/frontend/adminBar.php';
             $frontend_controller->signOut();
         }
         
@@ -140,21 +92,6 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                if (isset($_SESSION['status']))
-                {
-                    if ($_SESSION['status'] === 'admin')
-                    {
-                        require 'view/frontend/adminBar.php';
-                    }
-                    elseif ($_SESSION['status'] === 'member')
-                    {
-                        require 'view/frontend/memberBar.php';
-                    }
-                }
-                else
-                {
-                    require 'view/frontend/logBar.php';
-                }
                 $frontend_controller->getMemberPanel();
             }
             else
@@ -174,6 +111,16 @@ try
                 throw new Exception('Il y a des paramètres manquants à l\'exécution de la fonctionnalité');
             }
         }
+        
+        elseif (!isset($_SESSION['status']) || $_SESSION['status'] != 'admin')
+        {
+            require 'view/frontend/404.php';
+        }
+    }
+    
+    else
+    {
+        require 'view/frontend/welcome.php';
     }
 
 // Backoffice access & features
