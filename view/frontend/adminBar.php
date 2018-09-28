@@ -13,7 +13,7 @@
                     <button class="light-blue-button white-border"><a href="index.php?action=getAdminPanel">Panneau d'administration</a></button>
                 </li>
                 <li>
-                    <button class="white-button light-blue-border"><a href="index.php?action=getMemberPanel&amp;id=1">Espace membre</a></button>
+                    <button class="white-button light-blue-border"><a href="index.php?action=getMemberPanel">Espace membre</a></button>
                 </li>
                 <li>
                     <button class="orange-button white-border"><a href="index.php?action=signOut">Déconnexion</a></button>

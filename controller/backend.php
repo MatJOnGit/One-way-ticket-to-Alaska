@@ -86,7 +86,7 @@ class Backend_Controller extends Controller
         }
     }
     
-    public function addChapter()
+    public function getNewChapterId()
     {
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();

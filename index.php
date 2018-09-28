@@ -90,14 +90,19 @@ try
         
         elseif ($_GET['action'] === 'getMemberPanel')
         {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
+            if (!isset($_GET['id']) && (isset($_SESSION['id'])) && $_SESSION['id'] > 0)
             {
-                $frontend_controller->getMemberPanel();
+                $frontend_controller->getUserMemberPanel();
+            }
+            elseif (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $frontend_controller->getSpecificMemberPanel();
             }
             else
             {
-                throw new Exception('Aucun membre enregistré reconnu');
+                require 'view/frontend/404.php';
             }
+
         }
         
         elseif ($_GET['action'] === 'reportComment')
@@ -170,8 +175,9 @@ try
         
         elseif ($_GET['action'] === 'addChapter')
         {
-            $backend_controller->addChapter();
+            $backend_controller->getNewChapterId();
         }
+        
         elseif ($_GET['action'] === 'createNewChapter')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)

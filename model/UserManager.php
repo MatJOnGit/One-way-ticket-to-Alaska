@@ -35,17 +35,25 @@ class UserManager extends Manager
     public function createAccount($pseudo, $email, $password)
     {
         $db = $this->dbConnect();
-        $accountCreation = $db->prepare('INSERT INTO users (pseudo, status, email, password, registration_date) VALUES (?, "member", ?, ?, NOW())');
-        $isAccountCreated = $accountCreation->execute(array($pseudo, $email, $password));
-        return $isAccountCreated;
+        $accountCreator = $db->prepare('INSERT INTO users (pseudo, status, email, password, registration_date) VALUES (?, "member", ?, ?, NOW())');
+        $accountCreator = $accountCreator->execute(array($pseudo, $email, $password));
+        if ($accountCreator)
+        {
+            $newUserId = $db->lastInsertId();
+        }
+        else
+        {
+            $newUserId = 0;
+        }
+        return $newUserId;
     }
     
-    public function isIdCorrect($pseudo, $password)
+    public function getUserData($pseudo, $password)
     {
         $db = $this->dbConnect();
-        $idTesting = $db->prepare('SELECT status FROM users WHERE pseudo = ? AND password = ?');
-        $idTesting->execute(array($pseudo, $password));
-        $idTestingResults = $idTesting->fetch();
-        return $idTestingResults[0];
+        $userDataGetter = $db->prepare('SELECT id, status FROM users WHERE pseudo = ? AND password = ?');
+        $userDataGetter->execute(array($pseudo, $password));
+        $userData = $userDataGetter->fetch();
+        return $userData;
     }
 }

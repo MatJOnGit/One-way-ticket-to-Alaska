@@ -50,10 +50,12 @@ class Frontend_Controller extends Controller
         if (is_null($isPseudoExisting))
         {
             // "Non-existing pseudo in BDD" case
-            $createdAccount = $userManager->createAccount($_POST['user-name'], $_POST['user-email'], $_POST['user-password']);
-            if ($createdAccount === true)
+            $newUserData = $userManager->createAccount($_POST['user-name'], $_POST['user-email'], $_POST['user-password']);
+            if (isset($newUserData) && $newUserData > 0)
             {
+                echo 'compte créé';
                 $_SESSION['pseudo'] = $_POST['user-name'];
+                $_SESSION['id'] = $newUserData;
                 $_SESSION['status'] = 'member';
                 header('Location: index.php?action=getChaptersList');
             }
@@ -64,7 +66,6 @@ class Frontend_Controller extends Controller
         }
         elseif ($isPseudoExisting > 0)
         {
-            echo 'isPseudoExisting > 0';
             // "Existing pseudo in BDD" case
             header('Location: index.php?action=register');
         }
@@ -72,7 +73,6 @@ class Frontend_Controller extends Controller
 
     public function signIn()
     {
-        $this->loadManagers();
         require('view/frontend/signIn.php');
     }
     
@@ -80,30 +80,34 @@ class Frontend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
-        $statusMatching = $userManager->isIdCorrect($_POST['user-name'], $_POST['user-password']);
-        if (is_string($statusMatching))
+        $userData = $userManager->getUserData($_POST['user-name'], $_POST['user-password']);
+        if ((isset($userData[0])) && $userData > 0 && isset($userData[1]) && is_string($userData[1]))
         {
-            // Corresponding case between inputs in form and db
             $_SESSION['pseudo'] = $_POST['user-name'];
-            $_SESSION['status'] = $statusMatching;
+            $_SESSION['id'] = $userData[0];
+            $_SESSION['status'] = $userData[1];
             header('Location: index.php?action=getChaptersList');
-        }
-        elseif (is_null($statusMatching))
-        {
-            header('Location: index.php?action=signIn');
         }
         else
         {
-            header('Location: index.php');
+            header('Location: index.php?action=signIn');
         }
     }
+    
+    public function getUserMemberPanel()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        $userInfo = $userManager->getUserInfo($_SESSION['id']);
+        require 'view/frontend/userInfo.php';
+    }
 
-    public function getMemberPanel()
+    public function getSpecificMemberPanel()
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
         $userInfo = $userManager->getUserInfo($_GET['id']);
-        require('view/frontend/userInfo.php');
+        require 'view/frontend/userInfo.php';
     }
     
     public function signOut()

@@ -13,8 +13,8 @@ session_start();
     <meta name="author" content="">
 
     <!-- CSS and fonts -->
-    <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -23,7 +23,7 @@ session_start();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-    <script src='assets/js/tinymce_config.js'></script>
+    <script src='./assets/js/tinymce_config.js'></script>
 
     <!-- <script src="assets/js/scripts.js"></script> -->
     
