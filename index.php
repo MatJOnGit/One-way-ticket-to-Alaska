@@ -16,11 +16,11 @@ try
         // Access
         if (isset($_SESSION['status']))
         {
-            if ($_SESSION['status'] === 'admin')
+            if (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime'))
             {
                 require 'view/frontend/adminBar.php';
             }
-            elseif ($_SESSION['status'] === 'member')
+            elseif (($_SESSION['status'] === 'member') || ($_SESSION['status'] === 'admin'))
             {
                 require 'view/frontend/memberBar.php';
             }
@@ -117,7 +117,7 @@ try
             }
         }
         
-        elseif (!isset($_SESSION['status']) || $_SESSION['status'] != 'admin')
+        elseif (!isset($_SESSION['status']) || ($_SESSION['status'] != 'adminPrime' && $_SESSION['status'] != 'owner'))
         {
             require 'view/frontend/404.php';
         }
@@ -130,7 +130,7 @@ try
 
 // Backoffice access & features
     
-    if (isset($_SESSION['status']) && $_SESSION['status'] === 'admin')
+    if (isset($_SESSION['status']) && (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime')))
     {
         // Init backoffice tools
         require 'controller/backend.php';

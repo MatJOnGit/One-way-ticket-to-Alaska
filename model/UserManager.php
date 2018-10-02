@@ -9,7 +9,7 @@ class UserManager extends Manager
     public function getUserInfo($userId)
     {
         $db = $this->dbConnect();
-        $userInfoGetter = $db->prepare('SELECT id, pseudo, email, DATE_FORMAT(registration_date, \'%d/%m/%Y à %Hh%i\') AS registration_date_fr, avatar_id FROM users WHERE id = ?');
+        $userInfoGetter = $db->prepare('SELECT id, pseudo, status, email, DATE_FORMAT(registration_date, \'%d/%m/%Y à %Hh%i\') AS registration_date_fr, avatar_id FROM users WHERE id = ?');
         $userInfoGetter->execute(array($userId));
         $userInfo = $userInfoGetter->fetch();
         return $userInfo;

@@ -54,7 +54,7 @@ class Frontend_Controller extends Controller
             {
                 echo 'compte créé';
                 $_SESSION['pseudo'] = $_POST['user-name'];
-                $_SESSION['id'] = $newUsta;
+                $_SESSION['id'] = $newUserData;
                 $_SESSION['status'] = 'member';
                 header('Location: index.php?action=getChaptersList');
             }

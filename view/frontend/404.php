@@ -8,9 +8,14 @@
             <h3>Pas introuvable</h3>
             
             <div class="chapter-content">
-                <p>Désolé<?php if(isset($_SESSION['pseudo'])) { echo ' ' . $_SESSION['pseudo']; } ?>! <br><br>La page demandée n'existe pas.
+                <p>Désolé<?php if(isset($_SESSION['pseudo'])) { echo ' ' . $_SESSION['pseudo']; } ?>! <br><br>La page demandée n'existe pas.</p>
+                
+                <p>
+                    <?php
+                    echo $_SESSION['pseudo'] . ' is a ' . $_SESSION['status'] . ' with the id ' . $_SESSION['id'] . ' .';
+                    ?>
                 </p>
-            </div>            
+            </div>
         </div>
     </div>
 </div>

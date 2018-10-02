@@ -506,6 +506,22 @@
         margin: 0;
     }
 
+#user-management {
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#user-management button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+#user-management i {
+    font-size:1.6em;
+}
+
 /* Backoffice */
 
     .admin-panel-wrapper {

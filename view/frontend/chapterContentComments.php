@@ -6,7 +6,7 @@ while ($comment = $comments->fetch())
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?>
 
         <?php
-        if (($comment['status'] === 'reported') && (isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin'))
+        if (($comment['status'] === 'reported') && (isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin' || $_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime'))
         {
             ?>
             <i class="fas fa-exclamation-triangle red-item"></i>
@@ -16,7 +16,7 @@ while ($comment = $comments->fetch())
         </p>
         <div class="comments-commands">
             <?php
-            if (isset($_SESSION['pseudo']) && ($_SESSION['status'] === 'admin')) 
+            if (isset($_SESSION['pseudo']) && ($_SESSION['status'] === 'admin' || $_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime'))
             {
                 if (($comment['status'] === 'deleted'))
                 {

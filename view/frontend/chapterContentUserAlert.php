@@ -1,5 +1,6 @@
 <?php
-switch ($commentsCase) {
+switch ($commentsCase)
+{
     case 'Session found, no comment' :
         
         ?>
