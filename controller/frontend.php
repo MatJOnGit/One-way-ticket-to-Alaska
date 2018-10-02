@@ -30,9 +30,8 @@ class Frontend_Controller extends Controller
     public function addComment()
     {
         $this->loadManagers();
-        var_dump($_POST['comment']);
         $commentManager = new owtta\Blog\Model\CommentManager();
-        $addedComment = $commentManager->addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+        $commentManager->addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
         header('Location: index.php?action=getChapter&id=' . $_GET['id']);
     }
 
@@ -46,8 +45,8 @@ class Frontend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
-        $isPseudoExisting = $userManager->isPseudoExisting($_POST['user-name']);
-        if (is_null($isPseudoExisting))
+        $accountTester = $userManager->testAccount($_POST['user-name']);
+        if (is_null($accountTester))
         {
             // "Non-existing pseudo in BDD" case
             $newUserData = $userManager->createAccount($_POST['user-name'], $_POST['user-email'], $_POST['user-password']);
@@ -55,7 +54,7 @@ class Frontend_Controller extends Controller
             {
                 echo 'compte créé';
                 $_SESSION['pseudo'] = $_POST['user-name'];
-                $_SESSION['id'] = $newUserData;
+                $_SESSION['id'] = $newUsta;
                 $_SESSION['status'] = 'member';
                 header('Location: index.php?action=getChaptersList');
             }
@@ -64,7 +63,7 @@ class Frontend_Controller extends Controller
                 header('Location: index.php?action=register');
             }
         }
-        elseif ($isPseudoExisting > 0)
+        elseif ($accountTester > 0)
         {
             // "Existing pseudo in BDD" case
             header('Location: index.php?action=register');
@@ -80,8 +79,8 @@ class Frontend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
-        $userData = $userManager->getUserData($_POST['user-name'], $_POST['user-password']);
-        if ((isset($userData[0])) && $userData > 0 && isset($userData[1]) && is_string($userData[1]))
+        $userData = $userManager->getUserPermissions($_POST['user-name'], $_POST['user-password']);
+        if ((isset($userData[0])) && $userData[0] > 0 && isset($userData[1]) && is_string($userData[1]))
         {
             $_SESSION['pseudo'] = $_POST['user-name'];
             $_SESSION['id'] = $userData[0];
@@ -99,6 +98,7 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
         $userInfo = $userManager->getUserInfo($_SESSION['id']);
+        
         require 'view/frontend/userInfo.php';
     }
 

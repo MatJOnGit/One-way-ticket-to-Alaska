@@ -9,7 +9,7 @@ class Backend_Controller extends Controller
     {
         $this->loadManagers();
         $commentManager = new \owtta\Blog\Model\CommentManager();
-        $statusUpdating = $commentManager->hideComment($_GET['commentId']);
+        $commentManager->hideComment($_GET['commentId']);
         header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
     }
     
@@ -17,7 +17,7 @@ class Backend_Controller extends Controller
     {
         $this->loadManagers();
         $commentManager = new \owtta\Blog\Model\CommentManager();
-        $statusDeleting = $commentManager->unhideComment($_GET['commentId']);
+        $commentManager->unhideComment($_GET['commentId']);
         header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
     }
     

@@ -9,26 +9,26 @@ class UserManager extends Manager
     public function getUserInfo($userId)
     {
         $db = $this->dbConnect();
-        $userInfo = $db->prepare('SELECT id, pseudo, email, DATE_FORMAT(registration_date, \'%d/%m/%Y à %Hh%i\') AS registration_date_fr FROM users WHERE id = ?');
-        $userInfo->execute(array($userId));
-        $info = $userInfo->fetch();
-        return $info;
+        $userInfoGetter = $db->prepare('SELECT id, pseudo, email, DATE_FORMAT(registration_date, \'%d/%m/%Y à %Hh%i\') AS registration_date_fr, avatar_id FROM users WHERE id = ?');
+        $userInfoGetter->execute(array($userId));
+        $userInfo = $userInfoGetter->fetch();
+        return $userInfo;
     }
     
     public function getUserCount()
     {
         $db = $this->dbConnect();
-        $userCount = $db->query('SELECT COUNT(*) FROM users');
-        $userNumber = $userCount->fetch();
-        return $userNumber;
+        $userCounter = $db->query('SELECT COUNT(*) FROM users');
+        $userCount = $userCounter->fetch();
+        return $userCount;
     }
     
-    public function isPseudoExisting($pseudo)
+    public function testAccount($pseudo)
     {
         $db = $this->dbConnect();
-        $pseudoTesting = $db->prepare('SELECT id FROM users WHERE pseudo = ?');
-        $pseudoTesting->execute(array($pseudo));
-        $pseudoTestingResults = $pseudoTesting->fetch();
+        $pseudoTester = $db->prepare('SELECT id FROM users WHERE pseudo = ?');
+        $pseudoTester->execute(array($pseudo));
+        $pseudoTestingResults = $pseudoTester->fetch();
         return $pseudoTestingResults[0];
     }
     
@@ -48,7 +48,7 @@ class UserManager extends Manager
         return $newUserId;
     }
     
-    public function getUserData($pseudo, $password)
+    public function getUserPermissions($pseudo, $password)
     {
         $db = $this->dbConnect();
         $userDataGetter = $db->prepare('SELECT id, status FROM users WHERE pseudo = ? AND password = ?');
