@@ -65,4 +65,40 @@ class UserManager extends Manager
         
         return $accountDeletion;
     }
+    
+    public function promoteMember($userId)
+    {
+        $db = $this->dbConnect();
+        $memberPromoter = $db->prepare('UPDATE users SET status = "admin" WHERE id = ?');
+        $memberPromoter->execute(array($userId));
+        $promotedMember = $memberPromoter->fetch();
+        return $promotedMember;
+    }
+    
+    public function demoteAdmin($userId)
+    {
+        $db = $this->dbConnect();
+        $adminDemoter = $db->prepare('UPDATE users SET status = "member" WHERE id = ?');
+        $adminDemoter->execute(array($userId));
+        $demotedAdmin = $adminDemoter->fetch();
+        return $demotedAdmin;
+    }
+                                
+    public function promoteAdmin($userId)
+    {
+        $db = $this->dbConnect();
+        $adminPromoter = $db->prepare('UPDATE users SET status = "owner" WHERE id = ?');
+        $adminPromoter->execute(array($userId));
+        $promotedAdmin = $adminPromoter->fetch();
+        return $promotedAdmin;
+    }
+    
+    public function demoteOwner($userId)
+    {
+        $db = $this->dbConnect();
+        $ownerDemoter = $db->prepare('UPDATE users SET status = "admin" WHERE id = ?');
+        $ownerDemoter->execute(array($userId));
+        $demotedOwner = $ownerDemoter->fetch();
+        return $demotedOwner;
+    }
 }

@@ -130,7 +130,7 @@ try
 
 // Backoffice access & features
     
-    if (isset($_SESSION['status']) && (($_SESSION['status'] === 'admin') || ($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime')))
+    if ((isset($_SESSION['status'])) && (isset($_GET['action'])) && (($_SESSION['status'] === 'admin') || ($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime')))
     {
         // Init backoffice tools
         require 'controller/backend.php';
@@ -178,12 +178,16 @@ try
             $backend_controller->getAdminPanel();
         }
         
+        // End of admin features
+        
         elseif ($_SESSION['status'] === 'admin')
         {
             require 'view/backend/admin404.php';
         }
         
-        elseif ($_SESSION['status'] != 'admin')
+        // "Owner" and "AdminPrime" specific backoffice features
+        
+        else
         {
             if ($_GET['action'] === 'editChapter')
             {
@@ -266,8 +270,50 @@ try
                     throw new Exception('Identifiant de chapitre incorrect');
                 }
             }
+            
+            elseif ($_GET['action'] === 'promoteMember')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $backend_controller->promoteMember();
+                }
+            }
+            
+            elseif ($_GET['action'] === 'demoteAdmin')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $backend_controller->demoteAdmin();
+                }
+            }
+            
+            // End of owner features
+            
+            elseif ($_SESSION['status'] === 'owner')
+            {
+                require 'view/backend/admin404.php';
+            }
+            
+            // AdminPrime" specific backoffice features
+            
+            else
+            {
+                if ($_GET['action'] === 'promoteAdmin')
+                {
+                    if (isset($_GET['id']) && $_GET['id'] > 0)
+                    {
+                        $backend_controller->promoteAdmin();
+                    }
+                }
+                elseif ($_GET['action'] === 'demoteOwner')
+                {
+                    if (isset($_GET['id']) && $_GET['id'] > 0)
+                    {
+                        $backend_controller->demoteOwner();
+                    }
+                }
+            }
         }
-        
     }
 }
 

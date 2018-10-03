@@ -138,4 +138,36 @@ class Backend_Controller extends Controller
             header('Location: index.php?action=getAdminPanel');
         }
     }
+    
+    public function promoteMember()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager->promoteMember($_GET['id']);
+        header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
+    }
+    
+    public function demoteAdmin()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager->demoteAdmin($_GET['id']);
+        header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
+    }
+    
+    public function promoteAdmin()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager->promoteAdmin($_GET['id']);
+        header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
+    }
+        
+    public function demoteOwner()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager->demoteOwner($_GET['id']);
+        header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
+    }
 }
