@@ -13,7 +13,7 @@
         {
             ?>
             <button class="light-blue-button white-border">
-                <a href="">
+                <a href="index.php?action=deleteMember&id=<?php echo $_GET['id'] ?>">
                     <i class="fas fa-user-alt-slash white-item"></i>
                 </a>
             </button>
@@ -64,6 +64,4 @@
         <?php
     }
     ?>
-    
-    
 </div>

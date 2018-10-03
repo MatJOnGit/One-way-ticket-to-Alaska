@@ -57,8 +57,8 @@ class ChapterManager extends Manager
     public function deleteChapter($chapterId)
     {
         $db = $this->dbConnect();
-        $chapterDeletion = $db->prepare('DELETE FROM `chapters` WHERE id=?');
-        $chapterDeletion = $chapterDeletion->execute(array($chapterId));
+        $chapterEraser = $db->prepare('DELETE FROM `chapters` WHERE id=?');
+        $chapterDeletion = $chapterEraser->execute(array($chapterId));
         return $chapterDeletion;
     }
 }

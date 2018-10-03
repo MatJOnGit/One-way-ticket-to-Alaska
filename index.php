@@ -16,11 +16,11 @@ try
         // Access
         if (isset($_SESSION['status']))
         {
-            if (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime'))
+            if (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime') || ($_SESSION['status'] === 'admin'))
             {
                 require 'view/frontend/adminBar.php';
             }
-            elseif (($_SESSION['status'] === 'member') || ($_SESSION['status'] === 'admin'))
+            elseif ($_SESSION['status'] === 'member')
             {
                 require 'view/frontend/memberBar.php';
             }
@@ -117,7 +117,7 @@ try
             }
         }
         
-        elseif (!isset($_SESSION['status']) || ($_SESSION['status'] != 'adminPrime' && $_SESSION['status'] != 'owner'))
+        elseif (!isset($_SESSION['status']) || ($_SESSION['status'] != 'adminPrime' && $_SESSION['status'] != 'owner') && ($_SESSION['status'] != 'admin'))
         {
             require 'view/frontend/404.php';
         }
@@ -130,94 +130,15 @@ try
 
 // Backoffice access & features
     
-    if (isset($_SESSION['status']) && (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime')))
+    if (isset($_SESSION['status']) && (($_SESSION['status'] === 'admin') || ($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime')))
     {
         // Init backoffice tools
         require 'controller/backend.php';
         $backend_controller = new Backend_Controller;
         
         // Backoffice features
-        if ($_GET['action'] === 'getAdminPanel')
-        {
-            $backend_controller->getAdminPanel();
-        }
         
-        elseif ($_GET['action'] === 'editChapter')
-        {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
-            {
-                $backend_controller->editChapterContent();
-            }
-            else 
-            {
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
-        }
-        
-        elseif ($_GET['action'] === 'updateChapterContent')
-        {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['status']))
-            {
-                if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
-                {
-                    $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
-                }
-                else
-                {
-                    throw new Exception('L\'action demandée sur le chapitre ' . $_GET['id'] . 'n\'est pas possible');
-                }
-            }
-            else
-            {
-                throw new Exception('Numéro de commentaire incorrect ou non renseigné');
-            }
-        }
-        
-        elseif ($_GET['action'] === 'addChapter')
-        {
-            $backend_controller->getNewChapterId();
-        }
-        
-        elseif ($_GET['action'] === 'createNewChapter')
-        {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
-            {
-                $backend_controller->createNewChapter($_GET['id']);
-            }
-            else
-            {
-                throw new Exception('Identifiant de chapitre incorrect');
-            }
-        }
-        
-        elseif ($_GET['action'] === 'uploadNewChapterContent')
-        {
-            if (isset($_GET['status']))
-            {
-                if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
-                {
-                    $backend_controller->uploadNewChapter($_POST['chapterContent'], $_GET['status'], $_POST['chapterTitle']);
-                }
-                else
-                {
-                    throw new Exception('L\'action demandée sur le chapitre ' . $_GET['id'] . 'n\'est pas possible');
-                }
-            }
-        }
-        
-        elseif ($_GET['action'] === 'deleteChapter')
-        {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
-            {
-                $backend_controller->deleteChapter($_GET['id']);
-            }
-            else
-            {
-                throw new Exception('Identifiant de chapitre incorrect');
-            }
-        }
-        
-        elseif ($_GET['action'] === 'editCommentStatus')
+        if ($_GET['action'] === 'editCommentStatus')
         {
             if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['newStatus']) && (($_GET['newStatus'] === 'hidden') || ($_GET['newStatus'] === 'unhidden')))
             {
@@ -239,6 +160,114 @@ try
                 throw new Exception('Erreur d\'identifiant de billet envoyé');
             }
         }
+        
+        elseif (($_GET['action'] === 'deleteMember'))
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $backend_controller->deleteAccount();
+            }
+            else
+            {
+                throw new Exception('Erreur d\'identifiant d\'utilisateur');
+            }
+        }
+        
+        elseif ($_GET['action'] === 'getAdminPanel')
+        {
+            $backend_controller->getAdminPanel();
+        }
+        
+        elseif ($_SESSION['status'] === 'admin')
+        {
+            require 'view/backend/admin404.php';
+        }
+        
+        elseif ($_SESSION['status'] != 'admin')
+        {
+            if ($_GET['action'] === 'editChapter')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0 && $_SESSION['status'] != 'admin')
+                {
+                    $backend_controller->editChapterContent();
+                }
+
+                elseif ($_SESSION['status'] === 'admin')
+                {
+                    throw new Exception('Vous ne pouvez pas modifier ce contenu');
+                }
+
+                else 
+                {
+                    throw new Exception('Aucun identifiant de billet envoyé');
+                }
+            }
+
+            elseif ($_GET['action'] === 'updateChapterContent')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['status']) && $_SESSION['status'] != 'admin')
+                {
+                    if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
+                    {
+                        $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
+                    }
+
+                    else
+                    {
+                        throw new Exception('L\'action demandée sur le chapitre ' . $_GET['id'] . 'n\'est pas possible');
+                    }
+                }
+                else
+                {
+                    throw new Exception('Numéro de commentaire incorrect ou non renseigné');
+                }
+            }
+
+            elseif ($_GET['action'] === 'addChapter')
+            {
+                $backend_controller->getNewChapterId();
+            }
+
+            elseif ($_GET['action'] === 'createNewChapter')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $backend_controller->createNewChapter($_GET['id']);
+                }
+                else
+                {
+                    throw new Exception('Identifiant de chapitre incorrect');
+                }
+            }
+
+            elseif ($_GET['action'] === 'uploadNewChapterContent')
+            {
+                if (isset($_GET['status']))
+                {
+                    if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
+                    {
+                        $backend_controller->uploadNewChapter($_POST['chapterContent'], $_GET['status'], $_POST['chapterTitle']);
+                    }
+                    else
+                    {
+                        throw new Exception('L\'action demandée sur le chapitre ' . $_GET['id'] . 'n\'est pas possible');
+                    }
+                }
+            }
+
+            elseif ($_GET['action'] === 'deleteChapter')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $backend_controller->deleteChapter();
+                }
+                else
+                {
+                    throw new Exception('Identifiant de chapitre incorrect');
+                }
+            }
+        }
+        
     }
 }
 

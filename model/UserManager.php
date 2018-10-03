@@ -56,4 +56,13 @@ class UserManager extends Manager
         $userData = $userDataGetter->fetch();
         return $userData;
     }
+    
+    public function deleteAccount($userId)
+    {
+        $db = $this->dbConnect();
+        $accountEraser = $db->prepare('DELETE FROM `users` WHERE id = ?');
+        $accountDeletion = $accountEraser->execute(array($userId));
+        
+        return $accountDeletion;
+    }
 }

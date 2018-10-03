@@ -115,13 +115,25 @@ class Backend_Controller extends Controller
         }
     }
     
-    public function deleteChapter($chapterId)
+    public function deleteChapter()
     {
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
-        $deletedChapter = $chapterManager->deleteChapter($chapterId);
+        $deletedChapter = $chapterManager->deleteChapter($_GET['id']);
         
         if ($deletedChapter === true)
+        {
+            header('Location: index.php?action=getAdminPanel');
+        }
+    }
+    
+    public function deleteAccount()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        $deletedUser = $userManager->deleteAccount($_GET['id']);
+        
+        if ($deletedUser === true)
         {
             header('Location: index.php?action=getAdminPanel');
         }
