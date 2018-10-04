@@ -6,36 +6,36 @@ require_once("model/Manager.php");
 
 class ChapterManager extends Manager
 {
-    public function getChapters()
+    public function deleteChapter($chapterId)
     {
         $db = $this->dbConnect();
-        $chapters = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, status FROM chapters ORDER BY creation_date');
-        return $chapters;
+        $chapterEraser = $db->prepare('DELETE FROM `chapters` WHERE id=?');
+        $chapterDeletion = $chapterEraser->execute(array($chapterId));
+        return $chapterDeletion;
     }
     
-    public function getChapter($chapterId)
+    public function getChapterContent($chapterId)
     {
         $db = $this->dbConnect();
-        $chapterContent = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');
-        $chapterContent->execute(array($chapterId));
-        $chapter = $chapterContent->fetch();
-        return $chapter;
+        $chapterContentGetter = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');
+        $chapterContentGetter->execute(array($chapterId));
+        $chapterContent = $chapterContentGetter->fetch();
+        return $chapterContent;
     }
     
     public function getChapterCount()
     {
         $db = $this->dbConnect();
         $chapterCount = $db->query('SELECT COUNT(*) FROM chapters');
-        $chapterNumber = $chapterCount->fetch();
-        return $chapterNumber;
+        $chapterCount = $chapterCount->fetch();
+        return $chapterCount;
     }
     
-    public function updateChapter($chapterId, $chapterContent, $chapterStatus)
+    public function getChapters()
     {
         $db = $this->dbConnect();
-        $chapterUpdate = $db->prepare('UPDATE `chapters` SET `content`=?, `status`=? WHERE id=?');
-        $chapterUpdate = $chapterUpdate->execute(array($chapterContent, $chapterStatus, $chapterId));
-        return $chapterUpdate;
+        $chapterList = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, status FROM chapters ORDER BY creation_date');
+        return $chapterList;
     }
     
     public function getNewChapterId()
@@ -46,6 +46,14 @@ class ChapterManager extends Manager
         return $chapterId;
     }
     
+    public function updateChapter($chapterId, $chapterContent, $chapterStatus)
+    {
+        $db = $this->dbConnect();
+        $chapterUpdate = $db->prepare('UPDATE `chapters` SET `content`=?, `status`=? WHERE id=?');
+        $chapterUpdate = $chapterUpdate->execute(array($chapterContent, $chapterStatus, $chapterId));
+        return $chapterUpdate;
+    }
+    
     public function uploadNewChapter($chapterContent, $chapterStatus, $chapterTitle)
     {
         $db = $this->dbConnect();
@@ -54,11 +62,5 @@ class ChapterManager extends Manager
         return $chapterUpload;
     }
     
-    public function deleteChapter($chapterId)
-    {
-        $db = $this->dbConnect();
-        $chapterEraser = $db->prepare('DELETE FROM `chapters` WHERE id=?');
-        $chapterDeletion = $chapterEraser->execute(array($chapterId));
-        return $chapterDeletion;
-    }
+    
 }

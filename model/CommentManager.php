@@ -6,13 +6,13 @@ require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
-    public function getCommentsCountByChapter($chapterId)
+    public function addComment($chapterId, $pseudo, $comment)
     {
         $db = $this->dbConnect();
-        $commentsCount = $db->prepare('SELECT COUNT(*) FROM comments WHERE post_id= ?');
-        $commentsCount->execute(array($chapterId));
-        $commentsNumber = $commentsCount->fetch();
-        return $commentsNumber;
+        $addComment = $db->prepare('INSERT INTO comments (post_id, author, comment, comment_date) VALUES (?, ?, ?, NOW())');
+        $addComment->execute(array($chapterId, $pseudo, $comment));
+        $addedComment = $addComment->fetch();
+        return $addedComment;
     }
     
     public function getComments($chapterId)
@@ -31,6 +31,15 @@ class CommentManager extends Manager
         return $commentsNumber;
     }
     
+    public function getCommentsCountByChapter($chapterId)
+    {
+        $db = $this->dbConnect();
+        $commentsCount = $db->prepare('SELECT COUNT(*) FROM comments WHERE post_id= ?');
+        $commentsCount->execute(array($chapterId));
+        $commentsNumber = $commentsCount->fetch();
+        return $commentsNumber;
+    }
+    
     public function getReportedCommentsCount()
     {
         $db = $this->dbConnect();
@@ -39,28 +48,10 @@ class CommentManager extends Manager
         return $commentsNumber;
     }
     
-    public function addComment($chapterId, $pseudo, $comment)
-    {
-        $db = $this->dbConnect();
-        $addComment = $db->prepare('INSERT INTO comments (post_id, author, comment, comment_date) VALUES (?, ?, ?, NOW())');
-        $addComment->execute(array($chapterId, $pseudo, $comment));
-        $addedComment = $addComment->fetch();
-        return $addedComment;
-    }
-    
     public function hideComment($commentId)
     {
         $db = $this->dbConnect();
         $editComment = $db->prepare('UPDATE comments SET status = "deleted" WHERE id = ?');
-        $editComment->execute(array($commentId));
-        $editedComment = $editComment->fetch();
-        return $editedComment;
-    }
-    
-    public function unhideComment($commentId)
-    {
-        $db = $this->dbConnect();
-        $editComment = $db->prepare('UPDATE comments SET status = NULL WHERE id = ?');
         $editComment->execute(array($commentId));
         $editedComment = $editComment->fetch();
         return $editedComment;
@@ -73,5 +64,14 @@ class CommentManager extends Manager
         $reportComment->execute(array($commentId));
         $reportedComment = $reportComment->fetch();
         return $reportedComment;
+    }
+    
+    public function unhideComment($commentId)
+    {
+        $db = $this->dbConnect();
+        $editComment = $db->prepare('UPDATE comments SET status = NULL WHERE id = ?');
+        $editComment->execute(array($commentId));
+        $editedComment = $editComment->fetch();
+        return $editedComment;
     }
 }

@@ -45,11 +45,11 @@
             }
             ?>
     
-            <button class="light-blue-button white-border">
-                <a href="index.php?action=demoteAdmin&id=<?php echo $_GET['id'] ?>">
+            <a href="index.php?action=demoteAdmin&id=<?php echo $_GET['id'] ?>">
+                <button class="light-blue-button white-border">
                     <i class="fas fa-user-times white-item"></i>
-                </a>
-            </button>
+                </button>
+            </a>
             <?php
                 
 

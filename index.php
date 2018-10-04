@@ -27,11 +27,12 @@ try
             {
                 require 'view/frontend/adminBar.php';
             }
-            elseif ($_SESSION['status'] === 'member')
+            else
             {
                 require 'view/frontend/memberBar.php';
             }
         }
+        
         else
         {
             require 'view/frontend/logBar.php';
