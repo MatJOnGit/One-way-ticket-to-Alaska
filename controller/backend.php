@@ -131,19 +131,23 @@ class Backend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
-        $deletedUser = $userManager->deleteAccount($_GET['id']);
-        
-        if ($deletedUser === true)
+        $userStatus = $userManager->getUserStatus($_GET['id']);
+        if (isset($userStatus) && $userStatus[0] === 'member')
         {
-            header('Location: index.php?action=getAdminPanel');
+            $deletedUser = $userManager->deleteAccount($_GET['id']);
         }
+        header('Location: index.php?action=getMemberPanel&id' . $_GET['id']);
     }
     
     public function promoteMember()
     {
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
-        $userManager->promoteMember($_GET['id']);
+        $userStatus = $userManager->getUserStatus($_GET['id']);
+        if (isset($userStatus) && $userStatus[0] === 'member')
+        {
+            $userManager->promoteMember($_GET['id']);
+        }
         header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
     }
     
@@ -151,7 +155,11 @@ class Backend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
-        $userManager->demoteAdmin($_GET['id']);
+        $userStatus = $userManager->getUserStatus($_GET['id']);
+        if (isset($userStatus) && $userStatus[0] === 'admin')
+        {
+            $userManager->demoteAdmin($_GET['id']);
+        }
         header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
     }
     
@@ -159,7 +167,11 @@ class Backend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
-        $userManager->promoteAdmin($_GET['id']);
+        $userStatus = $userManager->getUserStatus($_GET['id']);
+        if (isset($userStatus) && $userStatus[0] === 'admin')
+        {
+            $userManager->promoteAdmin($_GET['id']);
+        }
         header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
     }
         
@@ -167,7 +179,11 @@ class Backend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
-        $userManager->demoteOwner($_GET['id']);
+        $userStatus = $userManager->getUserStatus($_GET['id']);
+        if (isset($userStatus) && $userStatus[0] === 'owner')
+        {
+            $userManager->demoteOwner($_GET['id']);
+        }
         header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
     }
 }

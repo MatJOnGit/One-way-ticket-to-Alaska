@@ -57,6 +57,15 @@ class UserManager extends Manager
         return $userData;
     }
     
+    public function getUserStatus($userId)
+    {
+        $db = $this->dbConnect();
+        $userStatusGetter = $db->prepare('SELECT status FROM users WHERE id = ?');
+        $userStatusGetter->execute(array($userId));
+        $userStatus = $userStatusGetter->fetch();
+        return $userStatus;
+    }
+    
     public function deleteAccount($userId)
     {
         $db = $this->dbConnect();

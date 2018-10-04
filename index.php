@@ -5,15 +5,22 @@ require 'view/frontend/header.php';
 try
 {
     
-// Access & frontoffice features
-    
-    if (isset($_GET['action']))
+    if (!isset($_GET['action']))
     {
-        // Init Frontoffice tools
+        require 'view/frontend/welcome.php';
+    }
+    
+    elseif (isset($_GET['action']))
+    {
         require 'controller/frontend.php';
         $frontend_controller = new Frontend_Controller;
         
-        // Access
+/**
+*
+* Navigation bar display
+*
+**/
+        
         if (isset($_SESSION['status']))
         {
             if (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime') || ($_SESSION['status'] === 'admin'))
@@ -30,7 +37,12 @@ try
             require 'view/frontend/logBar.php';
         }
         
-        // Frontoffice features
+/**
+*
+* Frontoffice features available for all users
+*
+**/
+        
         if ($_GET['action'] === 'getChaptersList')
         {
             $frontend_controller->getChaptersList();
@@ -43,21 +55,6 @@ try
                 $frontend_controller->getChapterContent();
             }
             else 
-            {
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
-        }
-        
-        elseif ($_GET['action'] === 'addComment')
-        {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
-            {
-                if (isset($_SESSION['status']))
-                {
-                    $frontend_controller->addComment();
-                }
-            }
-            else
             {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
@@ -83,14 +80,37 @@ try
             $frontend_controller->logAccount();
         }
         
+        elseif (!isset($_SESSION['status']))
+        {
+            require 'view/frontend/404.php';
+        }
+        
+/**
+*
+* Frontoffice features available for all members, admins, owners and adminPrimes
+*
+**/
+        
+        elseif ($_GET['action'] === 'addComment')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $frontend_controller->addComment();
+            }
+            else
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+            
         elseif ($_GET['action'] === 'signOut')
         {
             $frontend_controller->signOut();
         }
-        
+
         elseif ($_GET['action'] === 'getMemberPanel')
         {
-            if (!isset($_GET['id']) && (isset($_SESSION['id'])) && $_SESSION['id'] > 0)
+            if (!isset($_GET['id']))
             {
                 $frontend_controller->getUserMemberPanel();
             }
@@ -102,9 +122,8 @@ try
             {
                 require 'view/frontend/404.php';
             }
-
         }
-        
+
         elseif ($_GET['action'] === 'reportComment')
         {
             if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0)
@@ -116,80 +135,71 @@ try
                 throw new Exception('Il y a des paramètres manquants à l\'exécution de la fonctionnalité');
             }
         }
-        
-        elseif (!isset($_SESSION['status']) || ($_SESSION['status'] != 'adminPrime' && $_SESSION['status'] != 'owner') && ($_SESSION['status'] != 'admin'))
+            
+        elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'member'))
         {
             require 'view/frontend/404.php';
         }
-    }
-    
-    else
-    {
-        require 'view/frontend/welcome.php';
-    }
-
-// Backoffice access & features
-    
-    if ((isset($_SESSION['status'])) && (isset($_GET['action'])) && (($_SESSION['status'] === 'admin') || ($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime')))
-    {
-        // Init backoffice tools
-        require 'controller/backend.php';
-        $backend_controller = new Backend_Controller;
-        
-        // Backoffice features
-        
-        if ($_GET['action'] === 'editCommentStatus')
-        {
-            if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['newStatus']) && (($_GET['newStatus'] === 'hidden') || ($_GET['newStatus'] === 'unhidden')))
-            {
-                if ($_GET['newStatus'] === 'hidden')
-                {
-                    $backend_controller->hideComment();
-                }
-                else
-                {
-                    $backend_controller->unhideComment();
-                }
-            }
-            elseif (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['newStatus']))
-            {
-                throw new Exception('Nouveau status non reconnu');
-            }
-            else
-            {
-                throw new Exception('Erreur d\'identifiant de billet envoyé');
-            }
-        }
-        
-        elseif (($_GET['action'] === 'deleteMember'))
-        {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
-            {
-                $backend_controller->deleteAccount();
-            }
-            else
-            {
-                throw new Exception('Erreur d\'identifiant d\'utilisateur');
-            }
-        }
-        
-        elseif ($_GET['action'] === 'getAdminPanel')
-        {
-            $backend_controller->getAdminPanel();
-        }
-        
-        // End of admin features
-        
-        elseif ($_SESSION['status'] === 'admin')
-        {
-            require 'view/backend/admin404.php';
-        }
-        
-        // "Owner" and "AdminPrime" specific backoffice features
         
         else
         {
-            if ($_GET['action'] === 'editChapter')
+            require 'controller/backend.php';
+            $backend_controller = new Backend_Controller;
+            
+/**
+*
+* Backoffice features available for all admins, owners and adminPrimes
+*
+**/
+            
+            if ($_GET['action'] === 'editCommentStatus')
+            {
+                if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['newStatus']) && (($_GET['newStatus'] === 'hidden') || ($_GET['newStatus'] === 'unhidden')))
+                {
+                    if ($_GET['newStatus'] === 'hidden')
+                    {
+                        $backend_controller->hideComment();
+                    }
+                    else
+                    {
+                        $backend_controller->unhideComment();
+                    }
+                }
+                else
+                {
+                    require 'view/frontend/404.php';
+                }
+            }
+            
+            elseif (($_GET['action'] === 'deleteMember'))
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $backend_controller->deleteAccount();
+                }
+                else
+                {
+                    throw new Exception('Erreur d\'identifiant d\'utilisateur');
+                }
+            }
+            
+            elseif ($_GET['action'] === 'getAdminPanel')
+            {
+                $backend_controller->getAdminPanel();
+            }
+            
+            elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin'))
+            {
+                require 'view/backend/admin404.php';
+            }
+            
+/**
+*
+* Backoffice features available for all owners and adminPrimes
+*
+**/
+            
+            elseif ($_GET['action'] === 'editChapter')
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0 && $_SESSION['status'] != 'admin')
                 {
@@ -206,7 +216,7 @@ try
                     throw new Exception('Aucun identifiant de billet envoyé');
                 }
             }
-
+            
             elseif ($_GET['action'] === 'updateChapterContent')
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['status']) && $_SESSION['status'] != 'admin')
@@ -226,7 +236,7 @@ try
                     throw new Exception('Numéro de commentaire incorrect ou non renseigné');
                 }
             }
-
+            
             elseif ($_GET['action'] === 'addChapter')
             {
                 $backend_controller->getNewChapterId();
@@ -287,31 +297,36 @@ try
                 }
             }
             
-            // End of owner features
-            
-            elseif ($_SESSION['status'] === 'owner')
+            elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'owner'))
             {
                 require 'view/backend/admin404.php';
             }
             
-            // AdminPrime" specific backoffice features
+/**
+*
+* Backoffice features available for adminPrime only
+*
+**/
+            
+            elseif ($_GET['action'] === 'promoteAdmin')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $backend_controller->promoteAdmin();
+                }
+            }
+            
+            elseif ($_GET['action'] === 'demoteOwner')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $backend_controller->demoteOwner();
+                }
+            }
             
             else
             {
-                if ($_GET['action'] === 'promoteAdmin')
-                {
-                    if (isset($_GET['id']) && $_GET['id'] > 0)
-                    {
-                        $backend_controller->promoteAdmin();
-                    }
-                }
-                elseif ($_GET['action'] === 'demoteOwner')
-                {
-                    if (isset($_GET['id']) && $_GET['id'] > 0)
-                    {
-                        $backend_controller->demoteOwner();
-                    }
-                }
+                require 'view/backend/admin404.php';
             }
         }
     }
