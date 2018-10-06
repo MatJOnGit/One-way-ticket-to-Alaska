@@ -10,13 +10,13 @@
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
                 <li>
-                    <button class="light-blue-button white-border"><a href="index.php?action=getAdminPanel">Tableau de bord</a></button>
+                    <a href="index.php?action=getAdminPanel" class="blue-button regular-button">Tableau de bord</a>
                 </li>
                 <li>
-                    <button class="white-button dark-blue-border"><a href="index.php">Voir mon site</a></button>
+                    <a href="index.php" class="white-button regular-button">Voir mon site</a>
                 </li>
                 <li>
-                    <button class="orange-button white-border"><a href="index.php">Déconnexion</a></button>
+                    <a href="index.php" class="orange-button regular-button">Déconnexion</a>
                 </li>
             </ul>
         </div>
@@ -35,10 +35,10 @@
                         <?= $chapter['content'] ?>
                     </textarea>
                     <div class="submit-buttons-block">
-                        <button class="light-blue-button white-border" type="submit">
+                        <button class="blue-button regular-button" type="submit">
                             <i class="fas fa-save white-item"></i>Enregistrer
                         </button>
-                        <button class="light-blue-button white-border " type="submit" formaction="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>&amp;status=published">
+                        <button class="blue-button regular-button" type="submit" formaction="index.php?action=updateChapterContent&amp;id=<?= $_GET['id'] ?>&amp;status=published">
                             <i class="fas fa-globe-americas white-item"></i>Publier
                         </button>
                     </div>

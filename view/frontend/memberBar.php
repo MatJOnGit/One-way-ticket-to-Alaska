@@ -10,10 +10,10 @@
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
                 <li>
-                    <button class="white-button light-blue-border"><a href="index.php?action=getMemberPanel">Espace membre</a></button>
+                    <a href="index.php?action=getMemberPanel" class="white-button regular-button">Espace membre</a>
                 </li>
                 <li>
-                    <button class="orange-button white-border"><a href="index.php?action=signOut">Déconnexion</a></button>
+                    <a href="index.php?action=signOut" class="orange-button regular-button">Déconnexion</a>
                 </li>
             </ul>
         </div>

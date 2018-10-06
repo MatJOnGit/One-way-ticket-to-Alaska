@@ -10,10 +10,10 @@
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
                 <li>
-                    <button class="white-button dark-blue-border"><a href="index.php">Voir mon site</a></button>
+                    <a href="index.php" class="white-button regular-button">Voir mon site</a>
                 </li>
                 <li>
-                    <button class="orange-button white-border"><a href="index.php?action=signOut">Déconnexion</a></button>
+                    <a href="index.php" class="orange-button regular-button">Déconnexion</a>
                 </li>
             </ul>
         </div>
@@ -84,11 +84,10 @@
                 }
                 $chapters->closeCursor();
                 ?>
-            <button class="light-blue-button white-border">
-                <a href="index.php?action=addChapter">
-                    <i class="fas fa-plus"></i>
-                </a>
-            </button>
+            
+            <a href="index.php?action=addChapter" class="blue-button regular-button">
+                <i class="fas fa-plus"></i>
+            </a>
         </div>
         
         <div class="admin-content">
@@ -99,7 +98,7 @@
                         <label for="username">Recherche un membre :</label>
                         <div class="research-form">
                             <input type="text" name="username" id="username" required />
-                            <button class="light-blue-button white-border" type="submit">
+                            <button class="blue-button regular-button" type="submit">
                                 <i class="fas fa-search white-item"></i>
                             </button>
                         </div>

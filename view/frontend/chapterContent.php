@@ -1,9 +1,9 @@
 <div class="book-wrapper">
     <div class="book-container">
         <div class="book-content">
-            <button class="white-button light-blue-border">
-                <a href="index.php?action=getChaptersList"><span>&#10094;&#10094;</span>Retour au menu des chapitres</a>
-            </button>
+            <a href="index.php?action=getChaptersList" class="white-button regular-button">
+                <span>&#10094;&#10094;</span>Retour au menu des chapitres
+            </a>
 
             <h3>Chapitre <?= $chapter['id'] ?><br/><?= $chapter['title'] ?></h3>
             

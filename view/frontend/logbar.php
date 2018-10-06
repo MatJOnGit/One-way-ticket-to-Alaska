@@ -10,10 +10,10 @@
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
                 <li>
-                    <button class="light-blue-button white-border"><a href="index.php?action=register">Inscription</a></button>
+                    <a href="index.php?action=register" class="blue-button regular-button">Inscription</a>
                 </li>
                 <li>
-                    <button class="white-button light-blue-border"><a href="index.php?action=signIn">Connexion</a></button>
+                    <a href="index.php?action=signIn" class="white-button regular-button">Connexion</a>
                 </li>
             </ul>
         </div>

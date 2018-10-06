@@ -10,8 +10,11 @@
                     {
                         ?>
                         <li>
-                            <button class="grey-button white-border"><a href=""><i class="fas fa-book-open white-item"></i> <?= $chapter['id'] ?> : <em>actuellement indisponible</em></a></button>
-                            <a href="" title="Ce chapitre n'est pas encore disponible à la lecture. Patience est mère de vertue ;)"><i class="fas fa-info-circle chapterInfo"></i></a>
+                            <a href="" class="grey-button regular-button">
+                                <i class="fas fa-book-open white-item"></i> <?= $chapter['id'] ?> : <em>actuellement indisponible</em>
+                            </a>
+                            
+                            <i class="fas fa-info-circle chapter-help blue-item" title="Ce chapitre n'est pas encore disponible à la lecture. Patience est mère de vertue ;)"></i>
                         </li>
                         <?php
                     }
@@ -19,7 +22,9 @@
                     {
                         ?>
                         <li>
-                            <button class="light-blue-button white-border"><a href="index.php?action=getChapter&amp;id=<?= $chapter['id'] ?>"><i class="fas fa-book-open white-item"></i> <?= $chapter['id'] ?> : <?= htmlspecialchars($chapter['title']) ?></a></button>
+                            <a href="index.php?action=getChapter&amp;id=<?= $chapter['id'] ?>" class="blue-button regular-button">
+                                <i class="fas fa-book-open white-item"></i> <?= $chapter['id'] ?> : <?= htmlspecialchars($chapter['title']) ?>
+                            </a>
                         </li>
                         <?php
                     }

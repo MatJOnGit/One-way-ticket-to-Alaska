@@ -21,15 +21,15 @@ while ($comment = $comments->fetch())
                 if (($comment['status'] === 'deleted'))
                 {
                     ?>
-                    <a href="index.php?action=editCommentStatus&amp;chapterId=<?= $_GET['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;newStatus=unhidden"><i class="fas fa-eye"></i></a>
+                    <a href="index.php?action=editCommentStatus&amp;chapterId=<?= $_GET['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;newStatus=unhidden"><i class="fas fa-eye blue-item"></i></a>
                     <?php
                 }
                 else
                 {
                     // the editCommentContent feature will be edited later to display a form in javascript
                     ?>
-                    <a href="index.php?action=editCommentContent&amp;commentId=<?= $comment['id'] ?>"><i class="fas fa-edit"></i></a>
-                    <a href="index.php?action=editCommentStatus&amp;chapterId=<?= $_GET['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;newStatus=hidden"><i class="fas fa-eye-slash"></i></a>
+                    <a href="index.php?action=editCommentContent&amp;commentId=<?= $comment['id'] ?>"><i class="fas fa-edit blue-item"></i></a>
+                    <a href="index.php?action=editCommentStatus&amp;chapterId=<?= $_GET['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;newStatus=hidden"><i class="fas fa-eye-slash blue-item"></i></a>
                     <?php
                 }
             }
@@ -38,13 +38,13 @@ while ($comment = $comments->fetch())
                 if (($comment['status'] === 'reported'))
                 {
                     ?>
-                    <a href=""><i class="fas fa-flag"></i></a>
+                    <a href=""><i class="fas fa-flag blue-item"></i></a>
                     <?php
                 }
                 elseif (is_null($comment['status']))
                 {
                     ?>
-                    <a href="index.php?action=reportComment&amp;chapterId=<?= $_GET['id'] ?>&commentId=<?= $comment['id'] ?>"><i class="fas fa-flag-checkered"></i></a>
+                    <a href="index.php?action=reportComment&amp;chapterId=<?= $_GET['id'] ?>&commentId=<?= $comment['id'] ?>"><i class="fas fa-flag-checkered blue-item"></i></a>
                     <?php
                 }
             }

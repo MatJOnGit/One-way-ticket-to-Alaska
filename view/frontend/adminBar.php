@@ -10,13 +10,13 @@
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
                 <li>
-                    <button class="light-blue-button white-border"><a href="index.php?action=getAdminPanel">Panneau d'administration</a></button>
+                    <a href="index.php?action=getAdminPanel" class="blue-button regular-button">Panneau d'administration</a>
                 </li>
                 <li>
-                    <button class="white-button light-blue-border"><a href="index.php?action=getMemberPanel">Espace membre</a></button>
+                    <a href="index.php?action=getMemberPanel" class="white-button regular-button">Espace membre</a>    
                 </li>
                 <li>
-                    <button class="orange-button white-border"><a href="index.php?action=signOut">Déconnexion</a></button>
+                    <a href="index.php?action=signOut" class="orange-button regular-button">Déconnexion</a>
                 </li>
             </ul>
         </div>

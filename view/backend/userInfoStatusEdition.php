@@ -12,20 +12,16 @@
         if ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime')
         {
             ?>
-            <button class="light-blue-button white-border">
-                <a href="index.php?action=promoteMember&id=<?php echo $_GET['id'] ?>">
-                    <i class="fas fa-user-graduate white-item"></i>
-                </a>
-            </button>
+            <a href="index.php?action=promoteMember&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">
+                <i class="fas fa-user-graduate white-item"></i>
+            </a>
             <?php
         }
         ?>
         
-        <button class="light-blue-button white-border">
-            <a href="index.php?action=deleteMember&id=<?php echo $_GET['id'] ?>">
-                 <i class="fas fa-user-alt-slash white-item"></i>
-            </a>
-        </button>
+        <a href="index.php?action=deleteMember&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">
+            <i class="fas fa-user-alt-slash white-item"></i>
+        </a>
         <?php
     }
             
@@ -36,19 +32,15 @@
             if ($_SESSION['status'] === 'adminPrime')
             {
                 ?>
-                <button class="light-blue-button white-border">
-                    <a href="index.php?action=promoteAdmin&id=<?php echo $_GET['id'] ?>">
-                        <i class="fas fa-user-graduate white-item"></i>
-                    </a>
-                </button>
+                <a href="index.php?action=promoteAdmin&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">
+                    <i class="fas fa-user-graduate white-item"></i>
+                </a>
                 <?php
             }
             ?>
     
-            <a href="index.php?action=demoteAdmin&id=<?php echo $_GET['id'] ?>">
-                <button class="light-blue-button white-border">
-                    <i class="fas fa-user-times white-item"></i>
-                </button>
+            <a href="index.php?action=demoteAdmin&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">
+                <i class="fas fa-user-times white-item"></i>
             </a>
             <?php
                 
@@ -59,11 +51,9 @@
     elseif ($userInfo['status'] === 'owner' && $_SESSION['status'] === 'adminPrime')
     {
         ?>
-        <button class="light-blue-button white-border">
-            <a href="index.php?action=demoteOwner&id=<?php echo $_GET['id'] ?>">
-                <i class="fas fa-user-times white-item"></i>
-            </a>
-        </button>
+        <a href="index.php?action=demoteOwner&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">
+            <i class="fas fa-user-times white-item"></i>
+        </a>
         <?php
     }
     ?>
