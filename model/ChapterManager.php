@@ -17,7 +17,7 @@ class ChapterManager extends Manager
     public function getChapterContent($chapterId)
     {
         $db = $this->dbConnect();
-        $chapterContentGetter = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');
+        $chapterContentGetter = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, status FROM chapters WHERE id = ?');
         $chapterContentGetter->execute(array($chapterId));
         $chapterContent = $chapterContentGetter->fetch();
         return $chapterContent;

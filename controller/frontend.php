@@ -50,7 +50,8 @@ class Frontend_Controller extends Controller
     
     /**
     *
-    * getChapterContent method tests if the chapter is exists, and display it if so
+    * getChapterContent method tests if the chapter is exists, and only display it if
+    * it has a published status, or if the user is owner or adminPrime
     *
     **/
     public function getChapterContent()
@@ -61,11 +62,11 @@ class Frontend_Controller extends Controller
 
         $chapter = $chapterManager->getChapterContent($_GET['id']);
         
-        if (isset($chapter['id']))
+        if ($chapter['status'] === 'published' || (isset($_SESSION['status']) && ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime')))
         {
             $commentsCount = $commentManager->getCommentsCountByChapter($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
-            require('view/frontend/chapterContent.php');
+            require('view/frontend/chapterContent.php');            
         }
         else
         {
