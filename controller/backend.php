@@ -7,6 +7,7 @@ class Backend_Controller extends Controller
 {
     public function createNewChapter()
     {
+        $this->displayNavBar();
         require('view/backend/chapterAdding.php');
     }
     
@@ -60,15 +61,16 @@ class Backend_Controller extends Controller
     
     public function editChapterContent()
     {
+        $this->displayNavBar();
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $chapter = $chapterManager->getChapterContent($_GET['id']);
-        
         require('view/backend/chapterEditing.php');
     }
     
     public function getAdminPanel()
     {
+        $this->displayNavBar();
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
@@ -82,24 +84,20 @@ class Backend_Controller extends Controller
 
         require('view/backend/dashboard.php');
     }
-    
-    public function getChapterslist()
-    {
-        $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
-        $chapters = $chapterManager->getChapters();
-            
-        require('view/frontend/chaptersList.php');
-    }
-    
+        
     public function getNewChapterId()
     {
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $newChapterId = $chapterManager->getNewChapterId();
         
-        if ($newChapterId[0] > 0)
+        if ($newChapterId[0] > 1)
         {
+            header('Location: index.php?action=createNewChapter&id=' . $newChapterId[0]);
+        }
+        else
+        {
+            $newChapterId[0] = 1;
             header('Location: index.php?action=createNewChapter&id=' . $newChapterId[0]);
         }
     }

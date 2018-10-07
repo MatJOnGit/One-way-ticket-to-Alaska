@@ -1,26 +1,3 @@
-<div class="admin-session-bar">
-    <div>
-        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-        <label for="openSidebarMenu" class="sidebarIconToggle">
-            <div class="spinner diagonal part-1"></div>
-            <div class="spinner horizontal"></div>
-            <div class="spinner diagonal part-2"></div>
-        </label>
-
-        <div id="sidebarMenu">
-            <ul class="sidebarMenuInner">
-                <li>
-                    <a href="index.php" class="white-button regular-button">Voir mon site</a>
-                </li>
-                <li>
-                    <a href="index.php" class="orange-button regular-button">Déconnexion</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <p>Bienvenue sur le tableau de bord !</p>
-</div>
-
 <div class="admin-panel-wrapper">
     <div class="admin-content-container">
         <div class="admin-content">
@@ -60,30 +37,31 @@
         
         <div class="admin-content">
             <h3>Edition du roman</h3>
-                <?php
-                while ($chapter = $chapters->fetch())
-                {
-                ?>
-                    <div class="grey-box">
-                        <div class="chapter-options">
-                            <div>
-                                <i class="fas fa-broadcast-tower <?php if ($chapter['status'] === 'published') { ?> green<?php } else { ?> red<?php } ?>-item"></i>
-                                <a href="index.php?action=getChapter&amp;id=<?= $chapter['id'] ?>">Chapitre <?= $chapter['id'] ?> :<br/> <?= htmlspecialchars($chapter['title']) ?></a>
-                            </div>
-                            <div>
-                                <a href="index.php?action=editChapter&amp;id=<?= $chapter['id'] ?>">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="index.php?action=deleteChapter&amp;id=<?= $chapter['id'] ?>">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                            </div>
+            
+            <?php
+            while ($chapter = $chapters->fetch())
+            {
+            ?>
+                <div class="grey-box">
+                    <div class="chapter-options">
+                        <div>
+                            <i class="fas fa-broadcast-tower <?php if ($chapter['status'] === 'published') { ?> green<?php } else { ?> red<?php } ?>-item"></i>
+                            <a href="index.php?action=getChapter&amp;id=<?= $chapter['id'] ?>">Chapitre <?= $chapter['id'] ?> :<br/> <?= htmlspecialchars($chapter['title']) ?></a>
+                        </div>
+                        <div>
+                            <a href="index.php?action=editChapter&amp;id=<?= $chapter['id'] ?>">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="index.php?action=deleteChapter&amp;id=<?= $chapter['id'] ?>">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
                         </div>
                     </div>
-                <?php
-                }
-                $chapters->closeCursor();
-                ?>
+                </div>
+            <?php
+            }
+            $chapters->closeCursor();
+            ?>
             
             <a href="index.php?action=addChapter" class="blue-button regular-button">
                 <i class="fas fa-plus"></i>

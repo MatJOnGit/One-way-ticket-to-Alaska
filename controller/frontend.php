@@ -16,7 +16,7 @@ class Frontend_Controller extends Controller
     /**
     *
     * createAccount method tests if the username is already used, and create a new account with
-    * data in the register form if it is not
+    * data in the register form if it is not.
     *
     **/
     public function createAccount()
@@ -51,11 +51,12 @@ class Frontend_Controller extends Controller
     /**
     *
     * getChapterContent method tests if the chapter is exists, and only display it if
-    * it has a published status, or if the user is owner or adminPrime
+    * it has a published status, or if the user is owner or adminPrime.
     *
     **/
     public function getChapterContent()
     {
+        $this->displayNavBar();
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $commentManager = new \owtta\Blog\Model\CommentManager();
@@ -76,6 +77,7 @@ class Frontend_Controller extends Controller
     
     public function getChapterslist()
     {
+        $this->displayNavBar();
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $chapters = $chapterManager->getChapters();
@@ -85,6 +87,7 @@ class Frontend_Controller extends Controller
     
     public function getSpecificMemberPanel()
     {
+        $this->displayNavBar();
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
         $userInfo = $userManager->getUserInfo($_GET['id']);
@@ -93,6 +96,7 @@ class Frontend_Controller extends Controller
     
     public function getUserMemberPanel()
     {
+        $this->displayNavBar();
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
         $userInfo = $userManager->getUserInfo($_SESSION['id']);
@@ -103,7 +107,7 @@ class Frontend_Controller extends Controller
     /**
     *
     * logAccount method tests if the username and password set on the signin form are correct,
-    * and set session data if so
+    * and set session data if so.
     *
     **/
     public function logAccount()
@@ -126,6 +130,7 @@ class Frontend_Controller extends Controller
     
     public function register()
     {
+        $this->displayNavBar();
         $this->loadManagers();
         require('view/frontend/register.php');
     }
@@ -140,6 +145,7 @@ class Frontend_Controller extends Controller
     
     public function signIn()
     {
+        $this->displayNavBar();
         require('view/frontend/signIn.php');
     }
     
