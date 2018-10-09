@@ -48,6 +48,33 @@ class Frontend_Controller extends Controller
         }
     }
     
+    public function editUserParam()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+
+        if ($_GET['updatedParam'] === 'userName' || $_GET['updatedParam'] === 'userEmail' || $_GET['updatedParam'] === 'userPwd')
+        {
+            if ($_GET['updatedParam'] === 'userName')
+            {
+                $editedUserData = $userManager->editUserName($_POST['newUserName'], $_GET['id']);
+            }
+            elseif ($_GET['updatedParam'] === 'userEmail')
+            {
+                $editedUserData = $userManager->editUserEmail($_POST['newUserEmail'], $_GET['id']);
+            }
+            elseif ($_GET['updatedParam'] === 'userPwd')
+            {
+                $editedUserData = $userManager->editUserPwd($_POST['newUserPwd'], $_GET['id']);
+            }
+            header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
+        }
+        else
+        {
+            require 'view/frontend/404.php';
+        }
+    }
+    
     /**
     *
     * getChapterContent method tests if the chapter is exists, and only display it if
@@ -71,7 +98,7 @@ class Frontend_Controller extends Controller
         }
         else
         {
-            require('view/frontend/404.php');
+            require 'view/frontend/404.php';
         }
     }
     

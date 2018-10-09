@@ -58,6 +58,11 @@ try
             $frontend_controller->logAccount();
         }
         
+        elseif ($_GET['action'] === 'editMemberParam' && isset($_GET['updatedParam']))
+        {
+            $frontend_controller->editUserParam();
+        }
+        
         elseif (!isset($_SESSION['status']))
         {
             require 'view/frontend/404.php';

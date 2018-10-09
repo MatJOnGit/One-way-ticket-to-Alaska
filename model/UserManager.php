@@ -30,7 +30,7 @@ class UserManager extends Manager
     public function deleteAccount($userId)
     {
         $db = $this->dbConnect();
-        $accountEraser = $db->prepare('DELETE FROM `users` WHERE id = ?');
+        $accountEraser = $db->prepare('DELETE FROM users WHERE id = ?');
         $accountDeletion = $accountEraser->execute(array($userId));
         return $accountDeletion;
     }
@@ -51,6 +51,33 @@ class UserManager extends Manager
         $ownerDemoter->execute(array($userId));
         $demotedOwner = $ownerDemoter->fetch();
         return $demotedOwner;
+    }
+    
+    public function editUserEmail($newUserEmail, $userId)
+    {
+        $db = $this->dbConnect();
+        $userEmailUpdater = $db->prepare('UPDATE users SET email = ? WHERE id = ?');
+        $userEmailUpdater->execute(array($newUserEmail, $userId));
+        $updatedUserEmail = $userEmailUpdater->fetch();
+        return $updatedUserEmail;
+    }
+    
+    public function editUserName($newUserName, $userId)
+    {
+        $db = $this->dbConnect();
+        $userNameUpdater = $db->prepare('UPDATE users SET pseudo = ? WHERE id = ?');
+        $userNameUpdater->execute(array($newUserName, $userId));
+        $updatedUserName = $userNameUpdater->fetch();
+        return $updatedUserName;
+    }
+    
+    public function editUserPwd($newUserPwd, $userId)
+    {
+        $db = $this->dbConnect();
+        $userPwdUpdater = $db->prepare('UPDATE users SET password = ? WHERE id = ?');
+        $userPwdUpdater->execute(array($newUserPwd, $userId));
+        $updatedPwdName = $userPwdUpdater->fetch();
+        return $updatedPwdName;
     }
     
     public function getUserCount()

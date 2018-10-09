@@ -26,6 +26,13 @@
                     </div>
 
                     <div class="user-info">
+                        <h4>identifiant utilisateur</h4>
+                        <div id='idContainer'>
+                            <p><?= $userInfo['id'] ?></p>
+                        </div>
+                    </div>
+                
+                    <div class="user-info">
                         <h4>Nom d'utilisateur</h4>
                         <div id="userName">
                             <p><?= $userInfo['pseudo'] ?></p>

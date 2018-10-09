@@ -1,9 +1,11 @@
 class MemberPanelEditor {
     
     createFormElements(containerId) {
+        let userId = document.getElementById('idContainer').childNodes[1].textContent;
+        
         let editionForm = document.createElement('form');
         editionForm.setAttribute('method', 'post');
-        editionForm.setAttribute('action', 'index.php?action=editMemberParam&updatedParam=' + containerId);
+        editionForm.setAttribute('action', 'index.php?action=editMemberParam&updatedParam=' + containerId + '&id=' + userId);
         
         let formInput = document.createElement('input');
         formInput.setAttribute('type', 'text');
