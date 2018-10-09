@@ -481,11 +481,11 @@
         margin-top: 5px;
     }
 
-    #avatar-container {
+    #avatarContainer {
         position: relative;
     }
 
-    #avatar-container a {
+    #avatarContainer button {
         position: absolute;
         top: -18px;
         right: -18px;
@@ -498,13 +498,23 @@
         color: white;
         border: 1px white solid;
         background-color: #0984e3;
+        width: 40px;
+        height: 40px;
+    }
+
+    .edit-info-link {
+        border-radius: 50%;
+        padding: 4px 9px;
+        font-weight: 600;
+        color: white;
+        border: 1px white solid;
+        background-color: #0984e3;
         width: 20px;
         height: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
     .user-info p {
         margin: 0;
     }

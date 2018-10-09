@@ -16,43 +16,43 @@
                     ?>
                     <div class="user-info">
                         <h4>Avatar</h4>
-                        <div id="avatar-container">
+                        <div id="avatarContainer">
                             <img src="assets/img/avatars/<?php if ($userInfo['avatar_id'] != 0) { echo $userInfo['id']; } else { echo 'default'; }?>.jpg" alt="avatar de <?= $userInfo['pseudo'] ?>"/>
                             
-                            <a href="" class="edit-info-button">
+                            <button class="edit-info-button">
                                 <i class="fas fa-edit white-item"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
                     <div class="user-info">
                         <h4>Nom d'utilisateur</h4>
-                        <div>
+                        <div id="userName">
                             <p><?= $userInfo['pseudo'] ?></p>
-                            <a href="" class="edit-info-button">
+                            <button class="edit-info-button">
                                 <i class="fas fa-edit white-item"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
                     <div class="user-info">
                         <h4>Adresse mail</h4>
-                        <div>
+                        <div id="userEmail">
                             <p><?= $userInfo['email'] ?></p>
-                            <a href="" class="blue-button edit-info-button">
+                            <button class="blue-button edit-info-button">
                                 <i class="fas fa-edit white-item"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
                     <div class="user-info">
                         <h4>Mot de passe</h4>
-                        <div>
+                        <div id="userPwd">
                             <p>*******</p>
                             
-                            <a href="" class="blue-button edit-info-button">
+                            <button class="blue-button edit-info-button">
                                 <i class="fas fa-edit white-item"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     
@@ -71,3 +71,6 @@
         </div>
     </div>
 </div>
+
+<script src="./assets/js/MemberPanelForm.js"></script>
+<script src="./assets/js/userDataEditor.js"></script>
