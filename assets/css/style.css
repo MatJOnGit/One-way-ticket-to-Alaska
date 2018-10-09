@@ -477,7 +477,7 @@
         width: 100px;
     }
 
-    .user-info a {
+    .user-info>div>button {
         margin-top: 5px;
     }
 

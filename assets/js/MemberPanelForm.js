@@ -2,7 +2,12 @@ class MemberPanelEditor {
     
     createFormElements(containerId) {
         let editionForm = document.createElement('form');
+        editionForm.setAttribute('method', 'post');
+        editionForm.setAttribute('action', 'index.php?action=editMemberParam&updatedParam=' + containerId);
+        
         let formInput = document.createElement('input');
+        formInput.setAttribute('type', 'text');
+        formInput.setAttribute('name', 'new' + containerId.charAt(0).toUpperCase() + containerId.slice(1));
         
         let buttonsContainer = document.createElement('div');
         buttonsContainer.style.display = 'flex';
@@ -12,13 +17,13 @@ class MemberPanelEditor {
         
         let cancelButton = document.createElement('a');
         cancelButton.href = '';
-        cancelButton.classList.add('edit-info-link','blue-button');
+        cancelButton.classList.add('edit-info-link', 'blue-button');
         cancelButton.innerHTML = '<i class="fas fa-times white-item"></i>';
         
-        let submitButton = document.createElement('a');
-        submitButton.href = 'index.php?action=editMemberParam&updatedParam=' + containerId;
-        submitButton.classList.add('edit-info-link','blue-button');
+        let submitButton = document.createElement('button');
+        submitButton.classList.add('edit-info-button', 'blue-button');
         submitButton.style.marginLeft = '10px';
+        submitButton.setAttribute('type', 'submit');
         submitButton.innerHTML = '<i class="fas fa-check white-item"></i>';
         
         buttonsContainer.appendChild(cancelButton);
