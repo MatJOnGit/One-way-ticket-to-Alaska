@@ -171,6 +171,11 @@ try
                 $backend_controller->getAdminPanel();
             }
             
+            elseif ($_GET['action'] === 'searchMember')
+            {
+                $backend_controller->searchMember();
+            }
+            
             elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin'))
             {
                 require 'view/backend/admin404.php';

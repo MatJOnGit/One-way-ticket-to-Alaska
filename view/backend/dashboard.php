@@ -72,7 +72,7 @@
             <h3>Gestion d'utilisateurs</h3>
             <div class="grey-box">
                 <div class="users-options">
-                    <form action="http://localhost/One-way-ticket-to-alaska/index.php?action=getMemberPanel&id=1" method="post">
+                    <form action="index.php?action=searchMember" method="post">
                         <label for="username">Recherche un membre :</label>
                         <div class="research-form">
                             <input type="text" name="username" id="username" required />

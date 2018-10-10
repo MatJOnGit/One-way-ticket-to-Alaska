@@ -134,6 +134,21 @@ class Backend_Controller extends Controller
         header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
     }
     
+    public function searchMember()
+    {
+        $this->loadManagers();
+        $userManager = new owtta\Blog\Model\UserManager();
+        $userId = $userManager->getUserId($_POST['username']);
+        if ($userId > 0)
+        {
+            header('Location: index.php?action=getMemberPanel&id=' . $userId);
+        }
+        else
+        {
+            header('Location: index.php?action=getAdminPanel');
+        }
+    }
+    
     public function unhideComment()
     {
         $this->loadManagers();
