@@ -24,9 +24,11 @@
                             </button>
                         </div>
                     </div>
+                
+                
 
                     <div class="user-info">
-                        <h4>identifiant utilisateur</h4>
+                        <h4>Identifiant utilisateur</h4>
                         <div id='idContainer'>
                             <p><?= $userInfo['id'] ?></p>
                         </div>
@@ -64,7 +66,7 @@
                     </div>
                     
                     <?php
-                    if ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin' || $_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime'))
+                    if ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin' || $_SESSION['status'] === 'owner' || $_SESSION['status'] === 'superadmin'))
                     {
                         require 'view/backend/userInfoStatusEdition.php';
                     }

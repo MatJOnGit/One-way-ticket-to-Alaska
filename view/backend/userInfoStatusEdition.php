@@ -9,7 +9,7 @@
     <?php
     if ($userInfo['status'] === 'member')
     {
-        if ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime')
+        if ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'superadmin')
         {
             ?>
             <a href="index.php?action=promoteMember&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">
@@ -27,9 +27,9 @@
             
     elseif ($userInfo['status'] === 'admin')
     {
-        if ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime')
+        if ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'superadmin')
         {
-            if ($_SESSION['status'] === 'adminPrime')
+            if ($_SESSION['status'] === 'superadmin')
             {
                 ?>
                 <a href="index.php?action=promoteAdmin&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">
@@ -48,7 +48,7 @@
         }
     }
             
-    elseif ($userInfo['status'] === 'owner' && $_SESSION['status'] === 'adminPrime')
+    elseif ($userInfo['status'] === 'owner' && $_SESSION['status'] === 'superadmin')
     {
         ?>
         <a href="index.php?action=demoteOwner&id=<?php echo $_GET['id'] ?>" class="blue-button regular-button">

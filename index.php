@@ -70,7 +70,7 @@ try
         
 /**
 *
-* Frontoffice features available for all members, admins, owners and adminPrimes
+* Frontoffice features available for all members, admins, owners and superadmins
 *
 **/
         
@@ -131,7 +131,7 @@ try
             
 /**
 *
-* Backoffice features available for all admins, owners and adminPrimes
+* Backoffice features available for all admins, owners and superadmins
 *
 **/
             
@@ -183,7 +183,7 @@ try
             
 /**
 *
-* Backoffice features available for all owners and adminPrimes
+* Backoffice features available for all owners and superadmins
 *
 **/
             
@@ -292,7 +292,7 @@ try
             
 /**
 *
-* Backoffice features available for adminPrime only
+* Backoffice features available for superadmin only
 *
 **/
             

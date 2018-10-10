@@ -106,11 +106,11 @@ class UserManager extends Manager
         return $userInfo;
     }
     
-    public function getUserPermissions($pseudo, $password)
+    public function getUserPermissions($pseudo)
     {
         $db = $this->dbConnect();
-        $userDataGetter = $db->prepare('SELECT id, status FROM users WHERE pseudo = ? AND password = ?');
-        $userDataGetter->execute(array($pseudo, $password));
+        $userDataGetter = $db->prepare('SELECT id, password, status FROM users WHERE pseudo = ?');
+        $userDataGetter->execute(array($pseudo));
         $userData = $userDataGetter->fetch();
         return $userData;
     }

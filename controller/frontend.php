@@ -65,7 +65,8 @@ class Frontend_Controller extends Controller
             }
             elseif ($_GET['updatedParam'] === 'userPwd')
             {
-                $editedUserData = $userManager->editUserPwd($_POST['newUserPwd'], $_GET['id']);
+                var_dump($_POST['newUserPwd']);
+                $editedUserData = $userManager->editUserPwd(password_hash($_POST['newUserPwd'], PASSWORD_DEFAULT), $_GET['id']);
             }
             header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
         }
@@ -78,7 +79,7 @@ class Frontend_Controller extends Controller
     /**
     *
     * getChapterContent method tests if the chapter is exists, and only display it if
-    * it has a published status, or if the user is owner or adminPrime.
+    * it has a published status, or if the user is owner or superadmin.
     *
     **/
     public function getChapterContent()
@@ -90,7 +91,7 @@ class Frontend_Controller extends Controller
 
         $chapter = $chapterManager->getChapterContent($_GET['id']);
         
-        if ($chapter['status'] === 'published' || (isset($_SESSION['status']) && ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'adminPrime')))
+        if ($chapter['status'] === 'published' || (isset($_SESSION['status']) && ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'superadmin')))
         {
             $commentsCount = $commentManager->getCommentsCountByChapter($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
@@ -142,13 +143,17 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
         $userData = $userManager->getUserPermissions($_POST['user-name'], $_POST['user-password']);
-        if ((isset($userData[0])) && $userData[0] > 0 && isset($userData[1]) && is_string($userData[1]))
+        
+        if (isset($userData[1]) 
+            && password_verify($_POST['user-password'], $userData[1]) 
+            && $userData[0] > 0 
+            && is_string($userData[2]))
         {
             $_SESSION['pseudo'] = $_POST['user-name'];
             $_SESSION['id'] = $userData[0];
-            $_SESSION['status'] = $userData[1];
+            $_SESSION['status'] = $userData[2];
             header('Location: index.php?action=getChaptersList');
-        }
+        }            
         else
         {
             header('Location: index.php?action=signIn');

@@ -14,7 +14,7 @@ class Controller implements iController
     {
         if (isset($_SESSION['status']))
         {
-            if (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'adminPrime') || ($_SESSION['status'] === 'admin'))
+            if (($_SESSION['status'] === 'owner') || ($_SESSION['status'] === 'superadmin') || ($_SESSION['status'] === 'admin'))
             {
                 require 'view/frontend/adminBar.php';
             }
