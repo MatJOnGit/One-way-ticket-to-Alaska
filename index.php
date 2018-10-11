@@ -65,7 +65,7 @@ try
         
         elseif (!isset($_SESSION['status']))
         {
-            require 'view/frontend/404.php';
+            $frontend_controller->display404Page();
         }
         
 /**
@@ -103,7 +103,7 @@ try
             }
             else
             {
-                require 'view/frontend/404.php';
+                $frontend_controller->display404Page();
             }
         }
 
@@ -121,7 +121,7 @@ try
             
         elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'member'))
         {
-            require 'view/frontend/404.php';
+            $frontend_controller->display404Page();
         }
         
         else
@@ -150,7 +150,7 @@ try
                 }
                 else
                 {
-                    require 'view/frontend/404.php';
+                    $frontend_controller->display404Page();
                 }
             }
             
@@ -178,7 +178,7 @@ try
             
             elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin'))
             {
-                require 'view/backend/admin404.php';
+                $backend_controller->displayAdmin404Page();
             }
             
 /**
@@ -287,7 +287,7 @@ try
             
             elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'owner'))
             {
-                require 'view/backend/admin404.php';
+                $backend_controller->displayAdmin404Page();
             }
             
 /**
@@ -314,7 +314,7 @@ try
             
             else
             {
-                require 'view/backend/admin404.php';
+                $backend_controller->displayAdmin404Page();
             }
         }
     }

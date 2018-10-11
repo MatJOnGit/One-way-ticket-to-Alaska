@@ -27,8 +27,9 @@ class Frontend_Controller extends Controller
         if (is_null($userId))
         {
             // "Non-existing pseudo in BDD" case
-            $newUserData = $userManager->createUser($_POST['user-name'], $_POST['user-email'], $_POST['user-password']);
-            if (isset($newUserData) && $newUserData > 0)
+            $newUserData = $userManager->createUser($_POST['user-name'], $_POST['user-email'], password_hash($_POST['user-password'], PASSWORD_DEFAULT));
+            
+            if (isset($newUserData) && $newUserData > 0)    
             {
                 echo 'compte créé';
                 $_SESSION['pseudo'] = $_POST['user-name'];
@@ -46,6 +47,12 @@ class Frontend_Controller extends Controller
             // "Existing pseudo in BDD" case
             header('Location: index.php?action=register');
         }
+    }
+    
+    public function display404Page()
+    {
+        $this->displayNavBar();
+        require 'view/frontend/404.php';
     }
     
     public function editUserParam()

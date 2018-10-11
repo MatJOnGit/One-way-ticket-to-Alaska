@@ -59,6 +59,12 @@ class Backend_Controller extends Controller
         header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
     }
     
+    public function displayAdmin404Page()
+    {
+        $this->displayNavBar();
+        require 'view/backend/Admin404.php';
+    }
+    
     public function editChapterContent()
     {
         $this->displayNavBar();
