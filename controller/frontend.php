@@ -68,7 +68,15 @@ class Frontend_Controller extends Controller
             }
             elseif ($_GET['updatedParam'] === 'userEmail')
             {
-                $editedUserData = $userManager->editUserEmail($_POST['newUserEmail'], $_GET['id']);
+                if (isset($_POST['newUserEmail']) && (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['newUserEmail'])))
+                {
+                    $editedUserData = $userManager->editUserEmail($_POST['newUserEmail'], $_GET['id']);
+                }
+                else
+                {
+                    $this->display404Page();
+                }
+                
             }
             elseif ($_GET['updatedParam'] === 'userPwd')
             {

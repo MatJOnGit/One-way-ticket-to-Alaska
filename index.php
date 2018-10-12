@@ -58,11 +58,6 @@ try
             $frontend_controller->logAccount();
         }
         
-        elseif ($_GET['action'] === 'editMemberParam' && isset($_GET['updatedParam']))
-        {
-            $frontend_controller->editUserParam();
-        }
-        
         elseif (!isset($_SESSION['status']))
         {
             $frontend_controller->display404Page();
@@ -122,6 +117,11 @@ try
         elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'member'))
         {
             $frontend_controller->display404Page();
+        }
+        
+        elseif ($_GET['action'] === 'editMemberParam' && isset($_GET['updatedParam']))
+        {
+            $frontend_controller->editUserParam();
         }
         
         else

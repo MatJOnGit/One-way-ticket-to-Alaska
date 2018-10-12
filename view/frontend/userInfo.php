@@ -16,17 +16,9 @@
                     ?>
                     <div class="user-info">
                         <h4>Avatar</h4>
-                        <div id="avatarContainer">
-                            <img src="assets/img/avatars/<?php if ($userInfo['avatar_id'] != 0) { echo $userInfo['id']; } else { echo 'default'; }?>.jpg" alt="avatar de <?= $userInfo['pseudo'] ?>"/>
-                            
-                            <button class="edit-info-button">
-                                <i class="fas fa-edit white-item"></i>
-                            </button>
-                        </div>
+                        <img src="assets/img/avatars/<?php echo $userInfo['status']; ?>.jpg" alt="avatar de <?= $userInfo['pseudo'] ?>"/>
                     </div>
                 
-                
-
                     <div class="user-info">
                         <h4>Identifiant utilisateur</h4>
                         <div id='idContainer'>
