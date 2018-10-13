@@ -475,6 +475,7 @@
 
     .user-info img {
         width: 100px;
+        border: 1px black solid;
     }
 
     .user-info>div>button {
@@ -520,7 +521,7 @@
     }
 
     #user-management {
-        margin-top: 20px;
+/*        margin-top: 20px;*/
         justify-content: center;
     }
 

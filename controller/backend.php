@@ -11,6 +11,12 @@ class Backend_Controller extends Controller
         require('view/backend/chapterAdding.php');
     }
     
+    /**
+    *
+    * deleteAccount method tests if the user exists, delete the account if so, and displays
+    * the user page once more.
+    *
+    **/
     public function deleteAccount()
     {
         $this->loadManagers();
@@ -65,13 +71,26 @@ class Backend_Controller extends Controller
         require 'view/backend/Admin404.php';
     }
     
+    /**
+    *
+    * editChapterContent method tests if the chapter exists and displays the content
+    * in chapterEditing page if so
+    *
+    **/
     public function editChapterContent()
     {
         $this->displayNavBar();
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $chapter = $chapterManager->getChapterContent($_GET['id']);
-        require('view/backend/chapterEditing.php');
+        if ($chapter != false)
+        {
+            require('view/backend/chapterEditing.php');
+        }
+        else
+        {
+            require 'view/backend/Admin404.php';
+        }
     }
     
     public function getAdminPanel()
@@ -90,7 +109,13 @@ class Backend_Controller extends Controller
 
         require('view/backend/dashboard.php');
     }
-        
+    
+    /**
+    *
+    * getNewChapterId method gets the highest chapter id in database, then redirect to
+    * a createNewChapter page with the next id
+    *
+    **/
     public function getNewChapterId()
     {
         $this->loadManagers();

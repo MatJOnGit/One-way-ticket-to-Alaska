@@ -2,6 +2,7 @@
 
 require_once 'interfaces/ControllerInterface.php';
 require_once 'Controller.php';
+require_once 'services/DisplayableDataCheckingService.php';
 
 class Frontend_Controller extends Controller
 {
@@ -93,8 +94,8 @@ class Frontend_Controller extends Controller
     
     /**
     *
-    * getChapterContent method tests if the chapter is exists, and only display it if
-    * it has a published status, or if the user is owner or superadmin.
+    * getChapterContent method tests if the chapter exists, and only display it if
+    * it has a published status or if the user is owner or superadmin.
     *
     **/
     public function getChapterContent()
@@ -106,7 +107,7 @@ class Frontend_Controller extends Controller
 
         $chapter = $chapterManager->getChapterContent($_GET['id']);
         
-        if ($chapter['status'] === 'published' || (isset($_SESSION['status']) && ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'superadmin')))
+        if ($chapter != false && ($chapter['status'] === 'published' || (isset($_SESSION['status']) && ($_SESSION['status'] === 'owner' || $_SESSION['status'] === 'superadmin'))))
         {
             $commentsCount = $commentManager->getCommentsCountByChapter($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
@@ -134,6 +135,10 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
         $userInfo = $userManager->getUserInfo($_GET['id']);
+        
+        $displayableDataChecking = new \owtta\Blog\Service\DisplayableDataCheckingService;
+        $displayableDataChecking->testDisplayableData($_SESSION, $userInfo);
+        
         require 'view/frontend/userInfo.php';
     }
     
@@ -143,6 +148,9 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
         $userInfo = $userManager->getUserInfo($_SESSION['id']);
+        
+        $displayableDataChecking = new \owtta\Blog\Service\DisplayableDataCheckingService;
+        $displayableDataChecking->testDisplayableData($_SESSION, $userInfo);
         
         require 'view/frontend/userInfo.php';
     }
