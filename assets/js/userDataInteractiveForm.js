@@ -1,23 +1,25 @@
 const userNameContainer = document.getElementById('userName');
-let userNameEditButton = userName.childNodes[3];
+let userNameEditButton = userNameContainer.childNodes[3];
 
 const userEmailContainer = document.getElementById('userEmail');
-let userEmailEditButton = userEmail.childNodes[3];
+let userEmailEditButton = userEmailContainer.childNodes[3];
 
 const userPwdContainer = document.getElementById('userPwd');
 let userPwdEditButton = userPwdContainer.childNodes[3];
 
+const userId = document.getElementById('idContainer').childNodes[1].textContent;
+
 userNameEditButton.addEventListener('click', (e) => {
-    let userEmailEditor = new MemberPanelEditor();
-    userEmailEditor.displayForm(e);
+    let usernameEditor = new MemberPanelEditor();
+    usernameEditor.displayForm(e, userId);
 })
 
 userEmailEditButton.addEventListener('click', (e) => {
     let userEmailEditor = new MemberPanelEditor();
-    userEmailEditor.displayForm(e);
+    userEmailEditor.displayForm(e, userId);
 })
 
 userPwdEditButton.addEventListener('click', (e) => {
     let userPwdEditor = new MemberPanelEditor();
-    userPwdEditor.displayForm(e);
+    userPwdEditor.displayForm(e, userId);
 })

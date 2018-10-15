@@ -123,5 +123,6 @@
     </div>
 </div>
 
-<script src="./assets/js/MemberPanelForm.js"></script>
-<script src="./assets/js/userDataEditor.js"></script>
+<script src="./assets/js/classes/Editor.js"></script>
+<script src="./assets/js/classes/MemberPanelEditor.js"></script>
+<script src="./assets/js/userDataInteractiveForm.js"></script>

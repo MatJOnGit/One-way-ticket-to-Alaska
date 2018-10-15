@@ -32,9 +32,10 @@ try
             {
                 $frontend_controller->getChapterContent();
             }
-            else 
+            else
             {
                 throw new Exception('Aucun identifiant de billet envoyé');
+                $frontend_controller->display404Page();
             }
         }
         
