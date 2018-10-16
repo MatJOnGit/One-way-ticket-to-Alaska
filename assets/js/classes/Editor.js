@@ -4,6 +4,9 @@ class Editor {
         const editionForm = document.createElement('form');
         editionForm.setAttribute('method', 'post');
         
+        const inputData = document.createElement('div');
+        inputData.classList.add('editionContainer');
+        
         const formInput = document.createElement('input');
         formInput.setAttribute('required', 'true');
         formInput.setAttribute('name', 'new' + containerId.charAt(0).toUpperCase() + containerId.slice(1));
@@ -33,8 +36,9 @@ class Editor {
         
         buttonsContainer.appendChild(cancelButton);
         buttonsContainer.appendChild(submitButton);
-        editionForm.appendChild(formInput);
-        editionForm.appendChild(formAlert);
+        inputData.appendChild(formInput);
+        inputData.appendChild(formAlert);
+        editionForm.appendChild(inputData);
         editionForm.appendChild(buttonsContainer);
         
         return editionForm;

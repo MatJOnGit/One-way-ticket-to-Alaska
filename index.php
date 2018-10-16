@@ -125,6 +125,19 @@ try
             $frontend_controller->editUserParam();
         }
         
+        elseif ($_GET['action'] === 'editComment')
+        {
+            if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $frontend_controller->editComment();
+            }
+            else
+            {
+                throw new Exception('Edition de commentaire impossible : erreur de paramètres');
+            }
+        }
+        
+        
         else
         {
             require 'controller/backend.php';

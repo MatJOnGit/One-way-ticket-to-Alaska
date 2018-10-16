@@ -8,7 +8,7 @@ class MemberPanelEditor extends Editor {
                 formElement.querySelector('p').textContent = 'adresse valide';
                 formElement.querySelector('p').style.color = 'green';
                 formElement.querySelector('input').style.backgroundColor = 'white';
-                const alertDuration = 3000;
+                let alertDuration = 3000;
                 let alertTimer = setInterval(function() {
                     alertDuration = alertDuration - 1000;
                     if (alertDuration <= 0) {
@@ -18,7 +18,7 @@ class MemberPanelEditor extends Editor {
                 }, 1000);
             }
             
-            else if (!emailRegex.test(formElement.querySelector('input').value)) {
+            else if (!emailRegex.test(formElement.querySelector('input').value) && (formElement.querySelector('input').value.length != 0)) {
                 formElement.querySelector('p').textContent = 'email non valide';
                 formElement.querySelector('p').style.color = 'red';
                 formElement.querySelector('input').style.backgroundColor = 'pink';
@@ -26,7 +26,7 @@ class MemberPanelEditor extends Editor {
         });
         
         formElement.addEventListener('submit', (e) => {
-            if ((formElement.id.includes('Email')) && (!emailRegex.test(container.querySelector('input').value))) {
+            if ((!formElement.parentNode.id.includes('Email')) || (!emailRegex.test(formElement.querySelector('input').value))) {
                 e.preventDefault();
             }
         })
@@ -36,10 +36,12 @@ class MemberPanelEditor extends Editor {
         const userDataContainer = this.getContainerElement(e.target);
 
         userDataContainer.innerHTML = '';
-        const formElement = this.createFormElements(userDataContainer.id, userId);
-            
-        formElement.setAttribute('action', 'index.php?action=editMemberParam&updatedParam=' + userDataContainer.id + '&id=' + userId); 
+        const formElement = this.createFormElements(userDataContainer.id);
+
+        formElement.setAttribute('action', 'index.php?action=editMemberParam&updatedParam=' + userDataContainer.id + '&id=' + userId);
         userDataContainer.appendChild(formElement);
+        
+        formElement.firstChild.style.flexDirection = 'column';
         
         switch (userDataContainer.id) {
             case 'userEmail' :

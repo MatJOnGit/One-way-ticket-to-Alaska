@@ -15,6 +15,15 @@ class CommentManager extends Manager
         return $addedComment;
     }
     
+    public function editComment($commentId, $comment)
+    {
+        $db = $this->dbConnect();
+        $commentEditor = $db->prepare('UPDATE comments SET comment = ? WHERE id = ?');
+        $commentEditor->execute(array($comment, $commentId));
+        $editedComment = $commentEditor->fetch();
+        return $editedComment;
+    }
+    
     public function getComments($chapterId)
     {
         $db = $this->dbConnect();

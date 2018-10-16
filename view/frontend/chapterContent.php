@@ -5,7 +5,7 @@
                 <span>&#10094;&#10094;</span>Retour au menu des chapitres
             </a>
 
-            <h3>Chapitre <?= $chapter['id'] ?><br/><?= $chapter['title'] ?></h3>
+            <h3>Chapitre <?= $chapter['id'] ?> :<br/><?= $chapter['title'] ?></h3>
             
             <div class="chapter-content"><?= $chapter['content'] ?></div>
         </div>

@@ -56,6 +56,18 @@ class Frontend_Controller extends Controller
         require 'view/frontend/404.php';
     }
     
+    public function editComment()
+    {
+        $this->loadManagers();
+        $commentManager = new owtta\Blog\Model\CommentManager();
+        
+        if (isset($_POST['newComment']) && (!empty($_POST['newComment'])))
+        {
+            $editedCommentChapter = $commentManager->editComment($_GET['commentId'], htmlspecialchars($_POST['newComment']));
+        }
+        header('Location: index.php?action=getChapter&id=' . $_GET['id']);
+    }
+    
     public function editUserParam()
     {
         $this->loadManagers();
