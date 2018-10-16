@@ -367,8 +367,14 @@
         margin: 0;
     }
 
-    .deleted-comment {
+    .deleted-comment,
+    .edited-comment {
         font-style: italic;
+    }
+
+    .edited-comment {
+        display: block;
+        margin-top: 5px;
     }
 
     .comments-wrapper {

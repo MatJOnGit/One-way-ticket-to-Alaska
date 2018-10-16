@@ -28,7 +28,6 @@ while ($comment = $comments->fetch())
                     }
                     else
                     {
-                        // the editCommentContent feature will be edited later to display a form in javascript
                         ?>
                         <button class="edit-comment-button">
                             <i class="fas fa-edit blue-item"></i>
@@ -61,7 +60,7 @@ while ($comment = $comments->fetch())
             if ($comment['status'] != 'deleted')
             {
                 ?>
-                <p class="user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                <p class="user-comment">"<?= nl2br(htmlspecialchars($comment['comment'])) ?>"</p>
                 <?php
             }
             else
@@ -70,6 +69,14 @@ while ($comment = $comments->fetch())
                 <p class="user-comment deleted-comment">Ce commentaire a été supprimé par un administrateur</p>
                 <?php
             }
+    
+            if ($comment['status'] === 'edited')
+            {
+                ?>
+                <p class="user-comment edited-comment">Ce commentaire a été édité par un administrateur</p>
+                <?php
+            }
+            
             ?>
         </div>
     </div>
