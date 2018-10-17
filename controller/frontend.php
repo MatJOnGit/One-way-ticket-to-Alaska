@@ -78,6 +78,7 @@ class Frontend_Controller extends Controller
             if ($_GET['updatedParam'] === 'userName')
             {
                 $editedUserData = $userManager->editUserName($_POST['newUserName'], $_GET['id']);
+                $_SESSION['pseudo'] = $_POST['newUserName'];
             }
             elseif ($_GET['updatedParam'] === 'userEmail')
             {
@@ -93,9 +94,9 @@ class Frontend_Controller extends Controller
             }
             elseif ($_GET['updatedParam'] === 'userPwd')
             {
-                var_dump($_POST['newUserPwd']);
                 $editedUserData = $userManager->editUserPwd(password_hash($_POST['newUserPwd'], PASSWORD_DEFAULT), $_GET['id']);
             }
+            
             header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
         }
         else

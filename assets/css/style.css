@@ -304,6 +304,23 @@
         margin-bottom: 20px;
     }
 
+/* Register and signIn page specifics */
+
+.identificationForm {
+    align-items: center;
+}
+
+.identificationForm div {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.identificationForm div p {
+    margin: 0;
+    text-align: center;
+}
+
 /* getChapterList page specifics */
 
     .book-content > ul > li {
@@ -405,7 +422,7 @@
         width: 200px;
         border-bottom: 1px solid #bdc3c7;
         border: none;
-        margin: 0 auto 5px;
+        margin: 0 auto;
         padding: 15px 0 5px;
         text-align: center;
         color: #005ca8;
@@ -417,6 +434,10 @@
         background-position: -200px 0;
         background-size: 200px 100%;
         background-repeat: no-repeat;
+    }
+
+    .identificationForm button {
+        margin: 10px;
     }
 
     #comment {
@@ -533,6 +554,18 @@
     .user-info img {
         width: 100px;
         border: 1px black solid;
+    }
+
+    #userName,
+    #userEmail {
+        max-width: 55%;
+    }
+
+    #userName p,
+    #userEmail p {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .user-info>div>button {

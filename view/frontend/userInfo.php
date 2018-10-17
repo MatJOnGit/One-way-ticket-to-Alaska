@@ -33,7 +33,7 @@
                     <div class="user-info">
                         <h4>Nom d'utilisateur</h4>
                         <div id="userName">
-                            <p><?= $userInfo['pseudo'] ?></p>
+                            <p><?= htmlspecialchars($userInfo['pseudo']) ?></p>
                             
                             <?php
                             if ($displayableDataChecking->displayableEditionButtons === true)
@@ -56,7 +56,7 @@
                         <div class="user-info">
                             <h4>Adresse mail</h4>
                             <div id="userEmail">
-                                <p><?= $userInfo['email'] ?></p>
+                                <p><?= htmlspecialchars($userInfo['email']) ?></p>
                                 
                                 <?php
                                 if ($displayableDataChecking->displayableEditionButtons === true)
