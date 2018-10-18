@@ -33,7 +33,7 @@ class Frontend_Controller extends Controller
             if (isset($newUserData) && $newUserData > 0)    
             {
                 echo 'compte créé';
-                $_SESSION['pseudo'] = $_POST['user-name'];
+                $_SESSION['pseudo'] = htmlspecialchars($_POST['user-name']);
                 $_SESSION['id'] = $newUserData;
                 $_SESSION['status'] = 'member';
                 header('Location: index.php?action=getChaptersList');
@@ -78,7 +78,7 @@ class Frontend_Controller extends Controller
             if ($_GET['updatedParam'] === 'userName')
             {
                 $editedUserData = $userManager->editUserName($_POST['newUserName'], $_GET['id']);
-                $_SESSION['pseudo'] = $_POST['newUserName'];
+                $_SESSION['pseudo'] = htmlspecialchars($_POST['newUserName']);
             }
             elseif ($_GET['updatedParam'] === 'userEmail')
             {
@@ -170,26 +170,35 @@ class Frontend_Controller extends Controller
     
     /**
     *
-    * logAccount method tests if the username and password set on the signin form are correct,
-    * and set session data if so.
+    * logAccount method tests if the username and password set on the signin form are valid,
+    * then gets user data from db and compare them to form data,
+    * and finally sets session data values if so.
     *
     **/
     public function logAccount()
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
-        $userData = $userManager->getUserPermissions($_POST['user-name'], $_POST['user-password']);
-        
-        if (isset($userData[1]) 
-            && password_verify($_POST['user-password'], $userData[1]) 
-            && $userData[0] > 0 
-            && is_string($userData[2]))
+        if ((preg_match('#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#', $_POST['user-name']))
+            && (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['user-password'])))
         {
-            $_SESSION['pseudo'] = $_POST['user-name'];
-            $_SESSION['id'] = $userData[0];
-            $_SESSION['status'] = $userData[2];
-            header('Location: index.php?action=getChaptersList');
-        }            
+            $userData = $userManager->getUserPermissions($_POST['user-name'], $_POST['user-password']);
+            
+            if (isset($userData[1])
+                && password_verify($_POST['user-password'], $userData[1])
+                && $userData[0] > 0
+                && is_string($userData[2]))
+            {
+                $_SESSION['pseudo'] = htmlspecialchars($_POST['user-name']);
+                $_SESSION['id'] = $userData[0];
+                $_SESSION['status'] = $userData[2];
+                header('Location: index.php?action=getChaptersList');
+            }            
+            else
+            {
+                header('Location: index.php?action=signIn');
+            }
+        }
         else
         {
             header('Location: index.php?action=signIn');

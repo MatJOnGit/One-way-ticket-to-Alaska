@@ -1,4 +1,4 @@
-class LoginHelper {
+class IdentificationHelper {
     constructor() {
         this._usernameInputElement = document.getElementById('usr_name');
         this._usernameContainer = this._usernameInputElement.parentNode;
@@ -12,7 +12,6 @@ class LoginHelper {
         
         this._passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
         this._usernameRegex = /^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$/;
-
     }
     
     get usernameInputElement() {
@@ -97,14 +96,6 @@ class LoginHelper {
                 this.usernameAlert.textContent = 'pseudo incorrect';
                 this.usernameAlert.style.color = 'red';
                 this.usernameAlert.style.marginTop = '10px';
-            }
-        })
-    }
-        
-    addSubmitTest() {
-        this.formElement.addEventListener('submit', (e) => {
-            if (!this.passwordRegex.test(this.passwordInputElement.value)) {
-                e.preventDefault();
             }
         })
     }

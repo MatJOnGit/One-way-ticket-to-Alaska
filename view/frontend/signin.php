@@ -24,5 +24,6 @@
     </div>
 </div>
 
-<script src='./assets/js/classes/LoginHelper.js'></script>
-<script src='./assets/js/signinHelper.js'></script>
+<script src='./assets/js/classes/IdentificationHelper.js'></script>
+<script src='./assets/js/classes/SignInHelper.js'></script>
+<script src='./assets/js/signinAlerts.js'></script>
