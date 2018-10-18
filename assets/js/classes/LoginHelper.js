@@ -6,11 +6,13 @@ class LoginHelper {
                 
         this._passwordInputElement = document.getElementById('usr-pwd');
         this._passwordContainer = this._passwordInputElement.parentNode;
-        console.log(this._passwordContainer);
         this._passwordAlert = this._passwordContainer.querySelector('p');
-        console.log(this._passwordAlert);
         
         this._formElement = this._usernameContainer.parentNode;
+        
+        this._passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
+        this._usernameRegex = /^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$/;
+
     }
     
     get usernameInputElement() {
@@ -19,6 +21,10 @@ class LoginHelper {
     
     get usernameContainer() {
         return this._usernameContainer;
+    }
+    
+    get usernameAlert() {
+        return this._usernameAlert;
     }
     
     get passwordInputElement() {
@@ -36,46 +42,70 @@ class LoginHelper {
     get formElement() {
         return this._formElement;
     }
-
-    addDataTesting(formElement) {
-        const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
-
+    
+    get passwordRegex() {
+        return this._passwordRegex;
+    }
+    
+    get usernameRegex() {
+        return this._usernameRegex;
+    }
+    
+    addPasswordTests() {
         this.passwordInputElement.addEventListener('blur', () => {
-            if (!passwordRegex.test(this.passwordInputElement.value)) {
-                console.log(this.passwordAlert);
-                this.passwordAlert.textContent = 'mot de passe invalide';
-                this.passwordAlert.style.color = 'red';
-                this.passwordAlert.style.marginTop = '5px';
+            if (this.passwordRegex.test(this.passwordInputElement.value) && this.passwordAlert.textContent === 'mot de passe invalide') {
+                this.passwordAlert.textContent = 'mot de passe valide';
+                this.passwordAlert.style.color = 'green';
+                let alertDuration = 3000;
+                let alertTimer = setInterval(() => {
+                    alertDuration = alertDuration - 1000;
+                    if (alertDuration <= 0) {
+                        this.passwordAlert.textContent = '';
+                        clearInterval(alertTimer);
+                    }
+                }, 1000);
             }
         })
-
         
-//        formElement.querySelector('input').addEventListener('blur', () => {
-//            if (emailRegex.test(formElement.querySelector('input').value) && formElement.querySelector('p').textContent === 'email non valide') {
-//                formElement.querySelector('p').textContent = 'adresse valide';
-//                formElement.querySelector('p').style.color = 'green';
-//                formElement.querySelector('input').style.backgroundColor = 'white';
-//                let alertDuration = 3000;
-//                let alertTimer = setInterval(function() {
-//                    alertDuration = alertDuration - 1000;
-//                    if (alertDuration <= 0) {
-//                        formElement.querySelector('p').textContent = '';
-//                        clearInterval(alertTimer);
-//                    }
-//                }, 1000);
-//            }
-//            
-//            else if (!emailRegex.test(formElement.querySelector('input').value) && (formElement.querySelector('input').value.length != 0)) {
-//                formElement.querySelector('p').textContent = 'email non valide';
-//                formElement.querySelector('p').style.color = 'red';
-//                formElement.querySelector('input').style.backgroundColor = 'pink';
-//            }
-//        });
-//        
-//        formElement.addEventListener('submit', (e) => {
-//            if ((!formElement.parentNode.id.includes('Email')) || (!emailRegex.test(formElement.querySelector('input').value))) {
-//                e.preventDefault();
-//            }
-//        })        
+        this.passwordInputElement.addEventListener('blur', () => {
+            if ((!this.passwordRegex.test(this.passwordInputElement.value)) && (this.passwordInputElement.value != '')) {
+                this.passwordAlert.textContent = 'mot de passe invalide';
+                this.passwordAlert.style.color = 'red';
+                this.passwordAlert.style.marginTop = '10px';
+            }
+        })
+    }
+    
+    addUsernameTests() {        
+        this.usernameInputElement.addEventListener('blur', () => {
+            if (this.usernameRegex.test(this.usernameInputElement.value) && this.usernameAlert.textContent === 'pseudo incorrect') {
+                this.usernameAlert.textContent = 'pseudo valide';
+                this.usernameAlert.style.color = 'green';
+                let alertDuration = 3000;
+                let alertTimer = setInterval(() => {
+                    alertDuration = alertDuration - 1000;
+                    if (alertDuration <= 0) {
+                        this.usernameAlert.textContent = '';
+                        clearInterval(alertTimer);
+                    }
+                }, 1000);
+            }
+        })
+        
+        this.usernameInputElement.addEventListener('blur', () => {
+            if ((!this.usernameRegex.test(this.usernameInputElement.value)) && (this.usernameInputElement.value != '')) {
+                this.usernameAlert.textContent = 'pseudo incorrect';
+                this.usernameAlert.style.color = 'red';
+                this.usernameAlert.style.marginTop = '10px';
+            }
+        })
+    }
+        
+    addSubmitTest() {
+        this.formElement.addEventListener('submit', (e) => {
+            if (!this.passwordRegex.test(this.passwordInputElement.value)) {
+                e.preventDefault();
+            }
+        })
     }
 }
