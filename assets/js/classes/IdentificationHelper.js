@@ -1,14 +1,12 @@
 class IdentificationHelper {
     constructor() {
-        this._usernameInputElement = document.getElementById('usr_name');
-        this._usernameContainer = this._usernameInputElement.parentNode;
-        this._usernameAlert = this._usernameContainer.querySelector('p');
+        this._usernameInputElement = document.getElementById('userNameLogginInput');
+        this._usernameAlert = this._usernameInputElement.parentNode.querySelector('p');
                 
-        this._passwordInputElement = document.getElementById('usr-pwd');
-        this._passwordContainer = this._passwordInputElement.parentNode;
-        this._passwordAlert = this._passwordContainer.querySelector('p');
+        this._passwordInputElement = document.getElementById('userPasswordLogginInput');
+        this._passwordAlert = this._passwordInputElement.parentNode.querySelector('p');
         
-        this._formElement = this._usernameContainer.parentNode;
+        this._formElement = this._passwordInputElement.parentNode.parentNode;
         
         this._passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
         this._usernameRegex = /^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$/;
@@ -17,11 +15,7 @@ class IdentificationHelper {
     get usernameInputElement() {
         return this._usernameInputElement;
     }
-    
-    get usernameContainer() {
-        return this._usernameContainer;
-    }
-    
+        
     get usernameAlert() {
         return this._usernameAlert;
     }
@@ -29,11 +23,7 @@ class IdentificationHelper {
     get passwordInputElement() {
         return this._passwordInputElement;
     }
-    
-    get passwordContainer() {
-        return this._passwordContainer;
-    }
-    
+        
     get passwordAlert() {
         return this._passwordAlert;
     }

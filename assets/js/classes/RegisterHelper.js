@@ -1,10 +1,10 @@
 class RegisterHelper extends IdentificationHelper {
     constructor() {
         super();
-        this._emailInputElement = document.getElementById('usr-email');
+        this._emailInputElement = document.getElementById('userEmailLogginInput');
         this._emailAlert = this._emailInputElement.parentNode.querySelector('p');
         
-        this._copiedPasswordInputElement = document.getElementById('usr-copied-pwd');
+        this._copiedPasswordInputElement = document.getElementById('userCopiedPasswordLogginInput');
         this._copiedPasswordAlert = this._copiedPasswordInputElement.parentNode.querySelector('p');
         
         this._emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -10,11 +10,11 @@
 
                 <form class='identificationForm' action='index.php?action=logAccount' method='post'>
                     <div>
-                        <input class='dynamic-form comment-form' type='text' name='user-name' id='usr_name' placeholder="Nom d'utilisateur" required>
+                        <input class='dynamic-form comment-form' type='text' name='user-name' id='userNameLogginInput' placeholder="Nom d'utilisateur" required>
                         <p></p>
                     </div>
                     <div>
-                        <input class='dynamic-form comment-form' type='password' name='user-password' id='usr-pwd' placeholder='Mot de passe' required>
+                        <input class='dynamic-form comment-form' type='password' name='userPasswordLogginInput' id='userPassword' placeholder='Mot de passe' required>
                         <p></p>
                     </div>
                     <button class='blue-button regular-button' type='submit'>Valider</button>

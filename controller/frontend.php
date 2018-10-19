@@ -16,38 +16,52 @@ class Frontend_Controller extends Controller
     
     /**
     *
-    * createAccount method tests if the username is already used, and create a new account with
-    * data in the register form if it is not.
+    * createAccount method tests if data set on the register form are existing and valid,
+    * then tests if the username is already used,
+    * and finally create a new account with data in the register form if not.
     *
     **/
     public function createAccount()
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
-        $userId = $userManager->getUserId($_POST['user-name']);
-        if (is_null($userId))
+        if (isset($_POST['user-name']) &&
+            (preg_match('#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#', $_POST['user-name'])) &&
+            (preg_match('#^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$#', $_POST['user-email'])) &&
+            (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['user-password'])) &&
+            (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['user-copied-password'])) &&
+            ($_POST['user-password'] === $_POST['user-copied-password']))
         {
-            // "Non-existing pseudo in BDD" case
-            $newUserData = $userManager->createUser($_POST['user-name'], $_POST['user-email'], password_hash($_POST['user-password'], PASSWORD_DEFAULT));
-            
-            if (isset($newUserData) && $newUserData > 0)    
+            $userId = $userManager->getUserId($_POST['user-name']);
+            if (is_null($userId))
             {
-                echo 'compte créé';
-                $_SESSION['pseudo'] = htmlspecialchars($_POST['user-name']);
-                $_SESSION['id'] = $newUserData;
-                $_SESSION['status'] = 'member';
-                header('Location: index.php?action=getChaptersList');
+                // "Non-existing pseudo in BDD" case
+                $newUserData = $userManager->createUser($_POST['user-name'], $_POST['user-email'], password_hash($_POST['user-password'], PASSWORD_DEFAULT));
+
+                if (isset($newUserData) && $newUserData > 0)    
+                {
+                    echo 'compte créé';
+                    $_SESSION['pseudo'] = htmlspecialchars($_POST['user-name']);
+                    $_SESSION['id'] = $newUserData;
+                    $_SESSION['status'] = 'member';
+                    header('Location: index.php?action=getChaptersList');
+                }
+                else
+                {
+                    header('Location: index.php?action=register');
+                }
             }
-            else
+            elseif ($userId > 0)
             {
+                // "Existing pseudo in BDD" case
                 header('Location: index.php?action=register');
             }
         }
-        elseif ($userId > 0)
+        else
         {
-            // "Existing pseudo in BDD" case
             header('Location: index.php?action=register');
         }
+            
     }
     
     public function display404Page()
@@ -179,7 +193,8 @@ class Frontend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
-        if ((preg_match('#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#', $_POST['user-name']))
+        if (isset($_POST['user-name']) &&
+            (preg_match('#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#', $_POST['user-name']))
             && (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['user-password'])))
         {
             $userData = $userManager->getUserPermissions($_POST['user-name'], $_POST['user-password']);
