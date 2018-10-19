@@ -1,4 +1,4 @@
-const editCommentButtons = document.querySelectorAll('button.edit-comment-button');
+const editCommentButtons = document.querySelectorAll('button.editCommentButton');
 
 editCommentButtons.forEach((editCommentButton) => {
     editCommentButton.addEventListener('click', (e) => {

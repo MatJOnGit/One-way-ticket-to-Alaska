@@ -8,7 +8,8 @@ class UserManager extends Manager
 {
     /**
     *
-    * createUser method insert a users line in database and return its userId if its successful, "0" if not
+    * createUser method insert a users line in database,
+    * and return its userId if its successful, "0" if not
     *
     **/
     public function createUser($pseudo, $email, $password)

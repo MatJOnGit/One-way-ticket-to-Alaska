@@ -67,7 +67,7 @@ class CommentManager extends Manager
     }
     
     public function reportComment($commentId)
-    {       
+    {
         $db = $this->dbConnect();
         $reportComment = $db->prepare('UPDATE comments SET status = "reported" WHERE id = ?');
         $reportComment->execute(array($commentId));

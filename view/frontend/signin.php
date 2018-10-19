@@ -1,23 +1,23 @@
-<div class='book-wrapper'>
-    <div class='book-container'>
-        <div class='book-content'>
-            <a href='index.php?action=getChaptersList' class='white-button regular-button'>
+<div class='bookWrapper'>
+    <div class='bookContainer'>
+        <div class='bookContent'>
+            <a href='index.php?action=getChaptersList' class='whiteButton regularButton'>
                 <span>&#10094;&#10094;</span>Retour au menu des chapitres
             </a>
-
-            <div class='form-container'>
+            
+            <div class='formContainer'>
                 <h3>Connexion</h3>
-
+                
                 <form class='identificationForm' action='index.php?action=logAccount' method='post'>
                     <div>
-                        <input class='dynamic-form comment-form' type='text' name='user-name' id='userNameLogginInput' placeholder="Nom d'utilisateur" required>
+                        <input class='dynamicForm commentForm' type='text' name='username' id='userNameLogginInput' placeholder="Nom d'utilisateur" required>
                         <p></p>
                     </div>
                     <div>
-                        <input class='dynamic-form comment-form' type='password' name='user-password' id='userPasswordLogginInput' placeholder='Mot de passe' required>
+                        <input class='dynamicForm commentForm' type='password' name='userPassword' id='userPasswordLogginInput' placeholder='Mot de passe' required>
                         <p></p>
                     </div>
-                    <button class='blue-button regular-button' type='submit'>Valider</button>
+                    <button class='blueButton regularButton' type='submit'>Valider</button>
                 </form>
             </div>
         </div>

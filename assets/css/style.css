@@ -4,87 +4,86 @@
         margin: 0;
         font-family: 'Lato', sans-serif;
     }
-
+    
     .wrapper {
         display: flex;
         flex-direction: column;
     }
-
+    
     button {
         padding: 3px 8px;
         font-weight: 600;
         display: block;
         cursor: pointer;
     }
-
-    .regular-button {
+    
+    .regularButton {
         border-radius: 7px;
     }
-
+    
     a {
         text-decoration: none;
     }
-
+    
     ul {
         margin: 0;
         padding: 4px 0;
         list-style: none;
     }
-
+    
     form > p {
         margin-bottom: 5px;
         color: red;
         text-align: right;
     }
-
+    
     form > div {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-/*        margin-top: 5px;*/
     }
 
 /* Customized items template */
 
-    .blue-button,
-    .orange-button,
-    .grey-button,
-    .white-button {
+    .blueButton,
+    .orangeButton,
+    .greyButton,
+    .whiteButton {
         padding: 4px 9px;
         font-weight: 600;
     }
-
-    .blue-button,
-    .orange-button,
-    .grey-button {
+    
+    .blueButton,
+    .orangeButton,
+    .greyButton {
         color: white;
         border: 1px white solid;
     }
-
-    .blue-button {
+    
+    .blueButton {
         background-color: #0984e3;
     }
-
-    .orange-button {
+    
+    .orangeButton {
         background-color: #e17055;
     }
-
-    .grey-button {
+    
+    .greyButton {
         background-color: #b0b0b0;
     }
-
-    .white-button {
+    
+    .whiteButton {
         background-color: white;
         color: #0984e3;
         border: 1px #0984e3 solid;
     }
-
+    
     form button,
-    .white-item {
+    .whiteItem {
         color: white;
     }
-
-    .blue-item {
+    
+    .blueItem {
         color: #0984e3;
     }
 
@@ -94,7 +93,7 @@
         width: 100%;
         height: 100vh;
         margin: 0;
-
+        
         background-image: url("../img/alaska_landscape.jpg");
         background-size: cover;
         background-position: center;
@@ -105,14 +104,14 @@
         align-items: center;
         position: relative;
     }
-
+    
     h1 {
         font-size: 4em;
         font-family: 'Lobster', cursive;
         color: white;
         text-align: center;
     }
-
+    
     h2 {
         color: white;
         position: absolute;
@@ -120,24 +119,24 @@
         right: 5%;
         text-align: right;
     }
-
+    
     article {
         background-color: #2d3436;
         color: white;
         position: relative;
     }
-
+    
     article p {
         padding: 30px 10% 70px 10%;
         margin: 0;
     }
-
+    
     article a {
         position: absolute;
         right: 10%;
         bottom: 30px;
     }
-
+    
     aside {
         padding: 30px 10% 30px 10%;
         background-color: white;
@@ -146,7 +145,7 @@
         flex-direction: column;
         align-items: flex-start;
     }
-
+    
     aside img {
         width: 100px;
         height: 100px;
@@ -154,11 +153,11 @@
         align-self: center;
         margin-bottom: 10px;
     }
-
+    
     aside p {
         margin: 0;
     }
-
+    
     footer {
         width: 100%;
         height: 5vh;
@@ -169,33 +168,33 @@
         flex-direction: column;
         align-items: center;
     }
-
+    
     footer ul {
         display: flex;
         flex-direction: row;
     }
-
+    
     footer li {
         margin-left: 10px;
     }
-
+    
     footer img {
         width: 20px;
         height: 20px;
     }
-
+    
     footer p {
         margin: 3px 0 0 0;
     }
-
-    .white-button span {
+    
+    .whiteButton span {
         margin-right: 10px;
     }
 
 /* nav bars */
 
-    .user-session-bar,
-    .admin-session-bar {
+    .userSessionBar,
+    .adminSessionBar {
         width: 100%;
         color: white;
         display: flex;
@@ -206,55 +205,54 @@
         z-index: 999;
         font-size: 1.1em;
     }
-
-    .user-session-bar,
-    .admin-session-bar {
+    
+    .userSessionBar,
+    .adminSessionBar {
         background-color: #2b3234;
     }
-
-    .user-session-bar {
+    
+    .userSessionBar {
         height: 13vh;
     }
-
-    .admin-session-bar{
+    
+    .adminSessionBar{
         height: 7vh;
     }
-
-    .user-session-bar p,
-    .admin-session-bar p {
+    
+    .userSessionBar p,
+    .adminSessionBar p {
         margin: 0;
-        padding: 2.4vh 30px;
-        
+        padding: 2.4vh 30px;    
     }
-
-    .user-session-bar nav,
-    .admin-session-bar nav {
+    
+    .userSessionBar nav,
+    .adminSessionBar nav {
         padding: 5px 20px 10px;
         display: flex;
         flex-direction: row;
         justify-content: center;
     }
-
-    .user-session-bar nav button:nth-child(2),
-    .user-session-bar nav button:nth-child(3),
-    .admin-session-bar nav button:nth-child(2),
-    .admin-session-bar nav button:nth-child(3) {
+    
+    .userSessionBar nav button:nth-child(2),
+    .userSessionBar nav button:nth-child(3),
+    .adminSessionBar nav button:nth-child(2),
+    .adminSessionBar nav button:nth-child(3) {
         margin-left: 10px;
     }
-
-    .book-wrapper,
-    .admin-panel-wrapper {
+    
+    .bookWrapper,
+    .adminPanelWrapper {
         padding: 2vh 5%;
     }
-
-    .book-wrapper {
+    
+    .bookWrapper {
         margin: 7vh 0 0;
     }
-
-    .admin-panel-wrapper {
+    
+    .adminPanelWrapper {
         margin: 7vh 0 0;
     }
-
+    
     h3 {
         font-size: 1.5em;
         margin: 20px 0 10px;
@@ -262,7 +260,7 @@
 
 /* Frontoffice */
 
-    .book-wrapper {
+    .bookWrapper {
         width: 90%;
         height: 88vh;
         background-image: url(../img/snowy-landscape.jpg);
@@ -270,36 +268,36 @@
         background-position: bottom center;
         position: relative;
     }
-
-    .book-wrapper:before,
-    .book-container {
+    
+    .bookWrapper:before,
+    .bookContainer {
         position: absolute;
         width: 90%;
         height: 88vh;
     }
-
-    .book-wrapper:before {
+    
+    .bookWrapper:before {
         content: "";
         background-color: white;
         opacity: 0.85;
         box-shadow: 5px 5px 3px;
         z-index: 1;
     }
-
-    .book-container {
+    
+    .bookContainer {
         z-index: 2;
         overflow-y: scroll;
     }
-
-    .book-content {
+    
+    .bookContent {
         margin: 20px;
     }
-
-    .book-content h3 {
+    
+    .bookContent h3 {
         text-align: center;
     }
-
-    .chapter-content {
+    
+    .chapterContent {
         max-height: 65vh;
         overflow-y: scroll;
         margin-bottom: 20px;
@@ -307,31 +305,31 @@
 
 /* Register and signIn page specifics */
 
-.identificationForm {
-    align-items: center;
-}
+    .identificationForm {
+        align-items: center;
+    }
 
-.identificationForm div {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-}
+    .identificationForm div {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+    }
 
-.identificationForm div p {
-    margin: 0;
-    text-align: center;
-}
+    .identificationForm div p {
+        margin: 0;
+        text-align: center;
+    }
 
 /* getChapterList page specifics */
 
-    .book-content > ul > li {
+    .bookContent > ul > li {
         display: flex;
         flex-direction: row;
         align-items: center;
         margin-bottom: 8px;
     }
-
-    .chapter-help {
+    
+    .chapterHelp {
         font-size: 1.2em;
         margin-left: 5px;
         cursor: pointer;
@@ -339,87 +337,87 @@
 
 /* getChapter page specifics */
 
-    .form-container {
+    .formContainer {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
-    .comment-info {
+    
+    .commentInfo {
         font-size: 0.8em;
         margin: 15px 0 3px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
-
-    .comment-info p {
+    
+    .commentInfo p {
         margin: 0;
     }
-
-    .comment-info p i {
+    
+    .commentInfo p i {
         margin-left: 5px;
     }
-
-    .comment-commands {
+    
+    .commentCommands {
         display: flex;
         flex-direction: row;
     }
-
-    .edit-comment-button {
+    
+    .editCommentButton {
         padding: 0;
         border: none;
         background-color: inherit;
         font-size: 1.2em;
     }
-
-    .comment-commands a {
+    
+    .commentCommands a {
         display: block;
         font-size: 1.2em;
         margin: 0 0 0 10px;
     }
-
-    .user-comment {
+    
+    .userComment {
         font-size: 0.9em;
         margin: 0;
     }
-
-    .deleted-comment,
-    .edited-comment {
+    
+    .deletedComment,
+    .editedComment {
         font-style: italic;
     }
-
-    .edited-comment {
+    
+    .editedComment {
         display: block;
         margin-top: 5px;
     }
-
-    .comments-wrapper {
+    
+    .commentsWrapper {
         display: flex;
         justify-content: center;
     }
-
-    .comments-container {
+    
+    .commentsContainer {
         margin: 20px 0;
         width: 90%;
     }
-
-    .comments-container p strong {
+    
+    .commentsContainer p strong {
         color: #0984e3;
     }
-
+    
     form {
         width: 100%;
         display: flex;
         flex-direction: column;
     }
-
+    
     textarea {
         border: none;
     }
-
-    .dynamic-form {
+    
+    .dynamicForm {
         width: 200px;
         border-bottom: 1px solid #bdc3c7;
         border: none;
@@ -436,20 +434,20 @@
         background-size: 200px 100%;
         background-repeat: no-repeat;
     }
-
+    
     .identificationForm button {
         margin: 10px;
     }
-
+    
     #comment {
         height: 20px;
     }
-
+    
     form button {
         align-self: center;
         cursor: pointer;
     }
-
+    
     input::-webkit-input-placeholder,
     textarea::-webkit-input-placeholder,
     button {
@@ -457,16 +455,16 @@
         -webkit-transition: all 0.3s ease-in-out;
               transition: all 0.3s ease-in-out;
     }
-
+    
     input:focus,
     input:valid,
     textarea:focus,
-    textare:valid {
+    textarea:valid {
         box-shadow: none;
         outline: none;
         background-position: 0 0;
     }
-
+    
     input:focus::-webkit-input-placeholder,
     input:valid::-webkit-input-placeholder,
     textarea:focus::-webkit-input-placeholder,
@@ -477,40 +475,40 @@
               transform: translateY(-15px);
         visibility: visible !important;
     }
-
+    
     button:hover {
         -webkit-transform: translateY(-3px);
           -ms-transform: translateY(-3px);
               transform: translateY(-3px);
         box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
     }
-
+    
     label {
         font-size: 0.9em;
     }
-
-    .comment-speech form {
+    
+    .commentSpeech form {
         align-items: flex-start;
     }
-
-    .comment-speech .editionContainer {
+    
+    .commentSpeech .editionContainer {
         width: 70%;
         flex-direction: column;
     }
-
+    
     .editionContainer p {
         margin: 0;
     }
-
+    
     .smallButtonsContainer {
         align-items: center;
     }
-
+    
     a.small {
         width: 2px;
         height: 12px;
     }
-
+    
     button.small {
         width: 22px;
         height: 22px;
@@ -518,7 +516,7 @@
         justify-content: center;
         margin-left: 5px;
     }
-
+    
     a.small i,
     button.small i
     {
@@ -527,13 +525,13 @@
 
 /* getMemberPanel Page specifics */
 
-    .user-info-bloc {
+    .userInfoBloc {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
-    .user-info {
+    
+    .userInfo {
         width: 100%;
         margin: 0 0 30px;
         display: flex;
@@ -541,49 +539,49 @@
         justify-content: space-between;
         align-items: flex-start;
     }
-
+    
     h4 {
         margin: 0;
     }
-
-    .user-info > div {
+    
+    .userInfo > div {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
     }
-
-    .user-info img {
+    
+    .userInfo img {
         width: 100px;
         border: 1px black solid;
     }
-
-    #userName,
+    
+    #username,
     #userEmail {
         max-width: 55%;
     }
-
-    #userName p,
+    
+    #username p,
     #userEmail p {
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
-    .user-info>div>button {
+    
+    .userInfo > div > button {
         margin-top: 5px;
     }
-
+    
     #avatarContainer {
         position: relative;
     }
-
+    
     #avatarContainer button {
         position: absolute;
         top: -18px;
         right: -18px;
     }
-
-    .edit-info-button {
+    
+    .editInfoButton {
         border-radius: 50%;
         margin-left: 10px;
         padding: 4px 9px;
@@ -594,8 +592,8 @@
         width: 40px;
         height: 40px;
     }
-
-    .edit-info-link {
+    
+    .editInfoLink {
         border-radius: 50%;
         padding: 4px 9px;
         font-weight: 600;
@@ -608,16 +606,16 @@
         justify-content: center;
         align-items: center;
     }
-    .user-info p {
+    
+    .userInfo p {
         margin: 0;
     }
-
-    #user-management {
-/*        margin-top: 20px;*/
+    
+    #userManagement {
         justify-content: center;
     }
-
-    #user-management a {
+    
+    #userManagement a {
         width: 50px;
         height: 60px;
         border-radius: 50%;
@@ -626,14 +624,14 @@
         justify-content: center;
         align-items: center;
     }
-
-    #user-management i {
+    
+    #userManagement i {
         font-size: 2em;
     }
 
 /* Backoffice */
 
-    .admin-panel-wrapper {
+    .adminPanelWrapper {
         width: 90%;
         height: 88vh;
         background-image: url(../img/aurora-borealis.jpg);
@@ -641,59 +639,59 @@
         background-position: top center;
         position: relative;
     }
-
-    .admin-panel-wrapper:before,
-    .admin-content-container {
+    
+    .adminPanelWrapper:before,
+    .adminContentContainer {
         position: absolute;
         width: 90%;
         height: 88vh;
     }
-
-    .admin-panel-wrapper:before {
+    
+    .adminPanelWrapper:before {
         content: "";
         background-color: white;
         opacity: 0.75;
         box-shadow: 5px 5px 3px;
         z-index: 1;
     }
-
-    .book-container {
+    
+    .bookContainer {
         z-index: 2;
     }
-
-    .admin-wrapper {
+    
+    .adminWrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
-    .admin-panel-wrapper {
+    
+    .adminPanelWrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
-    .admin-content-container {
+    
+    .adminContentContainer {
         z-index: 2;
         overflow-y: scroll;
     }
-
-    .admin-content-container:nth-child(2) {
+    
+    .adminContentContainer:nth-child(2) {
         margin: 10px 0;
     }
-
-    .admin-content-container h3 {
+    
+    .adminContentContainer h3 {
         margin: 0 0 14px;
         text-align: center;
     }
-
-    .admin-content {
+    
+    .adminContent {
         margin: 20px;
         display: flex;
         flex-direction: column;
     }
-
-    .grey-box {
+    
+    .greyBox {
         background-image: linear-gradient(#bdc3c7, #dfe6e9);
         box-shadow: 0px 5px 5px #bdc3c7;
         margin: 10px 0 0;
@@ -703,23 +701,23 @@
         justify-content: space-between;
         align-items: center;
     }
-
-    .admin-content:nth-child(2) .grey-box {
+    
+    .adminContent:nth-child(2) .greyBox {
         flex-direction: column;
     }
-
-    .grey-box p {
+    
+    .greyBox p {
         margin: 0 0 0 20px;
         font-size: 0.9em;
     }
-
-    .grey-box span {
+    
+    .greyBox span {
         font-size: 2.1em;
         font-weight: bold;
         color: #4834d4;
     }
-
-    .admin-panel-icons {
+    
+    .adminPanelIcons {
         width: 50px;
         height: 50px;
         margin-right: 20px;
@@ -729,26 +727,26 @@
         justify-content: center;
         align-items: center;
     }
-
-    .grey-box i {
+    
+    .greyBox i {
         font-size: 1.7em;
     }
-
-    .admin-content-container a i,
-    .admin-content-container span {
+    
+    .adminContentContainer a i,
+    .adminContentContainer span {
         color: #0984e3;
     }
-
-    .red-item {
+    
+    .redItem {
         color: red;
     }
-
-    .green-item {
+    
+    .greenItem {
         color: forestgreen;
     }
-
-    .chapter-options,
-    .users-options {
+    
+    .chapterOptions,
+    .usersOptions {
         width: 90%;
         padding: 6px 10px;
         display: flex;
@@ -757,87 +755,88 @@
         align-items: flex-end;
     }
 
-    .chapter-options a {
+    .chapterOptions a {
         color: black;
         font-size: 0.95em;
     }
 
-    .chapter-options > div {
+    .chapterOptions > div {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
     }
 
-    .chapter-options i {
+    .chapterOptions i {
         font-size: 1.2em;
         margin: 0 10px 0 0;
     }
-
-    .chapter-options a i,
-    .users-options i {
+    
+    .chapterOptions a i,
+    .usersOptions i {
         font-size: 1.2em;
         margin: 0 0 0 10px;
     }
-
-    .admin-content:nth-child(2) > a {
+    
+    .adminContent:nth-child(2) > a {
         align-self: flex-end;
         margin-top: 10px;
     }
-
-    .admin-content:nth-child(2) > a i {
+    
+    .adminContent:nth-child(2) > a i {
         color: white;
     }
 
-    .chapter-wrapper h4,
-    .chapter-wrapper>div {
+    .chapterWrapper h4,
+    .chapterWrapper>div {
         margin-bottom: 10px;
     }
-
-    .chapter-wrapper textarea {
+    
+    .chapterWrapper textarea {
         height: 100%;
         padding: 10px;
     }
-
-    .research-form {
+    
+    .researchForm {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin-top: 10px;
     }
-
-    .research-form input {
+    
+    .researchForm #username {
+        max-width: 70%;
         width: 80%;
     }
-
-    .research-form button i {
+    
+    .researchForm button i {
         margin: 0;
     }
 
 /* EditChapter Page specifics */
 
-    .editing-form {
+    .editingForm {
         height: 600px;
     }
-
-    .submit-buttons-block {
+    
+    .submitButtonsBlock {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         margin-top: 15px;
     }
-
-    .submit-buttons-block button i {
+    
+    .submitButtonsBlock button i {
         margin-right: 5px;
     }
 
 /* CreateNewChapter Page specifics */
 
-    .editing-form label,
+    .editingForm label,
     #chapterTitle {
         margin-bottom: 10px;
     }
-
-    .editing-form label {
+    
+    .editingForm label {
         font-size: 1em;
         font-weight: bold;
     }
@@ -850,14 +849,14 @@
         height: 100%;
         margin-top: 60px;
     }
-
+    
     .mainInner {
         display: table;
         height: 100%;
         width: 100%;
         text-align: center;
     }
-
+    
     .mainInner div {
         display:table-cell;
         vertical-align: middle;
@@ -875,7 +874,7 @@
         transition: transform 250ms ease-in-out;
         background: #2b3234;
     }
-
+    
     .sidebarMenuInner {
         width: 100%;
         box-shadow: 0 10px 6px -6px #777;
@@ -888,23 +887,23 @@
     .sidebarMenuInner li {
         padding: 10px;
     }
-
+    
     .sidebarMenuInner li span {
         display: block;
         font-size: 14px;
         color: rgba(255, 255, 255, 0.50);
     }
-
+    
     input[type="checkbox"]:checked ~ #sidebarMenu {
         transform: translateX(0);
     }
-
+    
     input[type=checkbox] {
         transition: all 0.3s;
         box-sizing: border-box;
         display: none;
     }
-
+    
     .sidebarIconToggle {
         transition: all 0.3s;
         box-sizing: border-box;
@@ -918,7 +917,7 @@
         height: 22px;
         width: 22px;
     }
-
+    
     .spinner {
         transition: all 0.3s;
         box-sizing: border-box;
@@ -927,7 +926,7 @@
         width: 100%;
         background-color: #fff;
     }
-
+    
     .horizontal {
         transition: all 0.3s;
         box-sizing: border-box;
@@ -935,14 +934,14 @@
         float: left;
         margin-top: 3px;
     }
-
+    
     .diagonal.part-1 {
         position: relative;
         transition: all 0.3s;
         box-sizing: border-box;
         float: left;
     }
-
+    
     .diagonal.part-2 {
         transition: all 0.3s;
         box-sizing: border-box;
@@ -950,20 +949,20 @@
         float: left;
         margin-top: 3px;
     }
-
+    
     input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
         transition: all 0.3s;
         box-sizing: border-box;
         opacity: 0;
     }
-
+    
     input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
         transition: all 0.3s;
         box-sizing: border-box;
         transform: rotate(135deg);
         margin-top: 8px;
     }
-
+    
     input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
         transition: all 0.3s;
         box-sizing: border-box;

@@ -12,11 +12,11 @@ class CommentEditor extends Editor {
         const commandsContainer = this.getContainerElement(e.target);
         const commentWrapper = commandsContainer.parentNode.parentNode;
         const commentId = commentWrapper.id.replace('comment-','');
-        const commentContainer = commentWrapper.querySelector('div.comment-speech');
+        const commentContainer = commentWrapper.querySelector('div.commentSpeech');
         
         commandsContainer.parentNode.removeChild(commandsContainer);
         commentContainer.innerHTML = '';
-                
+        
         const formElement = this.createFormElements(commentContainer.parentNode.className);
         
         let chapterId = document.getElementsByTagName('h3')[0].textContent.split(':')[0].split(' ')[1];
@@ -26,10 +26,10 @@ class CommentEditor extends Editor {
         formElement.style.flexDirection = 'row';
         formElement.style.justifyContent = 'space-between';
         
-        formElement.querySelector('a.edit-info-link').parentNode.classList.add('smallButtonsContainer');
+        formElement.querySelector('a.editInfoLink').parentNode.classList.add('smallButtonsContainer');
         
-        formElement.querySelector('a.edit-info-link').classList.add('small');
-        formElement.querySelector('button.edit-info-button').classList.add('small');
+        formElement.querySelector('a.editInfoLink').classList.add('small');
+        formElement.querySelector('button.editInfoButton').classList.add('small');
         
         this.commentTesting(formElement);
     }

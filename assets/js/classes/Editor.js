@@ -1,4 +1,4 @@
-class Editor {    
+class Editor {
     
     createFormElements(containerId) {
         const editionForm = document.createElement('form');
@@ -19,12 +19,12 @@ class Editor {
         const cancelButton = document.createElement('a');
         cancelButton.href = '';
         cancelButton.classList.add('edit-info-link', 'blue-button');
-        cancelButton.innerHTML = '<i class="fas fa-times white-item"></i>';
+        cancelButton.innerHTML = '<i class="fas fa-times whiteItem"></i>';
         
         const submitButton = document.createElement('button');
-        submitButton.classList.add('edit-info-button', 'blue-button');
+        submitButton.classList.add('edit-info-button', 'blueButton');
         submitButton.setAttribute('type', 'submit');
-        submitButton.innerHTML = '<i class="fas fa-check white-item"></i>';
+        submitButton.innerHTML = '<i class="fas fa-check whiteItem"></i>';
         
         if (containerId.includes('Email')) {
             formInput.setAttribute('type', 'text')

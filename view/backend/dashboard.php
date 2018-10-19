@@ -1,26 +1,29 @@
-<div class="admin-panel-wrapper">
-    <div class="admin-content-container">
-        <div class="admin-content">
+<div class="adminPanelWrapper">
+    <div class="adminContentContainer">
+        <div class="adminContent">
             <h3>Vue d'ensemble</h3>
-            <div class="grey-box">
+            <div class="greyBox">
                 <div>
                     <p><span><?= $userCount[0] ?></span></p>
                     <p>membre(s)</p>
                 </div>
-                <div class="admin-panel-icons">
-                    <i class="fas fa-users white-item"></i>
+                
+                <div class="adminPanelIcons">
+                    <i class="fas fa-users whiteItem"></i>
                 </div>
             </div>
-            <div class="grey-box">
+            
+            <div class="greyBox">
                 <div>
                     <p><span><?= $chapterCount[0] ?></span></p>
                     <p>chapitre(s)</p>
                 </div>
-                <div class="admin-panel-icons">
-                    <i class="fas fa-book-open white-item"></i>
+                <div class="adminPanelIcons">
+                    <i class="fas fa-book-open whiteItem"></i>
                 </div>
             </div>
-            <div class="grey-box">
+            
+            <div class="greyBox">
                 <div>
                     <div>
                         <p><span><?= $commentCount[0] ?></span> commentaire(s)</p>
@@ -29,23 +32,23 @@
                         <p><span><?= $reportedCommentCount[0] ?></span> commentaire(s) signalé(s)</p>
                     </div>
                 </div>
-                <div class="admin-panel-icons">
-                    <i class="fas fa-comments white-item"></i>
+                <div class="adminPanelIcons">
+                    <i class="fas fa-comments whiteItem"></i>
                 </div>
             </div>
         </div>
         
-        <div class="admin-content">
+        <div class="adminContent">
             <h3>Edition du roman</h3>
             
             <?php
             while ($chapter = $chapters->fetch())
             {
-            ?>
-                <div class="grey-box">
-                    <div class="chapter-options">
+                ?>
+                <div class="greyBox">
+                    <div class="chapterOptions">
                         <div>
-                            <i class="fas fa-broadcast-tower <?php if ($chapter['status'] === 'published') { ?> green<?php } else { ?> red<?php } ?>-item"></i>
+                            <i class="fas fa-broadcast-tower <?php if ($chapter['status'] === 'published') { ?> green<?php } else { ?> red<?php } ?>Item"></i>
                             <a href="index.php?action=getChapter&amp;id=<?= $chapter['id'] ?>">Chapitre <?= $chapter['id'] ?> :<br/> <?= htmlspecialchars($chapter['title']) ?></a>
                         </div>
                         <div>
@@ -58,26 +61,26 @@
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
             }
             $chapters->closeCursor();
             ?>
             
-            <a href="index.php?action=addChapter" class="blue-button regular-button">
+            <a href="index.php?action=addChapter" class="blueButton regularButton">
                 <i class="fas fa-plus"></i>
             </a>
         </div>
         
-        <div class="admin-content">
+        <div class="adminContent">
             <h3>Gestion d'utilisateurs</h3>
-            <div class="grey-box">
-                <div class="users-options">
+            <div class="greyBox">
+                <div class="usersOptions">
                     <form action="index.php?action=searchMember" method="post">
                         <label for="username">Recherche un membre :</label>
-                        <div class="research-form">
+                        <div class="researchForm">
                             <input type="text" name="username" id="username" required />
-                            <button class="blue-button regular-button" type="submit">
-                                <i class="fas fa-search white-item"></i>
+                            <button class="blueButton regularButton" type="submit">
+                                <i class="fas fa-search whiteItem"></i>
                             </button>
                         </div>
                     </form>

@@ -1,4 +1,4 @@
-<div class="admin-session-bar">
+<div class="adminSessionBar">
     <div>
         <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
         <label for="openSidebarMenu" class="sidebarIconToggle">
@@ -6,7 +6,7 @@
             <div class="spinner horizontal"></div>
             <div class="spinner diagonal part-2"></div>
         </label>
-
+        
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
                 <?php
@@ -14,7 +14,7 @@
                 {
                     ?>
                     <li>
-                        <a href="index.php?action=getAdminPanel" class="blue-button regular-button">Panneau d'administration</a>
+                        <a href="index.php?action=getAdminPanel" class="blueButton regularButton">Panneau d'administration</a>
                     </li>
                     <?php
                 }
@@ -25,21 +25,20 @@
                 {
                     ?>
                     <li>
-                        <a href="index.php?action=getMemberPanel" class="white-button regular-button">Espace membre</a>
+                        <a href="index.php?action=getMemberPanel" class="whiteButton regularButton">Espace membre</a>
                     </li>
                     <?php
                 }
                 else
                 {
                     ?>
-                    <li> <a href="index.php" class="white-button regular-button">Voir le site</a></li>
+                    <li> <a href="index.php" class="whiteButton regularButton">Voir le site</a></li>
                     <?php
                 }
                 ?>
                 
-                
                 <li>
-                    <a href="index.php?action=signOut" class="orange-button regular-button">Déconnexion</a>
+                    <a href="index.php?action=signOut" class="orangeButton regularButton">Déconnexion</a>
                 </li>
             </ul>
         </div>
