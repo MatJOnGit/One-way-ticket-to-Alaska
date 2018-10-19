@@ -223,7 +223,8 @@
     .user-session-bar p,
     .admin-session-bar p {
         margin: 0;
-        padding: 2.2vh 40px;
+        padding: 2.4vh 30px;
+        
     }
 
     .user-session-bar nav,

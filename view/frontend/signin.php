@@ -14,7 +14,7 @@
                         <p></p>
                     </div>
                     <div>
-                        <input class='dynamic-form comment-form' type='password' name='userPasswordLogginInput' id='userPassword' placeholder='Mot de passe' required>
+                        <input class='dynamic-form comment-form' type='password' name='user-password' id='userPasswordLogginInput' placeholder='Mot de passe' required>
                         <p></p>
                     </div>
                     <button class='blue-button regular-button' type='submit'>Valider</button>

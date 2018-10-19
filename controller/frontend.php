@@ -193,6 +193,7 @@ class Frontend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
+        
         if (isset($_POST['user-name']) &&
             (preg_match('#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#', $_POST['user-name']))
             && (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['user-password'])))
@@ -208,7 +209,7 @@ class Frontend_Controller extends Controller
                 $_SESSION['id'] = $userData[0];
                 $_SESSION['status'] = $userData[2];
                 header('Location: index.php?action=getChaptersList');
-            }            
+            }
             else
             {
                 header('Location: index.php?action=signIn');
