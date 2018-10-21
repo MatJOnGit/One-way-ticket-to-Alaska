@@ -10,7 +10,7 @@ class Frontend_Controller extends Controller
     {
         $this->loadManagers();
         $commentManager = new owtta\Blog\Model\CommentManager();
-        $commentManager->addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+        $commentManager->addComment($_GET['id'], $_SESSION['pseudo'], trim($_POST['comment']));
         header('Location: index.php?action=getChapter&id=' . $_GET['id']);
     }
     
@@ -37,7 +37,7 @@ class Frontend_Controller extends Controller
             {
                 // "Non-existing pseudo in BDD" case
                 $newUserData = $userManager->createUser($_POST['username'], $_POST['userEmail'], password_hash($_POST['userPassword'], PASSWORD_DEFAULT));
-
+                
                 if (isset($newUserData) && $newUserData > 0)
                 {
                     echo 'compte créé';
@@ -149,8 +149,9 @@ class Frontend_Controller extends Controller
         $this->displayNavBar();
         $this->loadManagers();
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterCount = $chapterManager->getChapterCount();
         $chapters = $chapterManager->getChapters();
-        
+
         require('view/frontend/chaptersList.php');
     }
     

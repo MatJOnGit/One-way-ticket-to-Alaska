@@ -1,5 +1,5 @@
 tinymce.init({
-    selector: '#chapterContent',
+    selector: '#chapter-content',
     branding: false,
     height: 420
 });

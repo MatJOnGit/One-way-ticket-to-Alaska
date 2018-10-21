@@ -1,10 +1,10 @@
 const userNameContainer = document.getElementById('username');
 let userNameEditButton = userNameContainer.childNodes[3];
 
-const userEmailContainer = document.getElementById('userEmail');
+const userEmailContainer = document.getElementById('user-email');
 let userEmailEditButton = userEmailContainer.childNodes[3];
 
-const userPwdContainer = document.getElementById('userPassword');
+const userPwdContainer = document.getElementById('user-password');
 let userPwdEditButton = userPwdContainer.childNodes[3];
 
 const userId = document.getElementById('idContainer').childNodes[1].textContent;

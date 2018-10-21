@@ -5,7 +5,7 @@ class Editor {
         editionForm.setAttribute('method', 'post');
         
         const inputData = document.createElement('div');
-        inputData.classList.add('editionContainer');
+        inputData.classList.add('edition-container');
         
         const formInput = document.createElement('input');
         formInput.setAttribute('required', 'true');
@@ -19,12 +19,12 @@ class Editor {
         const cancelButton = document.createElement('a');
         cancelButton.href = '';
         cancelButton.classList.add('edit-info-link', 'blue-button');
-        cancelButton.innerHTML = '<i class="fas fa-times whiteItem"></i>';
+        cancelButton.innerHTML = '<i class="fas fa-times white-item"></i>';
         
         const submitButton = document.createElement('button');
-        submitButton.classList.add('edit-info-button', 'blueButton');
+        submitButton.classList.add('edit-info-button', 'blue-button');
         submitButton.setAttribute('type', 'submit');
-        submitButton.innerHTML = '<i class="fas fa-check whiteItem"></i>';
+        submitButton.innerHTML = '<i class="fas fa-check white-item"></i>';
         
         if (containerId.includes('Email')) {
             formInput.setAttribute('type', 'text')

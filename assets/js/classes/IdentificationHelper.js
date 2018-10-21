@@ -1,9 +1,9 @@
 class IdentificationHelper {
     constructor() {
-        this._usernameInputElement = document.getElementById('userNameLogginInput');
+        this._usernameInputElement = document.getElementById('username-loggin-input');
         this._usernameAlert = this._usernameInputElement.parentNode.querySelector('p');
-                
-        this._passwordInputElement = document.getElementById('userPasswordLogginInput');
+        
+        this._passwordInputElement = document.getElementById('user-password-loggin-input');
         this._passwordAlert = this._passwordInputElement.parentNode.querySelector('p');
         
         this._formElement = this._passwordInputElement.parentNode.parentNode;
@@ -23,7 +23,7 @@ class IdentificationHelper {
     get passwordInputElement() {
         return this._passwordInputElement;
     }
-        
+    
     get passwordAlert() {
         return this._passwordAlert;
     }
@@ -65,7 +65,7 @@ class IdentificationHelper {
         })
     }
     
-    addUsernameTests() {        
+    addUsernameTests() {
         this.usernameInputElement.addEventListener('blur', () => {
             if (this.usernameRegex.test(this.usernameInputElement.value) && this.usernameAlert.textContent === 'pseudo incorrect') {
                 this.usernameAlert.textContent = 'pseudo valide';

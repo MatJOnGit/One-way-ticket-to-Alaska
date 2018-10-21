@@ -1,34 +1,34 @@
-<div class="bookWrapper">
-    <div class="bookContainer">
-        <div class="bookContent">
-            <a href="index.php?action=getChaptersList" class="whiteButton regularButton">
+<div class="book-wrapper">
+    <div class="book-container">
+        <div class="book-content">
+            <a href="index.php?action=getChaptersList" class="white-button regular-button">
                 <span>&#10094;&#10094;</span>Retour au menu des chapitres
             </a>
 
-            <div class="formContainer">
+            <div class="form-container">
                 <h3>Inscription</h3>
 
-                <form class='identificationForm' action="index.php?action=createAccount" method="post">
+                <form class='identification-form' action="index.php?action=createAccount" method="post">
                     <div>
-                        <input class="dynamicForm commentForm" type="text" name="username" id="userNameLogginInput" placeholder="Nom d'utilisateur" required>
+                        <input class="dynamic-form comment-form" type="text" name="username" id="userName-loggin-input" placeholder="Nom d'utilisateur" required>
                         <p></p>
                     </div>
                     
                     <div>
-                        <input class="dynamicForm commentForm" type="email" name="userEmail" id="userEmailLogginInput" placeholder="Adresse mail" required>
+                        <input class="dynamic-form comment-form" type="email" name="userEmail" id="user-email-loggin-input" placeholder="Adresse mail" required>
                         <p></p>
                     </div>
                     
                     <div>
-                        <input class="dynamicForm commentForm" type="password" name="userPassword" id="userPasswordLogginInput" placeholder="Mot de passe" required>
+                        <input class="dynamic-form comment-form" type="password" name="userPassword" id="user-password-loggin-input" placeholder="Mot de passe" required>
                         <p></p>
                     </div>
                     
                     <div>
-                        <input class="dynamicForm commentForm" type="password" name="userCopiedPassword" id="userCopiedPasswordLogginInput" placeholder="Mot de passe (confirmation)" required>
+                        <input class="dynamic-form comment-form" type="password" name="userCopiedPassword" id="user-copied-password-loggin-input" placeholder="Mot de passe (confirmation)" required>
                         <p></p>
                     </div>
-                    <button class="blueButton regularButton" type="submit">Créer mon compte</button>
+                    <button class="blue-button regular-button" type="submit">Créer mon compte</button>
                 </form>
             </div>
         </div>

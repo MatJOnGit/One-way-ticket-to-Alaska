@@ -12,7 +12,7 @@ class CommentEditor extends Editor {
         const commandsContainer = this.getContainerElement(e.target);
         const commentWrapper = commandsContainer.parentNode.parentNode;
         const commentId = commentWrapper.id.replace('comment-','');
-        const commentContainer = commentWrapper.querySelector('div.commentSpeech');
+        const commentContainer = commentWrapper.querySelector('div.comment-speech');
         
         commandsContainer.parentNode.removeChild(commandsContainer);
         commentContainer.innerHTML = '';
@@ -26,10 +26,10 @@ class CommentEditor extends Editor {
         formElement.style.flexDirection = 'row';
         formElement.style.justifyContent = 'space-between';
         
-        formElement.querySelector('a.editInfoLink').parentNode.classList.add('smallButtonsContainer');
+        formElement.querySelector('a.edit-info-link').parentNode.classList.add('small-buttons-container');
         
-        formElement.querySelector('a.editInfoLink').classList.add('small');
-        formElement.querySelector('button.editInfoButton').classList.add('small');
+        formElement.querySelector('a.edit-info-link').classList.add('small');
+        formElement.querySelector('button.edit-info-button').classList.add('small');
         
         this.commentTesting(formElement);
     }

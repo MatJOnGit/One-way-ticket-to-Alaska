@@ -17,7 +17,7 @@
         cursor: pointer;
     }
     
-    .regularButton {
+    .regular-button {
         border-radius: 7px;
     }
     
@@ -45,45 +45,45 @@
 
 /* Customized items template */
 
-    .blueButton,
-    .orangeButton,
-    .greyButton,
-    .whiteButton {
+    .blue-button,
+    .orange-button,
+    .grey-button,
+    .white-button {
         padding: 4px 9px;
         font-weight: 600;
     }
     
-    .blueButton,
-    .orangeButton,
-    .greyButton {
+    .blue-button,
+    .orange-button,
+    .grey-button {
         color: white;
         border: 1px white solid;
     }
     
-    .blueButton {
+    .blue-button {
         background-color: #0984e3;
     }
     
-    .orangeButton {
+    .orange-button {
         background-color: #e17055;
     }
     
-    .greyButton {
+    .grey-button {
         background-color: #b0b0b0;
     }
     
-    .whiteButton {
+    .white-button {
         background-color: white;
         color: #0984e3;
         border: 1px #0984e3 solid;
     }
     
     form button,
-    .whiteItem {
+    .white-item {
         color: white;
     }
     
-    .blueItem {
+    .blue-item {
         color: #0984e3;
     }
 
@@ -172,29 +172,34 @@
     footer ul {
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
+        width: 30%;
+        max-width: 110px;
+        padding: 0;
     }
-    
-    footer li {
-        margin-left: 10px;
-    }
-    
-    footer img {
+
+    footer a {
+        display: block;
         width: 20px;
         height: 20px;
     }
     
-    footer p {
-        margin: 3px 0 0 0;
+    footer img {
+        width: 100%;
     }
     
-    .whiteButton span {
+    footer p {
+        margin: 0;
+    }
+    
+    .white-button span {
         margin-right: 10px;
     }
 
 /* nav bars */
 
-    .userSessionBar,
-    .adminSessionBar {
+    .user-session-bar,
+    .admin-session-bar {
         width: 100%;
         color: white;
         display: flex;
@@ -206,50 +211,50 @@
         font-size: 1.1em;
     }
     
-    .userSessionBar,
-    .adminSessionBar {
+    .user-session-bar,
+    .admin-session-bar {
         background-color: #2b3234;
     }
     
-    .userSessionBar {
+    .user-session-bar {
         height: 13vh;
     }
     
-    .adminSessionBar{
+    .admin-session-bar {
         height: 7vh;
     }
     
-    .userSessionBar p,
-    .adminSessionBar p {
+    .user-session-bar p,
+    .admin-session-bar p {
         margin: 0;
         padding: 2.4vh 30px;    
     }
     
-    .userSessionBar nav,
-    .adminSessionBar nav {
+    .user-session-bar nav,
+    .admin-session-bar nav {
         padding: 5px 20px 10px;
         display: flex;
         flex-direction: row;
         justify-content: center;
     }
     
-    .userSessionBar nav button:nth-child(2),
-    .userSessionBar nav button:nth-child(3),
-    .adminSessionBar nav button:nth-child(2),
-    .adminSessionBar nav button:nth-child(3) {
+    .user-session-bar nav button:nth-child(2),
+    .user-session-bar nav button:nth-child(3),
+    .admin-session-bar nav button:nth-child(2),
+    .admin-session-bar nav button:nth-child(3) {
         margin-left: 10px;
     }
     
-    .bookWrapper,
-    .adminPanelWrapper {
+    .book-wrapper,
+    .admin-panel-wrapper {
         padding: 2vh 5%;
     }
     
-    .bookWrapper {
+    .book-wrapper {
         margin: 7vh 0 0;
     }
     
-    .adminPanelWrapper {
+    .admin-panel-wrapper {
         margin: 7vh 0 0;
     }
     
@@ -260,7 +265,7 @@
 
 /* Frontoffice */
 
-    .bookWrapper {
+    .book-wrapper {
         width: 90%;
         height: 88vh;
         background-image: url(../img/snowy-landscape.jpg);
@@ -269,14 +274,14 @@
         position: relative;
     }
     
-    .bookWrapper:before,
-    .bookContainer {
+    .book-wrapper:before,
+    .book-container {
         position: absolute;
         width: 90%;
         height: 88vh;
     }
     
-    .bookWrapper:before {
+    .book-wrapper:before {
         content: "";
         background-color: white;
         opacity: 0.85;
@@ -284,20 +289,20 @@
         z-index: 1;
     }
     
-    .bookContainer {
+    .book-container {
         z-index: 2;
         overflow-y: scroll;
     }
     
-    .bookContent {
+    .book-content {
         margin: 20px;
     }
     
-    .bookContent h3 {
+    .book-content h3 {
         text-align: center;
     }
     
-    .chapterContent {
+    .chapter-content {
         max-height: 65vh;
         overflow-y: scroll;
         margin-bottom: 20px;
@@ -305,31 +310,31 @@
 
 /* Register and signIn page specifics */
 
-    .identificationForm {
+    .identification-form {
         align-items: center;
     }
 
-    .identificationForm div {
+    .identification-form div {
         width: 200px;
         display: flex;
         flex-direction: column;
     }
 
-    .identificationForm div p {
+    .identification-form div p {
         margin: 0;
         text-align: center;
     }
 
 /* getChapterList page specifics */
 
-    .bookContent > ul > li {
+    .book-content > ul > li {
         display: flex;
         flex-direction: row;
         align-items: center;
         margin-bottom: 8px;
     }
     
-    .chapterHelp {
+    .chapter-help {
         font-size: 1.2em;
         margin-left: 5px;
         cursor: pointer;
@@ -337,14 +342,14 @@
 
 /* getChapter page specifics */
 
-    .formContainer {
+    .form-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     
-    .commentInfo {
+    .comment-info {
         font-size: 0.8em;
         margin: 15px 0 3px;
         display: flex;
@@ -352,58 +357,58 @@
         justify-content: space-between;
     }
     
-    .commentInfo p {
+    .comment-info p {
         margin: 0;
     }
     
-    .commentInfo p i {
+    .comment-info p i {
         margin-left: 5px;
     }
     
-    .commentCommands {
+    .comment-commands {
         display: flex;
         flex-direction: row;
     }
     
-    .editCommentButton {
+    .edit-comment-button {
         padding: 0;
         border: none;
         background-color: inherit;
         font-size: 1.2em;
     }
     
-    .commentCommands a {
+    .comment-commands a {
         display: block;
         font-size: 1.2em;
         margin: 0 0 0 10px;
     }
     
-    .userComment {
+    .user-comment {
         font-size: 0.9em;
         margin: 0;
     }
     
-    .deletedComment,
-    .editedComment {
+    .deleted-comment,
+    .edited-comment {
         font-style: italic;
     }
     
-    .editedComment {
+    .edited-comment {
         display: block;
         margin-top: 5px;
     }
     
-    .commentsWrapper {
+    .comments-wrapper {
         display: flex;
         justify-content: center;
     }
     
-    .commentsContainer {
+    .comments-container {
         margin: 20px 0;
         width: 90%;
     }
     
-    .commentsContainer p strong {
+    .comments-container p strong {
         color: #0984e3;
     }
     
@@ -417,7 +422,7 @@
         border: none;
     }
     
-    .dynamicForm {
+    .dynamic-form {
         width: 200px;
         border-bottom: 1px solid #bdc3c7;
         border: none;
@@ -435,7 +440,7 @@
         background-repeat: no-repeat;
     }
     
-    .identificationForm button {
+    .identification-form button {
         margin: 10px;
     }
     
@@ -487,20 +492,20 @@
         font-size: 0.9em;
     }
     
-    .commentSpeech form {
+    .comment-speech form {
         align-items: flex-start;
     }
     
-    .commentSpeech .editionContainer {
+    .comment-speech .edition-container {
         width: 70%;
         flex-direction: column;
     }
     
-    .editionContainer p {
+    .edition-container p {
         margin: 0;
     }
     
-    .smallButtonsContainer {
+    .small-buttons-container {
         align-items: center;
     }
     
@@ -525,13 +530,13 @@
 
 /* getMemberPanel Page specifics */
 
-    .userInfoBloc {
+    .user-info-bloc {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .userInfo {
+    .user-info {
         width: 100%;
         margin: 0 0 30px;
         display: flex;
@@ -544,44 +549,44 @@
         margin: 0;
     }
     
-    .userInfo > div {
+    .user-info > div {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
     }
     
-    .userInfo img {
+    .user-info img {
         width: 100px;
         border: 1px black solid;
     }
     
     #username,
-    #userEmail {
+    #user-email {
         max-width: 55%;
     }
     
     #username p,
-    #userEmail p {
+    #user-email p {
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
     }
     
-    .userInfo > div > button {
+    .user-info > div > button {
         margin-top: 5px;
     }
     
-    #avatarContainer {
+    #avatar-container {
         position: relative;
     }
     
-    #avatarContainer button {
+    #avatar-container button {
         position: absolute;
         top: -18px;
         right: -18px;
     }
     
-    .editInfoButton {
+    .edit-info-button {
         border-radius: 50%;
         margin-left: 10px;
         padding: 4px 9px;
@@ -593,7 +598,7 @@
         height: 40px;
     }
     
-    .editInfoLink {
+    .edit-info-link {
         border-radius: 50%;
         padding: 4px 9px;
         font-weight: 600;
@@ -607,15 +612,15 @@
         align-items: center;
     }
     
-    .userInfo p {
+    .user-info p {
         margin: 0;
     }
     
-    #userManagement {
+    #user-management {
         justify-content: center;
     }
     
-    #userManagement a {
+    #user-management a {
         width: 50px;
         height: 60px;
         border-radius: 50%;
@@ -625,13 +630,13 @@
         align-items: center;
     }
     
-    #userManagement i {
+    #user-management i {
         font-size: 2em;
     }
 
 /* Backoffice */
 
-    .adminPanelWrapper {
+    .admin-panel-wrapper {
         width: 90%;
         height: 88vh;
         background-image: url(../img/aurora-borealis.jpg);
@@ -640,14 +645,14 @@
         position: relative;
     }
     
-    .adminPanelWrapper:before,
-    .adminContentContainer {
+    .admin-panel-wrapper:before,
+    .admin-content-container {
         position: absolute;
         width: 90%;
         height: 88vh;
     }
     
-    .adminPanelWrapper:before {
+    .admin-panel-wrapper:before {
         content: "";
         background-color: white;
         opacity: 0.75;
@@ -655,43 +660,43 @@
         z-index: 1;
     }
     
-    .bookContainer {
+    .book-container {
         z-index: 2;
     }
     
-    .adminWrapper {
+    .admin-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .adminPanelWrapper {
+    .admin-panel-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     
-    .adminContentContainer {
+    .admin-content-container {
         z-index: 2;
         overflow-y: scroll;
     }
     
-    .adminContentContainer:nth-child(2) {
+    .admin-content-container:nth-child(2) {
         margin: 10px 0;
     }
     
-    .adminContentContainer h3 {
+    .admin-content-container h3 {
         margin: 0 0 14px;
         text-align: center;
     }
     
-    .adminContent {
+    .admin-content {
         margin: 20px;
         display: flex;
         flex-direction: column;
     }
-    
-    .greyBox {
+
+    .grey-box {
         background-image: linear-gradient(#bdc3c7, #dfe6e9);
         box-shadow: 0px 5px 5px #bdc3c7;
         margin: 10px 0 0;
@@ -702,22 +707,22 @@
         align-items: center;
     }
     
-    .adminContent:nth-child(2) .greyBox {
+    .admin-content:nth-child(2) .grey-box {
         flex-direction: column;
     }
     
-    .greyBox p {
+    .grey-box p {
         margin: 0 0 0 20px;
         font-size: 0.9em;
     }
     
-    .greyBox span {
+    .grey-box span {
         font-size: 2.1em;
         font-weight: bold;
         color: #4834d4;
     }
     
-    .adminPanelIcons {
+    .admin-panel-icons {
         width: 50px;
         height: 50px;
         margin-right: 20px;
@@ -728,25 +733,25 @@
         align-items: center;
     }
     
-    .greyBox i {
+    .grey-box i {
         font-size: 1.7em;
     }
     
-    .adminContentContainer a i,
-    .adminContentContainer span {
+    .admin-content-container a i,
+    .admin-content-container span {
         color: #0984e3;
     }
     
-    .redItem {
+    .red-item {
         color: red;
     }
     
-    .greenItem {
+    .green-item {
         color: forestgreen;
     }
     
-    .chapterOptions,
-    .usersOptions {
+    .chapter-options,
+    .user-options {
         width: 90%;
         padding: 6px 10px;
         display: flex;
@@ -754,89 +759,89 @@
         justify-content: space-between;
         align-items: flex-end;
     }
-
-    .chapterOptions a {
+    
+    .chapter-options a {
         color: black;
         font-size: 0.95em;
     }
-
-    .chapterOptions > div {
+    
+    .chapter-options > div {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
     }
-
-    .chapterOptions i {
+    
+    .chapter-options i {
         font-size: 1.2em;
         margin: 0 10px 0 0;
     }
     
-    .chapterOptions a i,
-    .usersOptions i {
+    .chapter-options a i,
+    .user-options i {
         font-size: 1.2em;
         margin: 0 0 0 10px;
     }
     
-    .adminContent:nth-child(2) > a {
+    .admin-content:nth-child(2) > a {
         align-self: flex-end;
         margin-top: 10px;
     }
     
-    .adminContent:nth-child(2) > a i {
+    .admin-content:nth-child(2) > a i {
         color: white;
     }
-
-    .chapterWrapper h4,
-    .chapterWrapper>div {
+    
+    .chapter-wrapper h4,
+    .chapter-wrapper>div {
         margin-bottom: 10px;
     }
     
-    .chapterWrapper textarea {
+    .chapter-wrapper textarea {
         height: 100%;
         padding: 10px;
     }
     
-    .researchForm {
+    .research-form {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin-top: 10px;
     }
     
-    .researchForm #username {
+    .research-form #username {
         max-width: 70%;
         width: 80%;
     }
     
-    .researchForm button i {
+    .research-form button i {
         margin: 0;
     }
 
 /* EditChapter Page specifics */
 
-    .editingForm {
+    .editing-form {
         height: 600px;
     }
     
-    .submitButtonsBlock {
+    .submit-buttons-block {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         margin-top: 15px;
     }
     
-    .submitButtonsBlock button i {
+    .submit-buttons-block button i {
         margin-right: 5px;
     }
 
 /* CreateNewChapter Page specifics */
 
-    .editingForm label,
-    #chapterTitle {
+    .editing-form label,
+    #chapter-title {
         margin-bottom: 10px;
     }
     
-    .editingForm label {
+    .editing-form label {
         font-size: 1em;
         font-weight: bold;
     }
@@ -850,22 +855,22 @@
         margin-top: 60px;
     }
     
-    .mainInner {
+    .main-inner {
         display: table;
         height: 100%;
         width: 100%;
         text-align: center;
     }
     
-    .mainInner div {
+    .main-inner div {
         display:table-cell;
         vertical-align: middle;
         font-size: 3em;
         font-weight: bold;
         letter-spacing: 1.25px;
     }
-
-    #sidebarMenu {
+    
+    #sidebar-menu {
         position: fixed;
         left: 0;
         width: 100%;
@@ -875,7 +880,7 @@
         background: #2b3234;
     }
     
-    .sidebarMenuInner {
+    .sidebar-menu-inner {
         width: 100%;
         box-shadow: 0 10px 6px -6px #777;
         border-top: 1px solid rgba(255, 255, 255, 0.10);
@@ -883,18 +888,18 @@
         flex-direction: column;
         align-items: center;
     }
-
-    .sidebarMenuInner li {
+    
+    .sidebar-menu-inner li {
         padding: 10px;
     }
     
-    .sidebarMenuInner li span {
+    .sidebar-menu-inner li span {
         display: block;
         font-size: 14px;
         color: rgba(255, 255, 255, 0.50);
     }
     
-    input[type="checkbox"]:checked ~ #sidebarMenu {
+    input[type="checkbox"]:checked ~ #sidebar-menu {
         transform: translateX(0);
     }
     
@@ -904,7 +909,7 @@
         display: none;
     }
     
-    .sidebarIconToggle {
+    .sidebar-icon-toggle {
         transition: all 0.3s;
         box-sizing: border-box;
         cursor: pointer;
@@ -950,20 +955,20 @@
         margin-top: 3px;
     }
     
-    input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    input[type=checkbox]:checked ~ .sidebar-icon-toggle > .horizontal {
         transition: all 0.3s;
         box-sizing: border-box;
         opacity: 0;
     }
     
-    input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    input[type=checkbox]:checked ~ .sidebar-icon-toggle > .diagonal.part-1 {
         transition: all 0.3s;
         box-sizing: border-box;
         transform: rotate(135deg);
         margin-top: 8px;
     }
     
-    input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    input[type=checkbox]:checked ~ .sidebar-icon-toggle > .diagonal.part-2 {
         transition: all 0.3s;
         box-sizing: border-box;
         transform: rotate(-135deg);

@@ -1,19 +1,19 @@
-<div class="bookWrapper">
-    <div class="bookContainer">
-        <div class="bookContent">
-            <a href="index.php?action=getChaptersList" class="whiteButton regularButton">
+<div class="book-wrapper">
+    <div class="book-container">
+        <div class="book-content">
+            <a href="index.php?action=getChaptersList" class="white-button regular-button">
                 <span>&#10094;&#10094;</span>Retour au menu des chapitres
             </a>
             
             <h3>Chapitre <?= $chapter['id'] ?> :<br/><?= $chapter['title'] ?></h3>
             
-            <div class="chapterContent"><?= $chapter['content'] ?></div>
+            <div class="chapter-content"><?= $chapter['content'] ?></div>
         </div>
     </div>
 </div>
 
-<div class="commentsWrapper">
-    <div class="commentsContainer">
+<div class="comments-wrapper">
+    <div class="comments-container">
         <?php
         // Case 1 : Existing session
         if (isset($_SESSION['pseudo']))

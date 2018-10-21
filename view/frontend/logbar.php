@@ -1,20 +1,20 @@
-<div class="adminSessionBar">
+<div class="admin-session-bar">
     <div>
-        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-        <label for="openSidebarMenu" class="sidebarIconToggle">
+        <input type="checkbox" class="open-sidebar-menu" id="open-sidebar-menu">
+        <label for="open-sidebar-menu" class="sidebar-icon-toggle">
             <div class="spinner diagonal part-1"></div>
             <div class="spinner horizontal"></div>
             <div class="spinner diagonal part-2"></div>
         </label>
 
-        <div id="sidebarMenu">
-            <ul class="sidebarMenuInner">
+        <div id="sidebar-menu">
+            <ul class="sidebar-menu-inner">
                 <li>
-                    <a href="index.php?action=register" class="blueButton regularButton">Inscription</a>
+                    <a href="index.php?action=register" class="blue-button regular-button">Inscription</a>
                 </li>
                 
                 <li>
-                    <a href="index.php?action=signIn" class="whiteButton regularButton">Connexion</a>
+                    <a href="index.php?action=signIn" class="white-button regular-button">Connexion</a>
                 </li>
             </ul>
         </div>
