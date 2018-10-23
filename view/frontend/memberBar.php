@@ -20,5 +20,5 @@
         </div>
     </div>
     
-    <p>Bienvenue<?php if (isset($_SESSION['pseudo'])) { echo ' ' . $_SESSION['pseudo']; }  ?></p>
+    <p>Bienvenue<?php if (isset($_SESSION['pseudo'])) { echo ' ' . htmlspecialchars($_SESSION['pseudo']); }  ?></p>
 </div>

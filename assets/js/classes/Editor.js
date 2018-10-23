@@ -1,23 +1,7 @@
 class Editor {
     
-    get userId() {
-        return this._userId;
-    }
-    
     get editionElements() {
         return this._editionElements;
-    }
-    
-    get emailRegex() {
-        return this._emailRegex;
-    }
-    
-    get usernameRegex() {
-        return this._usernameRegex;
-    }
-    
-    get passwordRegex() {
-        return this._passwordRegex;
     }
     
     addFormDisplayTriggeringEvents() {        

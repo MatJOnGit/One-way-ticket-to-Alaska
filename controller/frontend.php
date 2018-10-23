@@ -6,6 +6,10 @@ require_once 'services/DisplayableDataCheckingService.php';
 
 class Frontend_Controller extends Controller
 {
+    public $emailRegex = '#^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$#';
+    public $passwordRegex = '#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#';
+    public $usernameRegex = '#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#';
+    
     public function addComment()
     {
         $this->loadManagers();
@@ -26,41 +30,41 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         $userManager = new \owtta\Blog\Model\UserManager();
         if (isset($_POST['username']) &&
-            (preg_match('#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#', $_POST['username'])) &&
-            (preg_match('#^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$#', $_POST['userEmail'])) &&
-            (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['userPassword'])) &&
-            (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['userCopiedPassword'])) &&
+            (preg_match($this->usernameRegex, $_POST['username'])) &&
+            (preg_match($this->emailRegex, $_POST['userEmail'])) &&
+            (preg_match($this->passwordRegex, $_POST['userPassword'])) &&
+            (preg_match($this->passwordRegex, $_POST['userCopiedPassword'])) &&
             ($_POST['userPassword'] === $_POST['userCopiedPassword']))
         {
             $userId = $userManager->getUserId($_POST['username']);
-            if (is_null($userId))
+                        
+            if (!is_null($userId))
             {
                 // "Non-existing pseudo in BDD" case
                 $newUserData = $userManager->createUser($_POST['username'], $_POST['userEmail'], password_hash($_POST['userPassword'], PASSWORD_DEFAULT));
-                
+                                
                 if (isset($newUserData) && $newUserData > 0)
                 {
-                    echo 'compte créé';
                     $_SESSION['pseudo'] = htmlspecialchars($_POST['username']);
                     $_SESSION['id'] = $newUserData;
                     $_SESSION['status'] = 'member';
                     header('Location: index.php?action=getChaptersList');
                 }
-                else
-                {
-                    header('Location: index.php?action=register');
-                }
+//                else
+//                {
+//                    header('Location: index.php?action=register');
+//                }
             }
-            elseif ($userId > 0)
-            {
-                // "Existing pseudo in BDD" case
-                header('Location: index.php?action=register');
-            }
+//            elseif ($userId > 0)
+//            {
+//                // "Existing pseudo in BDD" case
+//                header('Location: index.php?action=register');
+//            }
         }
-        else
-        {
-            header('Location: index.php?action=register');
-        }
+//        else
+//        {
+//            header('Location: index.php?action=register');
+//        }
     }
     
     public function display404Page()
@@ -82,20 +86,28 @@ class Frontend_Controller extends Controller
     }
     
     public function editUserParam()
-    {
+    {        
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
-
+        
         if ($_GET['updatedParam'] === 'username' || $_GET['updatedParam'] === 'userEmail' || $_GET['updatedParam'] === 'userPassword')
         {
             if ($_GET['updatedParam'] === 'username')
             {
-                $editedUserData = $userManager->editUserName($_POST['newUsername'], $_GET['id']);
-                $_SESSION['pseudo'] = htmlspecialchars($_POST['newUsername']);
+                if (isset($_POST['newUsername']) && (preg_match($this->usernameRegex, $_POST['newUsername'])))
+                {
+                    $editedUserData = $userManager->editUserName($_POST['newUsername'], $_GET['id']);
+                    $_SESSION['pseudo'] = htmlspecialchars(trim($_POST['newUsername']));
+                }
+                else
+                {
+                    $this->display404Page();
+                }
             }
+            
             elseif ($_GET['updatedParam'] === 'userEmail')
             {
-                if (isset($_POST['newUserEmail']) && (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['newUserEmail'])))
+                if (isset($_POST['newUserEmail']) && (preg_match($this->emailRegex, $_POST['newUserEmail'])))
                 {
                     $editedUserData = $userManager->editUserEmail($_POST['newUserEmail'], $_GET['id']);
                 }
@@ -104,6 +116,7 @@ class Frontend_Controller extends Controller
                     $this->display404Page();
                 }
             }
+            
             elseif ($_GET['updatedParam'] === 'userPassword')
             {
                 $editedUserData = $userManager->editUserPwd(password_hash($_POST['newUserPassword'], PASSWORD_DEFAULT), $_GET['id']);
@@ -151,7 +164,7 @@ class Frontend_Controller extends Controller
         $chapterManager = new \owtta\Blog\Model\ChapterManager();
         $chapterCount = $chapterManager->getChapterCount();
         $chapters = $chapterManager->getChapters();
-
+        
         require('view/frontend/chaptersList.php');
     }
     
@@ -194,8 +207,8 @@ class Frontend_Controller extends Controller
         $userManager = new \owtta\Blog\Model\UserManager();
         
         if (isset($_POST['username']) &&
-            (preg_match('#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#', $_POST['username'])) &&
-            (preg_match('#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#', $_POST['userPassword'])))
+            (preg_match($this->usernameRegex, $_POST['username'])) &&
+            (preg_match($this->passwordRegex, $_POST['userPassword'])))
         {
             $userData = $userManager->getUserPermissions($_POST['username'], $_POST['userPassword']);
             

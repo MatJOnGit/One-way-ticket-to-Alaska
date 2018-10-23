@@ -2,6 +2,7 @@ class UserDataEditor extends Editor {
 
     constructor() {
         super();
+        
         this._usernameElement = document.getElementById('username');
         this._usernameEditButton = this._usernameElement.childNodes[3];
         
@@ -32,6 +33,10 @@ class UserDataEditor extends Editor {
     
     get passwordRegex() {
         return this._passwordRegex;
+    }
+    
+    get userId() {
+        return this._userId;
     }
     
     get usernameRegex() {
