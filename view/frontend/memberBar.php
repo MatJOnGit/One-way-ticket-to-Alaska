@@ -1,7 +1,7 @@
 <div class="admin-session-bar">
     <div>
         <input type="checkbox" class="open-sidebar-menu" id="open-sidebar-menu">
-        <label for="openSidebarMenu" class="sidebar-icon-toggle">
+        <label for="open-sidebar-menu" class="sidebar-icon-toggle">
             <div class="spinner diagonal part-1"></div>
             <div class="spinner horizontal"></div>
             <div class="spinner diagonal part-2"></div>

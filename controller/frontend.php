@@ -36,9 +36,10 @@ class Frontend_Controller extends Controller
             (preg_match($this->passwordRegex, $_POST['userCopiedPassword'])) &&
             ($_POST['userPassword'] === $_POST['userCopiedPassword']))
         {
+            // Verify if the account already exists by returning an Id if so
             $userId = $userManager->getUserId($_POST['username']);
-                        
-            if (!is_null($userId))
+            
+            if (is_null($userId))
             {
                 // "Non-existing pseudo in BDD" case
                 $newUserData = $userManager->createUser($_POST['username'], $_POST['userEmail'], password_hash($_POST['userPassword'], PASSWORD_DEFAULT));
@@ -50,21 +51,21 @@ class Frontend_Controller extends Controller
                     $_SESSION['status'] = 'member';
                     header('Location: index.php?action=getChaptersList');
                 }
-//                else
-//                {
-//                    header('Location: index.php?action=register');
-//                }
+                else
+                {
+                    header('Location: index.php?action=register');
+                }
             }
-//            elseif ($userId > 0)
-//            {
-//                // "Existing pseudo in BDD" case
-//                header('Location: index.php?action=register');
-//            }
+            elseif ($userId > 0)
+            {
+                // "Existing pseudo in BDD" case
+                header('Location: index.php?action=register');
+            }
         }
-//        else
-//        {
-//            header('Location: index.php?action=register');
-//        }
+        else
+        {
+            header('Location: index.php?action=register');
+        }
     }
     
     public function display404Page()
