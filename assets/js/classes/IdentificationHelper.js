@@ -1,4 +1,5 @@
 class IdentificationHelper {
+    
     constructor() {
         this._usernameInputElement = document.getElementById('username-loggin-input');
         this._usernameAlert = this._usernameInputElement.parentNode.querySelector('p');

@@ -10,7 +10,7 @@
 
                 <form class='identification-form' action="index.php?action=createAccount" method="post">
                     <div>
-                        <input class="dynamic-form comment-form" type="text" name="username" id="userName-loggin-input" placeholder="Nom d'utilisateur" required>
+                        <input class="dynamic-form comment-form" type="text" name="username" id="username-loggin-input" placeholder="Nom d'utilisateur" required>
                         <p></p>
                     </div>
                     

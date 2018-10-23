@@ -86,7 +86,7 @@ class Frontend_Controller extends Controller
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
 
-        if ($_GET['updatedParam'] === 'userName' || $_GET['updatedParam'] === 'userEmail' || $_GET['updatedParam'] === 'userPassword')
+        if ($_GET['updatedParam'] === 'username' || $_GET['updatedParam'] === 'userEmail' || $_GET['updatedParam'] === 'userPassword')
         {
             if ($_GET['updatedParam'] === 'username')
             {

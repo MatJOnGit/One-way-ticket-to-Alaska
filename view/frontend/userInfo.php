@@ -124,5 +124,5 @@
 </div>
 
 <script src="./assets/js/classes/Editor.js"></script>
-<script src="./assets/js/classes/MemberPanelEditor.js"></script>
-<script src="./assets/js/userDataInteractiveForm.js"></script>
+<script src="./assets/js/classes/UserDataEditionForm.js"></script>
+<script src="./assets/js/userDataEdition.js"></script>

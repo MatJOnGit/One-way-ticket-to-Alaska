@@ -1,6 +1,39 @@
 class Editor {
     
-    createFormElements(containerId) {
+    constructor() {
+        this._usernameElement = document.getElementById('username');
+        this._usernameEditButton = this._usernameElement.childNodes[3];
+        
+        this._userEmailElement = document.getElementById('user-email');
+        this._userEmailEditButton = this._userEmailElement.childNodes[3];
+        
+        this._userPasswordElement = document.getElementById('user-password');
+        this._userPasswordEditButton = this._userPasswordElement.childNodes[3];
+        
+        this._userId = document.getElementById('id-container').childNodes[1].textContent;
+        
+        this._emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this._usernameRegex = /^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$/;
+        this._passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$/;;
+    }
+    
+    get userId() {
+        return this._userId;
+    }
+    
+    get emailRegex() {
+        return this._emailRegex;
+    }
+    
+    get usernameRegex() {
+        return this._usernameRegex;
+    }
+    
+    get passwordRegex() {
+        return this._passwordRegex;
+    }
+    
+    createFormElements(containerId, updatedParam) {
         const editionForm = document.createElement('form');
         editionForm.setAttribute('method', 'post');
         
@@ -9,7 +42,7 @@ class Editor {
         
         const formInput = document.createElement('input');
         formInput.setAttribute('required', 'true');
-        formInput.setAttribute('name', 'new' + containerId.charAt(0).toUpperCase() + containerId.slice(1));
+        formInput.setAttribute('name', 'new' + updatedParam.charAt(0).toUpperCase() + updatedParam.slice(1));
         
         const formAlert = document.createElement('p');
         formAlert.textContent = '';
