@@ -87,6 +87,16 @@
         color: #0984e3;
     }
 
+    .correct-entry {
+        color: green;
+        background-color: inherit;
+    }
+
+    .incorrect-entry {
+        color: red;
+        background-color: pink;
+    }
+
 /* Landing page specifics */
 
     header {
@@ -505,25 +515,26 @@
         margin: 0;
     }
     
-    .small-buttons-container {
-        align-items: center;
-    }
-    
-    a.small {
+    a.small-button {
         width: 2px;
         height: 12px;
     }
     
-    button.small {
+    button.small-button {
         width: 22px;
         height: 22px;
         display: flex;
         justify-content: center;
         margin-left: 5px;
     }
+
+    .horizontal-form {
+        flex-direction: row;
+        justify-content: space-between;
+    }
     
-    a.small i,
-    button.small i
+    a.small-button i,
+    button.small-button i
     {
         font-size: 0.5em;
     }
@@ -632,6 +643,11 @@
     
     #user-management i {
         font-size: 2em;
+    }
+
+    .vertical-form div:first-child {
+        flex-direction: column;
+        margin-bottom: 5px;
     }
 
 /* Backoffice */

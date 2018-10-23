@@ -1,24 +1,11 @@
 class Editor {
     
-    constructor() {
-        this._usernameElement = document.getElementById('username');
-        this._usernameEditButton = this._usernameElement.childNodes[3];
-        
-        this._userEmailElement = document.getElementById('user-email');
-        this._userEmailEditButton = this._userEmailElement.childNodes[3];
-        
-        this._userPasswordElement = document.getElementById('user-password');
-        this._userPasswordEditButton = this._userPasswordElement.childNodes[3];
-        
-        this._userId = document.getElementById('id-container').childNodes[1].textContent;
-        
-        this._emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        this._usernameRegex = /^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$/;
-        this._passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$/;;
-    }
-    
     get userId() {
         return this._userId;
+    }
+    
+    get editionElements() {
+        return this._editionElements;
     }
     
     get emailRegex() {
@@ -31,6 +18,14 @@ class Editor {
     
     get passwordRegex() {
         return this._passwordRegex;
+    }
+    
+    addFormDisplayTriggeringEvents() {        
+        this.editionElements.forEach((dataEditionButton) => {
+            dataEditionButton.addEventListener('click', (e) => {
+                this.displayForm(e);
+            })
+        });
     }
     
     createFormElements(containerId, updatedParam) {
@@ -58,10 +53,10 @@ class Editor {
         submitButton.classList.add('edit-info-button', 'blue-button');
         submitButton.setAttribute('type', 'submit');
         submitButton.innerHTML = '<i class="fas fa-check white-item"></i>';
-        
-        if (containerId.includes('Email')) {
-            formInput.setAttribute('type', 'text')
-        } else if (containerId.includes('Pwd')) {
+                
+        if (containerId.includes('email')) {
+            formInput.setAttribute('type', 'email')
+        } else if (containerId.includes('password')) {
             formInput.setAttribute('type', 'password')
         } else {
             formInput.setAttribute('type', 'text')

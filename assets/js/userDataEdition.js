@@ -1,2 +1,2 @@
-const userDataEditionForm = new UserDataEditionForm();
-userDataEditionForm.addFormDisplayTriggeringEvents();
+const userDataEditor = new UserDataEditor();
+userDataEditor.addFormDisplayTriggeringEvents();

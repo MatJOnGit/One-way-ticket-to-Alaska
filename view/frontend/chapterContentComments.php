@@ -82,4 +82,4 @@ while ($comment = $comments->fetch())
 
 <script src="./assets/js/classes/Editor.js"></script>
 <script src="./assets/js/classes/CommentEditor.js"></script>
-<script src="./assets/js/commentInteractiveForm.js"></script>
+<script src="./assets/js/commentEdition.js"></script>
