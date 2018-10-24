@@ -87,6 +87,7 @@ class Backend_Controller extends Controller
         {
             require('view/backend/chapterEditing.php');
         }
+        
         else
         {
             require 'view/backend/Admin404.php';
@@ -126,6 +127,7 @@ class Backend_Controller extends Controller
         {
             header('Location: index.php?action=createNewChapter&id=' . $newChapterId[0]);
         }
+        
         else
         {
             $newChapterId[0] = 1;
@@ -174,6 +176,7 @@ class Backend_Controller extends Controller
         {
             header('Location: index.php?action=getMemberPanel&id=' . $userId);
         }
+        
         else
         {
             header('Location: index.php?action=getAdminPanel');
@@ -200,6 +203,7 @@ class Backend_Controller extends Controller
             {
                 header('Location: index.php?action=editChapter&id=' . $chapterId);
             }
+            
             elseif ($chapterStatus === 'published')
             {
                 header('Location: index.php?action=getAdminPanel');

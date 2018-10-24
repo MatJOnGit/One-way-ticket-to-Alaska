@@ -34,7 +34,6 @@ try
             }
             else
             {
-                throw new Exception('Aucun identifiant de billet envoyé');
                 $frontend_controller->display404Page();
             }
         }

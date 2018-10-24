@@ -51,6 +51,7 @@ class Frontend_Controller extends Controller
                     $_SESSION['status'] = 'member';
                     header('Location: index.php?action=getChaptersList');
                 }
+                
                 else
                 {
                     header('Location: index.php?action=register');
@@ -87,7 +88,7 @@ class Frontend_Controller extends Controller
     }
     
     public function editUserParam()
-    {        
+    {
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
         
@@ -99,7 +100,9 @@ class Frontend_Controller extends Controller
                 {
                     $editedUserData = $userManager->editUserName($_POST['newUsername'], $_GET['id']);
                     $_SESSION['pseudo'] = htmlspecialchars(trim($_POST['newUsername']));
+                    header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
                 }
+                
                 else
                 {
                     $this->display404Page();
@@ -111,8 +114,11 @@ class Frontend_Controller extends Controller
                 if (isset($_POST['newUserEmail']) && (preg_match($this->emailRegex, $_POST['newUserEmail'])))
                 {
                     $editedUserData = $userManager->editUserEmail($_POST['newUserEmail'], $_GET['id']);
+                    header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
                 }
+                
                 else
+                    
                 {
                     $this->display404Page();
                 }
@@ -120,10 +126,17 @@ class Frontend_Controller extends Controller
             
             elseif ($_GET['updatedParam'] === 'userPassword')
             {
-                $editedUserData = $userManager->editUserPwd(password_hash($_POST['newUserPassword'], PASSWORD_DEFAULT), $_GET['id']);
+                if (isset($_POST['newUserPassword']) && (preg_match($this->passwordRegex, $_POST['newUserPassword'])))
+                {
+                    $editedUserData = $userManager->editUserPwd(password_hash($_POST['newUserPassword'], PASSWORD_DEFAULT), $_GET['id']);
+                    header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
+                }
+                
+                else
+                {
+                    $this->display404Page();
+                }
             }
-            
-            header('Location: index.php?action=getMemberPanel&id=' . $_GET['id']);
         }
         else
         {
@@ -152,6 +165,7 @@ class Frontend_Controller extends Controller
             $comments = $commentManager->getComments($_GET['id']);
             require('view/frontend/chapterContent.php');
         }
+        
         else
         {
             require 'view/frontend/404.php';

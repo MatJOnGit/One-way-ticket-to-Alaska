@@ -555,6 +555,10 @@
         flex-direction: column;
         align-items: center;
     }
+
+    .user-info-bloc > .user-info:nth-child(2) {
+        display: none;
+    }
     
     .user-info {
         width: 100%;
