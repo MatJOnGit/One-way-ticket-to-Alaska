@@ -30,6 +30,14 @@
                     </div>
                     <button class="blue-button regular-button" type="submit">Créer mon compte</button>
                 </form>
+                
+                <div class='grey-box'>
+                    <p>Votre nom d'utilisateur doit contenir entre 5 et 20 caractères alphanumériques.</p>
+                </div>
+                
+                <div class='grey-box'>
+                    <p>Votre mot de passe doit contenir au moins une lettre en majuscule et un chiffre.</p>
+                </div>
             </div>
         </div>
     </div>

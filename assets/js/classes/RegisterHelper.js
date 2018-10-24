@@ -73,7 +73,7 @@ class RegisterHelper extends IdentificationHelper {
         
         this.copiedPasswordInputElement.addEventListener('blur', () => {
             if ((!this.passwordRegex.test(this.copiedPasswordInputElement.value)) && (this.copiedPasswordInputElement.value != '')) {
-                this.copiedPasswordAlert.textContent = 'mot de passe invalide';
+                this.copiedPasswordAlert.textContent = 'mot de passe incorrect';
                 this.copiedPasswordAlert.style.color = 'red';
                 this.copiedPasswordAlert.style.marginTop = '10px';
             }

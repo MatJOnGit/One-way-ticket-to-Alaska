@@ -42,8 +42,8 @@ class Frontend_Controller extends Controller
             if (is_null($userId))
             {
                 // "Non-existing pseudo in BDD" case
-                $newUserData = $userManager->createUser($_POST['username'], $_POST['userEmail'], password_hash($_POST['userPassword'], PASSWORD_DEFAULT));
-                                
+                $newUserData = $userManager->createUser($_POST['username'], strtolower($_POST['userEmail']), password_hash($_POST['userPassword'], PASSWORD_DEFAULT));
+                
                 if (isset($newUserData) && $newUserData > 0)
                 {
                     $_SESSION['pseudo'] = htmlspecialchars($_POST['username']);

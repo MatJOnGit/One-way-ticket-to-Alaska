@@ -335,6 +335,15 @@
         text-align: center;
     }
 
+    .form-container > .grey-box {
+        border: 1px black solid;
+    }
+
+    .grey-box > p {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+
 /* getChapterList page specifics */
 
     .book-content > ul > li {
@@ -727,7 +736,7 @@
         flex-direction: column;
     }
     
-    .grey-box p {
+    .grey-box > div p {
         margin: 0 0 0 20px;
         font-size: 0.9em;
     }
