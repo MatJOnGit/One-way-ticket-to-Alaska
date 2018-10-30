@@ -1,6 +1,6 @@
 <div class="book-wrapper">
     <div class="book-container">
-        <div class="book-content">
+        <div class="book-content no-prev-button">
             <h3>Liste des chapitres</h3>
             <ul>
                 <?php                

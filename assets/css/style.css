@@ -270,7 +270,11 @@
     
     h3 {
         font-size: 1.5em;
-        margin: 20px 0 10px;
+        margin: 20px 0 30px;
+    }
+
+    .no-prev-button h3 {
+        margin: 0 0 20px;
     }
 
 /* Frontoffice */
@@ -299,13 +303,11 @@
         z-index: 1;
     }
     
-    .book-container {
-        z-index: 2;
-        overflow-y: scroll;
-    }
-    
     .book-content {
         margin: 20px;
+        height: 82vh;
+        padding-top: 7px;
+        overflow: hidden;
     }
     
     .book-content h3 {
@@ -315,7 +317,6 @@
     .chapter-content {
         max-height: 65vh;
         overflow-y: scroll;
-        margin-bottom: 20px;
     }
 
 /* Register and signIn page specifics */
@@ -335,7 +336,12 @@
         text-align: center;
     }
 
+    .form-container .grey-box {
+        padding: 5px;
+    }
+
     .form-container > .grey-box {
+        width: 80%;
         border: 1px black solid;
     }
 
@@ -550,13 +556,19 @@
 
 /* getMemberPanel Page specifics */
 
-    .user-info-bloc {
+    .user-info-block {
+        max-height: 70vh;
+        overflow-y: scroll;
+    }
+
+    .user-info-block > div {
         display: flex;
         flex-direction: column;
         align-items: center;
+
     }
 
-    .user-info-bloc > .user-info:nth-child(2) {
+    .user-info-block .user-info:nth-child(2) {
         display: none;
     }
     
@@ -720,16 +732,23 @@
     }
     
     .admin-content {
-        margin: 20px;
+        margin: 20px 30px;
         display: flex;
         flex-direction: column;
+    }
+
+    .admin-content > .grey-box {
+        padding: 10px 20px;
+    }
+
+    .admin-content:nth-child(3) > .grey-box {
+        justify-content: center;
     }
 
     .grey-box {
         background-image: linear-gradient(#bdc3c7, #dfe6e9);
         box-shadow: 0px 5px 5px #bdc3c7;
         margin: 10px 0 0;
-        padding: 10px 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -741,7 +760,7 @@
     }
     
     .grey-box > div p {
-        margin: 0 0 0 20px;
+        margin: 0;
         font-size: 0.9em;
     }
     
@@ -754,7 +773,6 @@
     .admin-panel-icons {
         width: 50px;
         height: 50px;
-        margin-right: 20px;
         background-color: #0984e3;
         border-radius: 50%;
         display: flex;
@@ -781,8 +799,8 @@
     
     .chapter-options,
     .user-options {
-        width: 90%;
-        padding: 6px 5%;
+        width: 100%;
+        padding: 6px 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -1034,10 +1052,7 @@
         }
         
         .book-wrapper,
-        .admin-panel-wrapper {
-            width: 80%;
-        }
-        
+        .admin-panel-wrapper,
         .book-wrapper:before,
         .book-container,
         .admin-panel-wrapper:before,
@@ -1049,12 +1064,75 @@
             margin: 8vh 0 0;
         }
         
+        .book-content {
+            margin: 30px 20px 40px 20px;
+            height: 79vh;
+        }
+        
         h3 {
             font-size: 1.6em;
-            margin: 20px 0 30px;
+            margin: 40px 0 30px;
+        }
+        
+        .chapter-content p:nth-last-child(1) {
+            margin-bottom: 50px;
         }
         
         li a {
             font-size: 1.1em;
+        }
+        
+        .admin-content {
+            margin: 20px 80px;
+        }
+        
+        .admin-panel-icons {
+            margin-right: 0px;
+        }
+        
+        .admin-content > .grey-box:nth-child(2) > div:nth-child(1),
+        .admin-content > .grey-box:nth-child(3) > div:nth-child(1) {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+        
+        .grey-box > div p {
+            margin: 0;
+        }
+        
+        .grey-box > div p:nth-child(2) {
+            margin: 5px;
+        }
+        
+        .admin-content:nth-child(2) > a {
+            margin-top: 20px;
+        }
+        
+        .user-options {
+            width: 70%;
+        }
+        
+        .user-info {
+            width: 75%;
+        }
+        
+        .book-container {
+            overflow: hidden;
+        }
+        
+        .user-info-block {
+            max-height: 68vh;
+        }
+        
+        .chapter-content,
+        .user-info-block {
+            -ms-overflow-style: none;
+            overflow: -moz-scrollbars-none;
+        }
+        
+        .chapter-content::-webkit-scrollbar,
+        .user-info-block::-webkit-scrollbar { 
+            display: none;
         }
     }
