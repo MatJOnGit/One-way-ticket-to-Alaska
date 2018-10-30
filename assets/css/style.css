@@ -1048,7 +1048,7 @@
         
         .book-wrapper,
         .admin-panel-wrapper {
-            padding: 4vh 10%;
+            padding: 4vh 13%;
         }
         
         .book-wrapper,
@@ -1057,7 +1057,7 @@
         .book-container,
         .admin-panel-wrapper:before,
         .admin-content-container {
-            width: 80%;
+            width: 74%;
         }
         
         .book-wrapper {
@@ -1065,7 +1065,7 @@
         }
         
         .book-content {
-            margin: 30px 20px 40px 20px;
+            margin: 30px 50px 40px 50px;
             height: 79vh;
         }
         
@@ -1088,6 +1088,10 @@
         
         .admin-panel-icons {
             margin-right: 0px;
+        }
+        
+        .admin-content > .grey-box {
+            padding: 13px 55px;
         }
         
         .admin-content > .grey-box:nth-child(2) > div:nth-child(1),
