@@ -139,6 +139,7 @@
     article p {
         padding: 30px 10% 70px 10%;
         margin: 0;
+        text-align: justify;
     }
     
     article a {
@@ -154,6 +155,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        text-align: justify;
     }
     
     aside img {
@@ -237,7 +239,7 @@
     .user-session-bar p,
     .admin-session-bar p {
         margin: 0;
-        padding: 2.4vh 30px;    
+        padding: 2.4vh 9%;    
     }
     
     .user-session-bar nav,
@@ -340,7 +342,7 @@
         padding: 5px;
     }
 
-    .form-container > .grey-box {
+    .form-container .grey-box {
         width: 80%;
         border: 1px black solid;
     }
@@ -737,11 +739,11 @@
         flex-direction: column;
     }
 
-    .admin-content > .grey-box {
+    .admin-content .grey-box {
         padding: 10px 20px;
     }
 
-    .admin-content:nth-child(3) > .grey-box {
+    .admin-content:nth-child(3) .grey-box {
         justify-content: center;
     }
 
@@ -965,7 +967,7 @@
         height: 100%;
         width: 100%;
         top: 22px;
-        right: 15px;
+        right: 8%;
         height: 22px;
         width: 22px;
     }
@@ -1046,6 +1048,15 @@
             height: 8vh;
         }
         
+        .user-session-bar p,
+        .admin-session-bar p {
+            padding: 2.9vh 10%;
+        }
+        
+        .sidebar-icon-toggle {
+            top: 28px;
+        }
+        
         .book-wrapper,
         .admin-panel-wrapper {
             padding: 4vh 13%;
@@ -1086,31 +1097,26 @@
             margin: 20px 80px;
         }
         
-        .admin-panel-icons {
-            margin-right: 0px;
-        }
-        
-        .admin-content > .grey-box {
-            padding: 13px 55px;
-        }
-        
-        .admin-content > .grey-box:nth-child(2) > div:nth-child(1),
-        .admin-content > .grey-box:nth-child(3) > div:nth-child(1) {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-end;
+        .admin-content .grey-box {
+            padding: 13px 30px;
         }
         
         .grey-box > div p {
-            margin: 0;
+            width: 65%;
+        }
+        
+        .admin-content .grey-box:nth-child(3) > div:nth-child(1) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
         }
         
         .grey-box > div p:nth-child(2) {
-            margin: 5px;
+            margin-left: 5px;
         }
         
         .admin-content:nth-child(2) > a {
-            margin-top: 20px;
+            margin: 20px 0 0;
         }
         
         .user-options {
@@ -1138,5 +1144,127 @@
         .chapter-content::-webkit-scrollbar,
         .user-info-block::-webkit-scrollbar { 
             display: none;
+        }
+        
+        footer {
+            height: 5vh;
+            padding: 15px 0;
+        }
+    }
+
+    /***********************************************
+    ****************     Desktop     ***************
+    ***********************************************/
+
+
+    @media (min-width: 1024px) {
+        article p {
+            padding: 30px 25% 70px;
+        }
+        
+        article a {
+            right: 15%;
+        }
+        
+        aside {
+            padding: 30px 25%;
+        }
+        
+        .user-info-block {
+            padding-top: 20px;
+        }
+        
+        .user-info {
+            width: 50%;
+        }
+                
+        .identification-form div:nth-child(2) {
+            margin-top: 5px;
+        }
+        
+        .identification-form button {
+            margin: 15px;
+        }
+        
+        .comments-container {
+            width: 74%;
+        }
+        
+        footer {
+            height: 7vh;
+            padding: 15px 0;
+        }
+        
+        footer a {
+            width: 25px;
+            height: 25px;
+        }
+        
+        footer p {
+            display: block;
+            margin-top: 6px;
+        }
+        
+        .admin-content {
+            margin: 20px 80px;
+        }
+        
+        .admin-content-container .admin-content > div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        .admin-content-container .admin-content > div > .grey-box {
+            width: 28%;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-around;
+        }
+                
+        .grey-box {
+            border-radius: 10px;
+        }
+        
+        .grey-box div {
+            text-align: center;
+        }
+        
+        .grey-box > div p {
+            width: 100%;
+        }
+        
+        .admin-content:nth-child(1) .grey-box {
+            height: 145px;
+        }
+        
+        .admin-content:nth-child(1) .grey-box:nth-child(1) div:nth-child(1) {
+            align-items: flex-end;
+        }
+        
+        .admin-content:nth-child(1) .grey-box {
+            margin: 0;
+            padding: 10px;
+        }
+        
+        .admin-content:nth-child(1) .grey-box:nth-child(3) > div:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .admin-content:nth-child(2) .grey-box:nth-child(2),
+        .admin-content:nth-child(3) .grey-box {
+            margin: 10px 15% 0;
+            padding: 10px 60px;
+        }
+        
+        .admin-content:nth-child(2) > .grey-box:nth-child(3) {
+            margin: 15px 15% 0;
+            padding: 10px 60px;
+        }
+        
+        .admin-content:nth-child(2) > a {
+            margin: 20px 15% 0 0;
         }
     }

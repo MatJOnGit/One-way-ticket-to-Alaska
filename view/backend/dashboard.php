@@ -2,38 +2,40 @@
     <div class="admin-content-container">
         <div class="admin-content">
             <h3>Vue d'ensemble</h3>
-            <div class="grey-box">
-                <div>
-                    <p><span><?= $userCount[0] ?></span></p>
-                    <p>membre(s)</p>
-                </div>
-                
-                <div class="admin-panel-icons">
-                    <i class="fas fa-users white-item"></i>
-                </div>
-            </div>
-            
-            <div class="grey-box">
-                <div>
-                    <p><span><?= $chapterCount[0] ?></span></p>
-                    <p>chapitre(s)</p>
-                </div>
-                <div class="admin-panel-icons">
-                    <i class="fas fa-book-open white-item"></i>
-                </div>
-            </div>
-            
-            <div class="grey-box">
-                <div>
+            <div>
+                <div class="grey-box">
                     <div>
-                        <p><span><?= $commentCount[0] ?></span> commentaire(s)</p>
+                        <p><span><?= $userCount[0] ?></span></p>
+                        <p>membre(s)</p>
                     </div>
-                    <div>
-                        <p><span><?= $reportedCommentCount[0] ?></span> commentaire(s) signalé(s)</p>
+
+                    <div class="admin-panel-icons">
+                        <i class="fas fa-users white-item"></i>
                     </div>
                 </div>
-                <div class="admin-panel-icons">
-                    <i class="fas fa-comments white-item"></i>
+
+                <div class="grey-box">
+                    <div>
+                        <p><span><?= $chapterCount[0] ?></span></p>
+                        <p>chapitre(s)</p>
+                    </div>
+                    <div class="admin-panel-icons">
+                        <i class="fas fa-book-open white-item"></i>
+                    </div>
+                </div>
+
+                <div class="grey-box">
+                    <div>
+                        <div>
+                            <p><span><?= $commentCount[0] ?></span> commentaire(s)</p>
+                        </div>
+                        <div>
+                            <p><span><?= $reportedCommentCount[0] ?></span> commentaire(s) signalé(s)</p>
+                        </div>
+                    </div>
+                    <div class="admin-panel-icons">
+                        <i class="fas fa-comments white-item"></i>
+                    </div>
                 </div>
             </div>
         </div>
