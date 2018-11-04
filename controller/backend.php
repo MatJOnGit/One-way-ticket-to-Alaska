@@ -171,15 +171,22 @@ class Backend_Controller extends Controller
     {
         $this->loadManagers();
         $userManager = new owtta\Blog\Model\UserManager();
-        $userId = $userManager->getUserId($_POST['username']);
-        if ($userId > 0)
+        if (isset($_POST['username']) && (preg_match($this->usernameRegex, $_POST['username'])))
         {
-            header('Location: index.php?action=getMemberPanel&id=' . $userId);
+            $userId = $userManager->getUserId($_POST['username']);
+            if ($userId > 0)
+            {
+                header('Location: index.php?action=getMemberPanel&id=' . $userId);
+            }
+
+            else
+            {
+                header('Location: index.php?action=getAdminPanel');
+            }
         }
-        
         else
         {
-            header('Location: index.php?action=getAdminPanel');
+            if (isset($_POST['username'])) { echo $_POST['username']; }
         }
     }
     

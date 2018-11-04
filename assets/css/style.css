@@ -812,6 +812,7 @@
     .chapter-options a {
         color: black;
         font-size: 0.95em;
+        text-align: left;
     }
     
     .chapter-options > div {
@@ -924,7 +925,7 @@
         left: 0;
         width: 100%;
         margin-top: 7vh;
-        transform: translateX(-100%);
+        transform: translateY(-200%);
         transition: transform 250ms ease-in-out;
         background: #2b3234;
     }
@@ -949,7 +950,7 @@
     }
     
     input[type="checkbox"]:checked ~ #sidebar-menu {
-        transform: translateX(0);
+        transform: translateY(0);
     }
     
     input[type=checkbox] {
@@ -1054,7 +1055,7 @@
         }
         
         .sidebar-icon-toggle {
-            top: 28px;
+            top: 26px;
         }
         
         .book-wrapper,
@@ -1108,7 +1109,7 @@
         .admin-content .grey-box:nth-child(3) > div:nth-child(1) {
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
         }
         
         .grey-box > div p:nth-child(2) {
@@ -1169,6 +1170,21 @@
         aside {
             padding: 30px 25%;
         }
+        
+        .book-wrapper,
+        .admin-panel-wrapper {
+            padding: 4vh 15%;
+        }
+        
+        .book-wrapper,
+        .admin-panel-wrapper,
+        .book-wrapper:before,
+        .book-container,
+        .admin-panel-wrapper:before,
+        .admin-content-container {
+            width: 70%;
+        }
+        
         
         .user-info-block {
             padding-top: 20px;
@@ -1266,5 +1282,13 @@
         
         .admin-content:nth-child(2) > a {
             margin: 20px 15% 0 0;
+        }
+        
+        label {
+            text-align: left;
+        }
+        
+        #user-management {
+            margin-bottom: 50px;
         }
     }

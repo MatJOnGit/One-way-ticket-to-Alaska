@@ -4,6 +4,7 @@ require_once 'interfaces/ControllerInterface.php';
 
 class Controller implements iController
 {
+    public $usernameRegex = '#^(?=.{5,20}$)[a-zA-Z]+([_-]?[a-zA-Z0-9])*$#';
     
     /**
     *
