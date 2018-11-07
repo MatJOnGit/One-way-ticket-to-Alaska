@@ -265,7 +265,7 @@ class Frontend_Controller extends Controller
     public function signIn()
     {
         $this->displayNavBar();
-        require('view/frontend/signIn.php');
+        require('./view/frontend/signin.php');
     }
     
     public function signOut()

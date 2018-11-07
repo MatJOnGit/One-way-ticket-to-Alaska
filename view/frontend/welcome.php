@@ -1,5 +1,5 @@
 <header>
-    <h1>Billet simple pour l'Alaska</h1>
+    <h1><a href="index.php?action=getChaptersList">Billet simple pour l'Alaska</a></h1>
     <h2>le nouveau roman de Jean Forteroche</h2>
 </header>
 

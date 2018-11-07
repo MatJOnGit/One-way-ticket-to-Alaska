@@ -129,6 +129,10 @@
         right: 5%;
         text-align: right;
     }
+
+    header a {
+        color: white;
+    }
     
     article {
         background-color: #2d3436;
@@ -239,7 +243,7 @@
     .user-session-bar p,
     .admin-session-bar p {
         margin: 0;
-        padding: 2.4vh 9%;    
+        padding: 2.4vh 3%;    
     }
     
     .user-session-bar nav,
@@ -306,7 +310,7 @@
     }
     
     .book-content {
-        margin: 20px;
+        margin: 16px;
         height: 82vh;
         padding-top: 7px;
         overflow: hidden;
@@ -840,10 +844,17 @@
     .admin-content:nth-child(2) > a i {
         color: white;
     }
+
+    .chapter-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     
     .chapter-wrapper h4,
     .chapter-wrapper>div {
         margin-bottom: 10px;
+        text-align: center;
     }
     
     .chapter-wrapper textarea {
@@ -968,7 +979,7 @@
         height: 100%;
         width: 100%;
         top: 22px;
-        right: 8%;
+        right: 3%;
         height: 22px;
         width: 22px;
     }
@@ -1225,7 +1236,7 @@
             margin: 20px 80px;
         }
         
-        .admin-content-container .admin-content > div {
+        .grey-box-block {
             display: flex;
             flex-direction: row;
             justify-content: space-between;

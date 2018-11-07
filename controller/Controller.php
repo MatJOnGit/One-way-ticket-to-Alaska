@@ -27,7 +27,7 @@ class Controller implements iController
         
         else
         {
-            require 'view/frontend/logBar.php';
+            require './view/frontend/logBar.php';
         }
     }
     

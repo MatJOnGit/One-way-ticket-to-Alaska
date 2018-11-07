@@ -2,7 +2,7 @@
     <div class="admin-content-container">
         <div class="admin-content">
             <h3>Vue d'ensemble</h3>
-            <div>
+            <div class="grey-box-block">
                 <div class="grey-box">
                     <div>
                         <p><span><?= $userCount[0] ?></span></p>
