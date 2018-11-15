@@ -12,8 +12,8 @@ try
     
     elseif (isset($_GET['action']))
     {
-        require 'controller/frontend.php';
-        $frontend_controller = new Frontend_Controller;
+        require 'controller/frontoffice.php';
+        $frontoffice_controller = new Frontoffice_Controller;
         
 /**
 *
@@ -23,44 +23,44 @@ try
         
         if ($_GET['action'] === 'getChaptersList')
         {
-            $frontend_controller->getChaptersList();
+            $frontoffice_controller->getChaptersList();
         }
         
         elseif ($_GET['action'] === 'getChapter')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                $frontend_controller->getChapterContent();
+                $frontoffice_controller->getChapterContent();
             }
             else
             {
-                $frontend_controller->display404Page();
+                $frontoffice_controller->display404Page();
             }
         }
         
         elseif ($_GET['action'] === 'register')
         {
-            $frontend_controller->register();
+            $frontoffice_controller->register();
         }
         
         elseif ($_GET['action'] === 'createAccount')
         {
-            $frontend_controller->createAccount();
+            $frontoffice_controller->createAccount();
         }
 
         elseif ($_GET['action'] === 'signIn')
         {
-            $frontend_controller->signIn();
+            $frontoffice_controller->signIn();
         }
         
         elseif ($_GET['action'] === 'logAccount')
         {
-            $frontend_controller->logAccount();
+            $frontoffice_controller->logAccount();
         }
         
         elseif (!isset($_SESSION['status']))
         {
-            $frontend_controller->display404Page();
+            $frontoffice_controller->display404Page();
         }
         
 /**
@@ -73,7 +73,7 @@ try
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                $frontend_controller->addComment();
+                $frontoffice_controller->addComment();
             }
             else
             {
@@ -83,22 +83,22 @@ try
             
         elseif ($_GET['action'] === 'signOut')
         {
-            $frontend_controller->signOut();
+            $frontoffice_controller->signOut();
         }
 
         elseif ($_GET['action'] === 'getMemberPanel')
         {
             if (!isset($_GET['id']))
             {
-                $frontend_controller->getUserMemberPanel();
+                $frontoffice_controller->getUserMemberPanel();
             }
             elseif (isset($_GET['id']) && $_GET['id'] > 0)
             {
-                $frontend_controller->getSpecificMemberPanel();
+                $frontoffice_controller->getSpecificMemberPanel();
             }
             else
             {
-                $frontend_controller->display404Page();
+                $frontoffice_controller->display404Page();
             }
         }
 
@@ -106,7 +106,7 @@ try
         {
             if (isset($_GET['chapterId']) && $_GET['chapterId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0)
             {
-                $frontend_controller->reportComment();
+                $frontoffice_controller->reportComment();
             }
             else
             {
@@ -116,19 +116,19 @@ try
             
         elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'member'))
         {
-            $frontend_controller->display404Page();
+            $frontoffice_controller->display404Page();
         }
         
         elseif ($_GET['action'] === 'editMemberParam' && isset($_GET['updatedParam']))
         {
-            $frontend_controller->editUserParam();
+            $frontoffice_controller->editUserParam();
         }
         
         elseif ($_GET['action'] === 'editComment')
         {
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['id']) && $_GET['id'] > 0)
             {
-                $frontend_controller->editComment();
+                $frontoffice_controller->editComment();
             }
             else
             {
@@ -139,8 +139,8 @@ try
         
         else
         {
-            require 'controller/backend.php';
-            $backend_controller = new Backend_Controller;
+            require 'controller/backoffice.php';
+            $backoffice_controller = new Backoffice_Controller;
             
 /**
 *
@@ -154,16 +154,16 @@ try
                 {
                     if ($_GET['newStatus'] === 'hidden')
                     {
-                        $backend_controller->hideComment();
+                        $backoffice_controller->hideComment();
                     }
                     else
                     {
-                        $backend_controller->unhideComment();
+                        $backoffice_controller->unhideComment();
                     }
                 }
                 else
                 {
-                    $frontend_controller->display404Page();
+                    $frontoffice_controller->display404Page();
                 }
             }
             
@@ -171,7 +171,7 @@ try
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend_controller->deleteAccount();
+                    $backoffice_controller->deleteAccount();
                 }
                 else
                 {
@@ -181,17 +181,17 @@ try
             
             elseif ($_GET['action'] === 'getAdminPanel')
             {
-                $backend_controller->getAdminPanel();
+                $backoffice_controller->getAdminPanel();
             }
             
             elseif ($_GET['action'] === 'searchMember')
             {
-                $backend_controller->searchMember();
+                $backoffice_controller->searchMember();
             }
             
             elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'admin'))
             {
-                $backend_controller->displayAdmin404Page();
+                $backoffice_controller->displayAdmin404Page();
             }
             
 /**
@@ -204,7 +204,7 @@ try
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0 && $_SESSION['status'] != 'admin')
                 {
-                    $backend_controller->editChapterContent();
+                    $backoffice_controller->editChapterContent();
                 }
 
                 elseif ($_SESSION['status'] === 'admin')
@@ -224,7 +224,7 @@ try
                 {
                     if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
                     {
-                        $backend_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
+                        $backoffice_controller->updateChapter($_GET['id'], $_POST['chapterContent'], $_GET['status']);
                     }
 
                     else
@@ -240,14 +240,14 @@ try
             
             elseif ($_GET['action'] === 'addChapter')
             {
-                $backend_controller->getNewChapterId();
+                $backoffice_controller->getNewChapterId();
             }
 
             elseif ($_GET['action'] === 'createNewChapter')
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend_controller->createNewChapter($_GET['id']);
+                    $backoffice_controller->createNewChapter($_GET['id']);
                 }
                 else
                 {
@@ -261,7 +261,7 @@ try
                 {
                     if (($_GET['status'] === 'saved') || ($_GET['status'] === 'published'))
                     {
-                        $backend_controller->uploadNewChapter($_POST['chapterContent'], $_GET['status'], $_POST['chapterTitle']);
+                        $backoffice_controller->uploadNewChapter($_POST['chapterContent'], $_GET['status'], $_POST['chapterTitle']);
                     }
                     else
                     {
@@ -274,7 +274,7 @@ try
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend_controller->deleteChapter();
+                    $backoffice_controller->deleteChapter();
                 }
                 else
                 {
@@ -286,7 +286,7 @@ try
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend_controller->promoteMember();
+                    $backoffice_controller->promoteMember();
                 }
             }
             
@@ -294,13 +294,13 @@ try
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend_controller->demoteAdmin();
+                    $backoffice_controller->demoteAdmin();
                 }
             }
             
             elseif ((isset($_SESSION['status'])) && ($_SESSION['status'] === 'owner'))
             {
-                $backend_controller->displayAdmin404Page();
+                $backoffice_controller->displayAdmin404Page();
             }
             
 /**
@@ -313,7 +313,7 @@ try
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend_controller->promoteAdmin();
+                    $backoffice_controller->promoteAdmin();
                 }
             }
             
@@ -321,13 +321,13 @@ try
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)
                 {
-                    $backend_controller->demoteOwner();
+                    $backoffice_controller->demoteOwner();
                 }
             }
             
             else
             {
-                $backend_controller->displayAdmin404Page();
+                $backoffice_controller->displayAdmin404Page();
             }
         }
     }

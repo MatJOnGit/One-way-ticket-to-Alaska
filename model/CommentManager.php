@@ -1,6 +1,6 @@
 <?php
 
-namespace owtta\Blog\Model;
+namespace project_Alaska\model;
 
 require_once("model/Manager.php");
 

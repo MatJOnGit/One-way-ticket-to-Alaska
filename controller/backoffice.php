@@ -3,7 +3,7 @@
 require_once 'interfaces/ControllerInterface.php';
 require_once 'Controller.php';
 
-class Backend_Controller extends Controller
+class Backoffice_Controller extends Controller
 {
     public function createNewChapter()
     {
@@ -20,7 +20,7 @@ class Backend_Controller extends Controller
     public function deleteAccount()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\Model\UserManager();
         $userStatus = $userManager->getUserStatus($_GET['id']);
         if (isset($userStatus) && $userStatus[0] === 'member')
         {
@@ -32,7 +32,7 @@ class Backend_Controller extends Controller
     public function deleteChapter()
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterManager = new \project_Alaska\Model\ChapterManager();
         $deletedChapter = $chapterManager->deleteChapter($_GET['id']);
         
         if ($deletedChapter === true)
@@ -44,7 +44,7 @@ class Backend_Controller extends Controller
     public function demoteAdmin()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\Model\UserManager();
         $userStatus = $userManager->getUserStatus($_GET['id']);
         if (isset($userStatus) && $userStatus[0] === 'admin')
         {
@@ -56,7 +56,7 @@ class Backend_Controller extends Controller
     public function demoteOwner()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\Model\UserManager();
         $userStatus = $userManager->getUserStatus($_GET['id']);
         if (isset($userStatus) && $userStatus[0] === 'owner')
         {
@@ -81,7 +81,7 @@ class Backend_Controller extends Controller
     {
         $this->displayNavBar();
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterManager = new \project_Alaska\Model\ChapterManager();
         $chapter = $chapterManager->getChapterContent($_GET['id']);
         if ($chapter != false)
         {
@@ -98,9 +98,9 @@ class Backend_Controller extends Controller
     {
         $this->displayNavBar();
         $this->loadManagers();
-        $userManager = new \owtta\Blog\Model\UserManager();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
-        $commentManager = new \owtta\Blog\Model\CommentManager();
+        $userManager = new \project_Alaska\Model\UserManager();
+        $chapterManager = new \project_Alaska\Model\ChapterManager();
+        $commentManager = new \project_Alaska\Model\CommentManager();
         
         $userCount = $userManager->getUserCount();
         $chapterCount = $chapterManager->getChapterCount();
@@ -120,7 +120,7 @@ class Backend_Controller extends Controller
     public function getNewChapterId()
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterManager = new \project_Alaska\Model\ChapterManager();
         $newChapterId = $chapterManager->getNewChapterId();
         
         if ($newChapterId[0] > 1)
@@ -138,7 +138,7 @@ class Backend_Controller extends Controller
     public function hideComment()
     {
         $this->loadManagers();
-        $commentManager = new \owtta\Blog\Model\CommentManager();
+        $commentManager = new \project_Alaska\Model\CommentManager();
         $commentManager->hideComment($_GET['commentId']);
         header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
     }
@@ -146,7 +146,7 @@ class Backend_Controller extends Controller
     public function promoteAdmin()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\Model\UserManager();
         $userStatus = $userManager->getUserStatus($_GET['id']);
         if (isset($userStatus) && $userStatus[0] === 'admin')
         {
@@ -158,7 +158,7 @@ class Backend_Controller extends Controller
     public function promoteMember()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\Model\UserManager();
         $userStatus = $userManager->getUserStatus($_GET['id']);
         if (isset($userStatus) && $userStatus[0] === 'member')
         {
@@ -170,7 +170,7 @@ class Backend_Controller extends Controller
     public function searchMember()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\Model\UserManager();
         if (isset($_POST['username']) && (preg_match($this->usernameRegex, $_POST['username'])))
         {
             $userId = $userManager->getUserId($_POST['username']);
@@ -193,7 +193,7 @@ class Backend_Controller extends Controller
     public function unhideComment()
     {
         $this->loadManagers();
-        $commentManager = new \owtta\Blog\Model\CommentManager();
+        $commentManager = new \project_Alaska\Model\CommentManager();
         $commentManager->unhideComment($_GET['commentId']);
         header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
     }
@@ -201,7 +201,7 @@ class Backend_Controller extends Controller
     public function updateChapter($chapterId, $chapterContent, $chapterStatus)
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterManager = new \project_Alaska\Model\ChapterManager();
         $updatedChapter = $chapterManager->updateChapter($chapterId, $chapterContent, $chapterStatus);
         
         if ($updatedChapter === true)
@@ -221,7 +221,7 @@ class Backend_Controller extends Controller
     public function uploadNewChapter($chapterContent, $chapterStatus, $chapterTitle)
     {
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterManager = new \project_Alaska\Model\ChapterManager();
         $uploadedChapter = $chapterManager->uploadNewChapter($chapterContent, $chapterStatus, $chapterTitle);
         
         if ($uploadedChapter === true)

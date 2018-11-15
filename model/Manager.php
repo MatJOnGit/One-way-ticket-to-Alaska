@@ -1,6 +1,6 @@
 <?php
 
-namespace owtta\Blog\Model;
+namespace Project_Alaska\Model;
 
 class Manager {
     

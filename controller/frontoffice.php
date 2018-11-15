@@ -4,7 +4,7 @@ require_once 'interfaces/ControllerInterface.php';
 require_once 'Controller.php';
 require_once 'services/DisplayableDataCheckingService.php';
 
-class Frontend_Controller extends Controller
+class Frontoffice_Controller extends Controller
 {
     public $emailRegex = '#^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$#';
     public $passwordRegex = '#^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,}$#';
@@ -12,7 +12,7 @@ class Frontend_Controller extends Controller
     public function addComment()
     {
         $this->loadManagers();
-        $commentManager = new owtta\Blog\Model\CommentManager();
+        $commentManager = new \project_Alaska\model\CommentManager();
         $commentManager->addComment($_GET['id'], $_SESSION['pseudo'], trim($_POST['comment']));
         header('Location: index.php?action=getChapter&id=' . $_GET['id']);
     }
@@ -27,7 +27,7 @@ class Frontend_Controller extends Controller
     public function createAccount()
     {
         $this->loadManagers();
-        $userManager = new \owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\model\UserManager();
         if (isset($_POST['username']) &&
             (preg_match($this->usernameRegex, $_POST['username'])) &&
             (preg_match($this->emailRegex, $_POST['userEmail'])) &&
@@ -77,7 +77,7 @@ class Frontend_Controller extends Controller
     public function editComment()
     {
         $this->loadManagers();
-        $commentManager = new owtta\Blog\Model\CommentManager();
+        $commentManager = new \project_Alaska\model\CommentManager();
         
         if (isset($_POST['newComment']) && (!empty($_POST['newComment'])))
         {
@@ -89,7 +89,7 @@ class Frontend_Controller extends Controller
     public function editUserParam()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\model\UserManager();
         
         if ($_GET['updatedParam'] === 'username' || $_GET['updatedParam'] === 'userEmail' || $_GET['updatedParam'] === 'userPassword')
         {
@@ -153,8 +153,8 @@ class Frontend_Controller extends Controller
     {
         $this->displayNavBar();
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
-        $commentManager = new \owtta\Blog\Model\CommentManager();
+        $chapterManager = new \project_Alaska\model\ChapterManager();
+        $commentManager = new \project_Alaska\model\CommentManager();
         
         $chapter = $chapterManager->getChapterContent($_GET['id']);
         
@@ -175,7 +175,7 @@ class Frontend_Controller extends Controller
     {
         $this->displayNavBar();
         $this->loadManagers();
-        $chapterManager = new \owtta\Blog\Model\ChapterManager();
+        $chapterManager = new \project_Alaska\model\ChapterManager();
         $chapterCount = $chapterManager->getChapterCount();
         $chapters = $chapterManager->getChapters();
         
@@ -186,10 +186,10 @@ class Frontend_Controller extends Controller
     {
         $this->displayNavBar();
         $this->loadManagers();
-        $userManager = new \owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\model\UserManager();
         $userInfo = $userManager->getUserInfo($_GET['id']);
         
-        $displayableDataChecking = new \owtta\Blog\Service\DisplayableDataCheckingService;
+        $displayableDataChecking = new \project_Alaska\Services\DisplayableDataCheckingService;
         $displayableDataChecking->testDisplayableData($_SESSION, $userInfo);
         
         require 'view/frontend/userInfo.php';
@@ -199,10 +199,10 @@ class Frontend_Controller extends Controller
     {
         $this->displayNavBar();
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\model\UserManager();
         $userInfo = $userManager->getUserInfo($_SESSION['id']);
         
-        $displayableDataChecking = new \owtta\Blog\Service\DisplayableDataCheckingService;
+        $displayableDataChecking = new \project_Alaska\Services\DisplayableDataCheckingService;
         $displayableDataChecking->testDisplayableData($_SESSION, $userInfo);
         
         require 'view/frontend/userInfo.php';
@@ -218,7 +218,7 @@ class Frontend_Controller extends Controller
     public function logAccount()
     {
         $this->loadManagers();
-        $userManager = new \owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\model\UserManager();
         
         if (isset($_POST['username']) &&
             (preg_match($this->usernameRegex, $_POST['username'])) &&
@@ -257,7 +257,7 @@ class Frontend_Controller extends Controller
     public function reportComment()
     {
         $this->loadManagers();
-        $commentManager = new owtta\Blog\Model\CommentManager();
+        $commentManager = new \project_Alaska\model\CommentManager();
         $commentReporting = $commentManager->reportComment($_GET['commentId']);
         header('Location: index.php?action=getChapter&id=' . $_GET['chapterId']);
     }
@@ -271,7 +271,7 @@ class Frontend_Controller extends Controller
     public function signOut()
     {
         $this->loadManagers();
-        $userManager = new owtta\Blog\Model\UserManager();
+        $userManager = new \project_Alaska\model\UserManager();
         session_destroy();
         header('Location: index.php');
     }

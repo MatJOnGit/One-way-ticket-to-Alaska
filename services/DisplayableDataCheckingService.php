@@ -1,6 +1,6 @@
 <?php
 
-namespace owtta\Blog\Service;
+namespace project_Alaska\services;
 
 class DisplayableDataCheckingService
 {
